@@ -1,0 +1,121 @@
+%----------------------------------------------------------------------------------------
+%	Language and font encodings
+%----------------------------------------------------------------------------------------
+
+
+\usepackage[round]{natbib}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+
+%----------------------------------------------------------------------------------------
+%	Sets page size and margins
+%----------------------------------------------------------------------------------------
+
+
+% \usepackage[a4paper,top=1.5cm,bottom=2cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\usepackage[inner=3.5cm,
+	    outer=2.5cm,
+	    tmargin=2cm, 
+	    bmargin=2cm, 
+	    includefoot,
+	    includehead,
+	    headheight=28pt]{geometry}
+
+
+%----------------------------------------------------------------------------------------
+%	Useful packages
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{upgreek}
+\usepackage{graphicx}
+\usepackage[hang,labelfont=it]{caption}
+\usepackage{subcaption}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}  % pour référer les graphes, sections etc.
+\usepackage{ulem}  % pour souligner des mots
+\usepackage{multirow}  % pour les tableaux
+\renewcommand{\arraystretch}{1.3}
+\usepackage{pdfpages}  % pour intégrer des pages pdf
+\usepackage{marvosym}  % pour le symbole euro
+\usepackage{hyphenat}
+
+
+%----------------------------------------------------------------------------------------
+%	Fancy headers
+%----------------------------------------------------------------------------------------
+
+
+% \input{Configurations/fancy_header.tex}
+
+
+%----------------------------------------------------------------------------------------
+%	Acronym settings
+%----------------------------------------------------------------------------------------
+
+
+\usepackage[acronym,toc,shortcuts]{glossaries}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % pour changer la couleur des liens dans le texte
+\makeglossaries
+\input{Configurations/acronyms_def}
+% \newcommand{\aclegend}[1]{(\acs{#1} - \textit{\acl{#1}})}
+
+
+%----------------------------------------------------------------------------------------
+%	Figure, table and equation numbering
+%----------------------------------------------------------------------------------------
+
+
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+
+%----------------------------------------------------------------------------------------
+%	Create a third level of subsection
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\newcommand{\threesubsection}{\paragraph}
+
+
+%----------------------------------------------------------------------------------------
+%	Abbreviations
+%----------------------------------------------------------------------------------------
+
+
+\newcommand{\vv}[1]{\overrightarrow{#1}}
+\newcommand{\ha}[0]{H$\alpha$}
+\newcommand{\sk}[0]{\textit{Super K}}
+\newcommand{\wiggles}[0]{\textit{wiggles}}
+\newcommand{\degree}[0]{^{\circ}}
+\newcommand{\um}{$\upmu$m}
+\newcommand{\Like}{\mathcal{L}}
+\newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
+
+
+%----------------------------------------------------------------------------------------
+%	Colored comments
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{xcolor}
+\newcommand{\comments}[1]{\textcolor{orange}{#1}}
+\newcommand{\kevinco}[1]{\textcolor{red}{#1}}
+\newcommand{\elsaco}[1]{\textcolor{blue}{#1}}
+\newcommand{\sylvestreco}[1]{\textcolor{green}{#1}}
+\usepackage{comment} % to comment parts of the text with \begin{comment} \end{comment}
+
+
+%----------------------------------------------------------------------------------------
+%	
+%----------------------------------------------------------------------------------------
+

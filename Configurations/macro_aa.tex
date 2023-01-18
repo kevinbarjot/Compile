@@ -1,0 +1,169 @@
+%
+%  These Macros are taken from the AAS TeX macro package version 5.2
+%  and are compatible with the macros in the A&A document class
+%  version 7.0
+%  Include this file in your LaTeX source only if you are not using
+%  the AAS TeX macro package or the A&A document class and need to
+%  resolve the macro definitions in the TeX/BibTeX entries returned by
+%  the ADS abstract service.
+%
+%  If you plan not to use this file to resolve the journal macros
+%  rather than the whole AAS TeX macro package, you should save the
+%  file as ``aas_macros.sty'' and then include it in your LaTeX paper
+%  by using a construct such as:
+%	\documentstyle[11pt,aas_macros]{article}
+%
+%  For more information on the AASTeX and A&A packages, please see:
+%       http://journals.aas.org/authors/aastex.html	
+%       ftp://ftp.edpsciences.org/pub/aa/readme.html
+%  For more information about ADS abstract server, please see:
+%       http://adsabs.harvard.edu/ads_abstracts.html
+%
+
+% Abbreviations for journals.  The object here is to provide authors
+% with convenient shorthands for the most "popular" (often-cited)
+% journals; the author can use these markup tags without being concerned
+% about the exact form of the journal abbreviation, or its formatting.
+% It is up to the keeper of the macros to make sure the macros expand
+% to the proper text.  If macro package writers agree to all use the
+% same TeX command name, authors only have to remember one thing, and
+% the style file will take care of editorial prefaerences.  This also
+% applies when a single journal decides to revamp its abbreviating
+% scheme, as happened with the ApJ (Abt 1991).
+
+
+\newcommand*\aap{A\&A}
+\let\astap=\aap
+\newcommand*\aapr{A\&A~Rev.}
+\newcommand*\aaps{A\&AS}
+\newcommand*\actaa{Acta Astron.}
+\newcommand*\aj{AJ}
+\newcommand*\ao{Appl.~Opt.}
+\let\applopt\ao
+\newcommand*\apj{ApJ}
+\newcommand*\apjl{ApJ}
+\let\apjlett\apjl
+\newcommand*\apjs{ApJS}
+\let\apjsupp\apjs
+\newcommand*\aplett{Astrophys.~Lett.}
+\newcommand*\apspr{Astrophys.~Space~Phys.~Res.}
+\newcommand*\apss{Ap\&SS}
+\newcommand*\araa{ARA\&A}
+\newcommand*\azh{AZh}
+\newcommand*\baas{BAAS}
+\newcommand*\bac{Bull. astr. Inst. Czechosl.}
+\newcommand*\bain{Bull.~Astron.~Inst.~Netherlands}
+\newcommand*\caa{Chinese Astron. Astrophys.}
+\newcommand*\cjaa{Chinese J. Astron. Astrophys.}
+\newcommand*\fcp{Fund.~Cosmic~Phys.}
+\newcommand*\gca{Geochim.~Cosmochim.~Acta}
+\newcommand*\grl{Geophys.~Res.~Lett.}
+\newcommand*\iaucirc{IAU~Circ.}
+\newcommand*\icarus{Icarus}
+\newcommand*\jcap{J. Cosmology Astropart. Phys.}
+\newcommand*\jcp{J.~Chem.~Phys.}
+\newcommand*\jgr{J.~Geophys.~Res.}
+\newcommand*\jqsrt{J.~Quant.~Spectr.~Rad.~Transf.}
+\newcommand*\jrasc{JRASC}
+\newcommand*\memras{MmRAS}
+\newcommand*\memsai{Mem.~Soc.~Astron.~Italiana}
+\newcommand*\mnras{MNRAS}
+\newcommand*\na{New A}
+\newcommand*\nar{New A Rev.}
+\newcommand*\nat{Nature}
+\newcommand*\nphysa{Nucl.~Phys.~A}
+\newcommand*\pasa{PASA}
+\newcommand*\pasj{PASJ}
+\newcommand*\pasp{PASP}
+\newcommand*\physrep{Phys.~Rep.}
+\newcommand*\physscr{Phys.~Scr}
+\newcommand*\planss{Planet.~Space~Sci.}
+\newcommand*\pra{Phys.~Rev.~A}
+\newcommand*\prb{Phys.~Rev.~B}
+\newcommand*\prc{Phys.~Rev.~C}
+\newcommand*\prd{Phys.~Rev.~D}
+\newcommand*\pre{Phys.~Rev.~E}
+\newcommand*\prl{Phys.~Rev.~Lett.}
+\newcommand*\procspie{Proc.~SPIE}
+\newcommand*\qjras{QJRAS}
+\newcommand*\rmxaa{Rev. Mexicana Astron. Astrofis.}
+\newcommand*\skytel{S\&T}
+\newcommand*\solphys{Sol.~Phys.}
+\newcommand*\sovast{Soviet~Ast.}
+\newcommand*\ssr{Space~Sci.~Rev.}
+\newcommand*\zap{ZAp}
+
+
+% \let\jnl@style=\rm
+% \def\refa@jnl#1{{\jnl@style#1}}
+
+% \def\aj{\refa@jnl{AJ}}                   % Astronomical Journal
+% \def\actaa{\refa@jnl{Acta Astron.}}      % Acta Astronomica
+% \def\araa{\refa@jnl{ARA\&A}}             % Annual Review of Astron and Astrophys
+% \def\apj{\refa@jnl{ApJ}}                 % Astrophysical Journal
+% \def\apjl{\refa@jnl{ApJ}}                % Astrophysical Journal, Letters
+% \def\apjs{\refa@jnl{ApJS}}               % Astrophysical Journal, Supplement
+% \def\ao{\refa@jnl{Appl.~Opt.}}           % Applied Optics
+% \def\apss{\refa@jnl{Ap\&SS}}             % Astrophysics and Space Science
+% \def\aap{\refa@jnl{A\&A}}                % Astronomy and Astrophysics
+% \def\aapr{\refa@jnl{A\&A~Rev.}}          % Astronomy and Astrophysics Reviews
+% \def\aaps{\refa@jnl{A\&AS}}              % Astronomy and Astrophysics, Supplement
+% \def\azh{\refa@jnl{AZh}}                 % Astronomicheskii Zhurnal
+% \def\baas{\refa@jnl{BAAS}}               % Bulletin of the AAS
+% \def\bac{\refa@jnl{Bull. astr. Inst. Czechosl.}}
+%                 % Bulletin of the Astronomical Institutes of Czechoslovakia 
+% \def\caa{\refa@jnl{Chinese Astron. Astrophys.}}
+%                 % Chinese Astronomy and Astrophysics
+% \def\cjaa{\refa@jnl{Chinese J. Astron. Astrophys.}}
+%                 % Chinese Journal of Astronomy and Astrophysics
+% \def\icarus{\refa@jnl{Icarus}}           % Icarus
+% \def\jcap{\refa@jnl{J. Cosmology Astropart. Phys.}}
+%                 % Journal of Cosmology and Astroparticle Physics
+% \def\jrasc{\refa@jnl{JRASC}}             % Journal of the RAS of Canada
+% \def\memras{\refa@jnl{MmRAS}}            % Memoirs of the RAS
+% \def\mnras{\refa@jnl{MNRAS}}             % Monthly Notices of the RAS
+% \def\na{\refa@jnl{New A}}                % New Astronomy
+% \def\nar{\refa@jnl{New A Rev.}}          % New Astronomy Review
+% \def\pra{\refa@jnl{Phys.~Rev.~A}}        % Physical Review A: General Physics
+% \def\prb{\refa@jnl{Phys.~Rev.~B}}        % Physical Review B: Solid State
+% \def\prc{\refa@jnl{Phys.~Rev.~C}}        % Physical Review C
+% \def\prd{\refa@jnl{Phys.~Rev.~D}}        % Physical Review D
+% \def\pre{\refa@jnl{Phys.~Rev.~E}}        % Physical Review E
+% \def\prl{\refa@jnl{Phys.~Rev.~Lett.}}    % Physical Review Letters
+% \def\pasa{\refa@jnl{PASA}}               % Publications of the Astron. Soc. of Australia
+% \def\pasp{\refa@jnl{PASP}}               % Publications of the ASP
+% \def\pasj{\refa@jnl{PASJ}}               % Publications of the ASJ
+% \def\rmxaa{\refa@jnl{Rev. Mexicana Astron. Astrofis.}}%
+%                 % Revista Mexicana de Astronomia y Astrofisica
+% \def\qjras{\refa@jnl{QJRAS}}             % Quarterly Journal of the RAS
+% \def\skytel{\refa@jnl{S\&T}}             % Sky and Telescope
+% \def\solphys{\refa@jnl{Sol.~Phys.}}      % Solar Physics
+% \def\sovast{\refa@jnl{Soviet~Ast.}}      % Soviet Astronomy
+% \def\ssr{\refa@jnl{Space~Sci.~Rev.}}     % Space Science Reviews
+% \def\zap{\refa@jnl{ZAp}}                 % Zeitschrift fuer Astrophysik
+% \def\nat{\refa@jnl{Nature}}              % Nature
+% \def\iaucirc{\refa@jnl{IAU~Circ.}}       % IAU Cirulars
+% \def\aplett{\refa@jnl{Astrophys.~Lett.}} % Astrophysics Letters
+% \def\apspr{\refa@jnl{Astrophys.~Space~Phys.~Res.}}
+%                 % Astrophysics Space Physics Research
+% \def\bain{\refa@jnl{Bull.~Astron.~Inst.~Netherlands}} 
+%                 % Bulletin Astronomical Institute of the Netherlands
+% \def\fcp{\refa@jnl{Fund.~Cosmic~Phys.}}  % Fundamental Cosmic Physics
+% \def\gca{\refa@jnl{Geochim.~Cosmochim.~Acta}}   % Geochimica Cosmochimica Acta
+% \def\grl{\refa@jnl{Geophys.~Res.~Lett.}} % Geophysics Research Letters
+% \def\jcp{\refa@jnl{J.~Chem.~Phys.}}      % Journal of Chemical Physics
+% \def\jgr{\refa@jnl{J.~Geophys.~Res.}}    % Journal of Geophysics Research
+% \def\jqsrt{\refa@jnl{J.~Quant.~Spec.~Radiat.~Transf.}}
+%                 % Journal of Quantitiative Spectroscopy and Radiative Transfer
+% \def\memsai{\refa@jnl{Mem.~Soc.~Astron.~Italiana}}
+%                 % Mem. Societa Astronomica Italiana
+% \def\nphysa{\refa@jnl{Nucl.~Phys.~A}}   % Nuclear Physics A
+% \def\physrep{\refa@jnl{Phys.~Rep.}}   % Physics Reports
+% \def\physscr{\refa@jnl{Phys.~Scr}}   % Physica Scripta
+% \def\planss{\refa@jnl{Planet.~Space~Sci.}}   % Planetary Space Science
+% \def\procspie{\refa@jnl{Proc.~SPIE}}   % Proceedings of the SPIE
+
+% \let\astap=\aap
+% \let\apjlett=\apjl
+% \let\apjsupp=\apjs
+% \let\applopt=\ao

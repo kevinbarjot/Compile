@@ -1,0 +1,22 @@
+%----------------------------------------------------------------------------------------
+%	Fancy headers
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries \thepage}
+\fancyhead[LO]{\nouppercase \rightmark}
+\fancyhead[RE]{\nouppercase \leftmark}
+\renewcommand{\headrulewidth}{1pt}
+% \renewcommand{\headheight}{20pt}
+% \addtolength{\headheight}{10pt} % space for the rule
+
+%redéfini le "plain" car c'est ce qui est utilisé automatiquement pour la première page d'un chapitre
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[LE,RO]{\bfseries \thepage}
+    \renewcommand{\headrulewidth}{1pt}
+%     \addtolength{\headheight}{20pt} % space for the rule
+    }
