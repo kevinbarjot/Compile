@@ -7,7 +7,7 @@
 
 Il est crucial pour montrer les performances d'un interféromètre de caractériser un système binaire. Il s'agit d'estimer à la fois le contraste entre les deux composantes ainsi que leur séparation. Dans cette section, je montrerai d'abord comment j'ai pu simuler un système protoplanétaire sur le banc de test de \ac{FIRSTv2} afin de montrer sa détection. Dans un second temps, j'exposerai le modèle de phases différentielle pour un tel système, leur mesure et analyse sur la source binaire du banc de test. Nous verrons la détection du compagnon d'un tel système à partir de l'analyse des phases différentielles. Enfin, j'exposerai et analyserai les limitations rencontrées sur ces mesures.
 
-Dans toute cette étude, je ne montrerai aucune mesure de visibilité car il n'est pas possible de les normaliser dans la configuration de \ac{FIRSTv2}. En effet, pour ce faire nous avons besoin de la mesure indépendante de la photométrie sur chacune des sous-pupilles (comme expliqué dans le cadre du traitement de données de l'instrument \ac{AMBER}~\citep{tatulli2007}), ce que nous n'avons pas à disposition. Il est possible de se passer de cette normalisation en ajoutant de la redondance lors du choix des bases, ce qui augmenterait le nombre de mesures par rapport au nombre d'inconnues~\citep{lacour2007}. Mais cette méthode serait plus délicate à implémenter que de se passer d'exploiter la norme des visibilités et d'utiliser les observables auto-étalonnées que sont les phases différentielles.
+Dans toute cette étude, je ne montrerai aucune mesure de visibilité car il n'est pas possible de les normaliser dans la configuration de \ac{FIRSTv2}. En effet, pour ce faire nous avons besoin de la mesure indépendante de la photométrie sur chacune des sous-pupilles (comme expliqué dans le cadre du traitement de données de l'instrument \ac{AMBER} \citep{tatulli2007}), ce que nous n'avons pas à disposition. Il est possible de se passer de cette normalisation en ajoutant de la redondance lors du choix des bases, ce qui augmenterait le nombre de mesures par rapport au nombre d'inconnues \citep{lacour2007}. Mais cette méthode serait plus délicate à implémenter que de se passer d'exploiter la norme des visibilités et d'utiliser les observables auto-étalonnées que sont les phases différentielles.
 
 % Dans ces deux instruments, une partie du ﬂux de chaque faisceau est prélevée et mesurée (Che et al., 2010, pour MIRC), aﬁn de pouvoir étalonner les observables interférométriques, c’est-à-dire étalonner les mesures de cohérences pour aboutir aux mesures de visibilité.
 
@@ -302,13 +302,20 @@ Une grande partie des efforts de l'équipe se concentre actuellement sur la comp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Les wiggles}
 \label{sec:wiggles}
+% Harry-Dean study:
+% - tests on different polarizers with differents thickness => didn't change the wiggles frequency
+% - no polar + Wolla in spectro => no wiggles
+% - 2 wolla => wiggles
+% - data without the chip and without polar/Wolla => no wiggles
+% ==> il semble que cela vienne des fibres et du fait qu'on sélectionne la polar injectée
+
 
 % %%%%%%%%
 % \threesubsection{AMBER - VLTi}
 
-% \acrfull{AMBER}~\citep{petrov2007} est un interféromètre semblable à \ac{FIRSTv1} utilisant la technique de réarrangement de pupilles avec des fibres optiques mono-modes. Trois des télescopes du \ac{VLT} interfère par une recombinaison multi-axiale et l'interférogramme obtenu est dispersé par un spectrographe à fente en bande \textit{J}, \textit{H} et \textit{K}, pouvant atteindre une résolution spectrale de \numprint{10000}. Enfin, une polarisation est sélectionnée avec un polariseur composé de deux prismes.
+% \acrfull{AMBER} \citep{petrov2007} est un interféromètre semblable à \ac{FIRSTv1} utilisant la technique de réarrangement de pupilles avec des fibres optiques mono-modes. Trois des télescopes du \ac{VLT} interfère par une recombinaison multi-axiale et l'interférogramme obtenu est dispersé par un spectrographe à fente en bande \textit{J}, \textit{H} et \textit{K}, pouvant atteindre une résolution spectrale de \numprint{10000}. Enfin, une polarisation est sélectionnée avec un polariseur composé de deux prismes.
 
-% Afin d'étalonner les phases mesurées des perturbations instrumentales~\citep{millour2008}, un système de commutation de faisceaux (\acrfull{BCD}) est utilisé et consiste à commuter deux faisceaux d'une bases pour mesurer successivement la phase et son opposé. La moitié de la soustraction des deux mesures permet alors de corriger les perturbations instrumentales en aval du \ac{BCD} (celui-ci doit donc être installé le plus en amont possible sur l'instrument). L'avantage de cette technique c'est qu'elle s'exécute sur une durée de $5 \,$s environ, ce qui est bien moindre que la boucle d'étalonnage du \ac{VLT} qui dure $30 \,$min environ, en mesurant la phase sur une étoile non résolue à proximité de la source étudiée. 
+% Afin d'étalonner les phases mesurées des perturbations instrumentales \citep{millour2008}, un système de commutation de faisceaux (\acrfull{BCD}) est utilisé et consiste à commuter deux faisceaux d'une bases pour mesurer successivement la phase et son opposé. La moitié de la soustraction des deux mesures permet alors de corriger les perturbations instrumentales en aval du \ac{BCD} (celui-ci doit donc être installé le plus en amont possible sur l'instrument). L'avantage de cette technique c'est qu'elle s'exécute sur une durée de $5 \,$s environ, ce qui est bien moindre que la boucle d'étalonnage du \ac{VLT} qui dure $30 \,$min environ, en mesurant la phase sur une étoile non résolue à proximité de la source étudiée. 
 
 % La figure~\ref{fig:AMBERMillourDiffPhase} montre les deux techniques d'étalonnage que je viens de citer : avec une étoile de référence (colonne de gauche nommée STD mode) ou avec le système \ac{BCD} (colonne de droite nommée SPA mode). Sur la première ligne de graphiques sont montrés la mesure de visibilité sur la cible d'étude en rouge et la mesure de visibilité issue de la méthode de calibration. La deuxième ligne présente les phases différentielles de ces mesures et on remarque un effet de dispersion chromatique qui se traduit par une courbure globale qui peut être ajustée par une fonction polynomiale du second degré mais aussi par une modulation de la phase qui ressemble aux \wiggles~des données de \ac{FIRSTv2}. Dans l'article, cette dernière est nommée \textit{wavelength beating} ou \textit{socks} qu'on peut traduire par une modulation chromatique de la phase. L'amplitude de cette modulation est mesurée à $17\degree$ avec une période de $\sim 0,02 \,$\um. La troisième ligne présente l'étalonnage des phases différentielles, à gauche, en soustrayant d'abord la dispersion chromatique ajustée aux mesures puis en soustrayant la phase différentielle de la cible par la phase différentielle de la référence; à droite, en calculant seulement la moitié de la soustraction de la phases du faisceau non commuté avec la phase du faisceau commuté. On note alors que les \wiggles~sont réduits dans les deux cas et sont de plus grande amplitude et moins périodiques dans le cas de l'étalonnage STD : ils sont donc plus faciles à corriger à l'issu de l'autre méthode d'étalonnage.
 
@@ -321,7 +328,7 @@ Une grande partie des efforts de l'équipe se concentre actuellement sur la comp
 %     \label{fig:AMBERMillourDiffPhase}
 % \end{figure}
 
-% Enfin, la cause de cette modulation de la phase a été identifiée comme provenant d'une cavité de Fabry-Pérot provoquée par la lame d'air présente entre les deux prismes qui composent les polariseurs. Des mesures de phases avec et sans ces polariseurs montrent que dans le deuxième cas la modulation disparaît complètement~\citep{malbet2008}.
+% Enfin, la cause de cette modulation de la phase a été identifiée comme provenant d'une cavité de Fabry-Pérot provoquée par la lame d'air présente entre les deux prismes qui composent les polariseurs. Des mesures de phases avec et sans ces polariseurs montrent que dans le deuxième cas la modulation disparaît complètement \citep{malbet2008}.
 
 % \begin{figure}[ht!]
 %     \centering
@@ -333,9 +340,9 @@ Une grande partie des efforts de l'équipe se concentre actuellement sur la comp
 Dans cette partie je présente une étude réaliser sur les \wiggles~mesurés sur les données de \ac{FIRSTv2} afin de les caractériser. Mais tout d'abord, je fais la liste de plusieurs expériences sur lesquelles ce phénomène a déjà été mesurés :
 
 \begin{itemize}
-    \item les \wiggles~sont visibles sur les phases différentielles d'\ac{AMBER}~\citep{millour2008} et leur cause a ensuite été identifié comme provenant d'une cavité Fabry-Pérot créée par la lame de verre présente dans les polariseurs~\citep{malbet2008}, ce qui a permis de totalement les corriger en optant pour des polariseurs à lame de verre;
-    \item les \wiggles~sont aussi visibles sur les phases différentielles de \ac{GRAVITY}~\citep{amorim2020} mais sont d'assez faible amplitude pour ne pas gêner les mesures. A la suite de discussions privées avec Nicolas Pourré, doctorant sur le projet \ac{GRAVITY}, il semblerait que le même phénomène soit mesuré et visible sur la norme et la phase des visibilités complexes;
-    \item des franges spectrales sont aussi visibles sur les données de l'instrument \ac{MIRI} du \ac{JWST}~\citep{argyriou2020} et leur cause est identifiée comme provenant d'une cavité Fabry-Pérot créée par les différentes couches électroniques de la caméra. Les \wiggles~sont corrigés au cours du traitement de données, par ajustement de la fonction de transmission Fabry-Pérot.
+    \item les \wiggles~sont visibles sur les phases différentielles d'\ac{AMBER} \citep{millour2008} et leur cause a ensuite été identifié comme provenant d'une cavité Fabry-Pérot créée par la lame de verre présente dans les polariseurs \citep{malbet2008}, ce qui a permis de totalement les corriger en optant pour des polariseurs à lame de verre;
+    \item les \wiggles~sont aussi visibles sur les phases différentielles de \ac{GRAVITY} \citep{amorim2020} mais sont d'assez faible amplitude pour ne pas gêner les mesures. A la suite de discussions privées avec Nicolas Pourré, doctorant sur le projet \ac{GRAVITY}, il semblerait que le même phénomène soit mesuré et visible sur la norme et la phase des visibilités complexes;
+    \item des franges spectrales sont aussi visibles sur les données de l'instrument \ac{MIRI} du \ac{JWST} \citep{argyriou2020} et leur cause est identifiée comme provenant d'une cavité Fabry-Pérot créée par les différentes couches électroniques de la caméra. Les \wiggles~sont corrigés au cours du traitement de données, par ajustement de la fonction de transmission Fabry-Pérot.
 \end{itemize}
 
 

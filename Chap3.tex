@@ -1,6 +1,7 @@
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Le traitement des données FIRSTv2}
+\label{sec:DataReduction}
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
@@ -157,7 +158,7 @@ On note que la longueur de cette séquence peut être divisée par deux lorsqu'o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Étalonnage de l'instrument}
 
-La méthode pour calculer les termes de visibilité complexe qui est utilisée dans le traitement des données de \ac{FIRSTv2} a été adaptée de celle déjà utilisée sur \ac{FIRSTv1}~\citep{huby2012, huby2013these, vievard2022}.
+La méthode pour calculer les termes de visibilité complexe qui est utilisée dans le traitement des données de \ac{FIRSTv2} a été adaptée de celle déjà utilisée sur \ac{FIRSTv1} \citep{huby2012, huby2013these, vievard2022}.
 
 %%%%%%%%%%%%%%%%
 \subsubsection{L'interférométrie : une mesure de la cohérence des ondes lumineuses}
@@ -195,7 +196,7 @@ A partir d'une séquence d'images sur laquelle les franges sont modulées selon 
 
 \kevinco{Pourquoi on ne fait pas une DSP sur chaque base ?}
 
-Dans cette section, je vais exposer la partie du traitement de données consistant à retrouver les termes de visibilités complexes dans les interférogrammes mesurés. Il s'agit d'une méthode adaptée aux instruments possédant une pupille de sortie peu diluée (la dilution étant définie par le rapport entre les longueurs de base et le rayon des sous-pupilles), ce qui est le cas sur FIRSTv2. Elle a été pour la première fois utilisée pour les données de l'instrument \ac{AMBER}~\citep{millour2004, tatulli2007} et consiste en la modélisation des franges dans le but de les ajuster et d'étalonner le terme complexe dû à l'instrument (le terme $e^{i(\psi_{nn'})}$ de l'équation~\ref{eq:mu}).
+Dans cette section, je vais exposer la partie du traitement de données consistant à retrouver les termes de visibilités complexes dans les interférogrammes mesurés. Il s'agit d'une méthode adaptée aux instruments possédant une pupille de sortie peu diluée (la dilution étant définie par le rapport entre les longueurs de base et le rayon des sous-pupilles), ce qui est le cas sur FIRSTv2. Elle a été pour la première fois utilisée pour les données de l'instrument \ac{AMBER} \citep{millour2004, tatulli2007} et consiste en la modélisation des franges dans le but de les ajuster et d'étalonner le terme complexe dû à l'instrument (le terme $e^{i(\psi_{nn'})}$ de l'équation~\ref{eq:mu}).
 
 On commence par exprimer l'intensité de la base $n-n'$ de l'équation~\ref{eq:Interferogramme1} de la façon suivante :
 
@@ -410,15 +411,15 @@ On note que sur tous ces interférogrammes on peut reconnaître la séquence de 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La phase différentielle spectrale : une observable auto-étalonnée}
 \label{sec:PhaseSpecDiff}
-% (gravity~\citep{sturm2018}) mesure du décalage de photo-centre du quasar 3C 273 par la phase différentielle
-% (gravity~\citep{amorim2020}) mesure de la masse du trou noir central de la galaxie active IRAS 09149-6206 avec la phase différentielle
+% (gravity \citep{sturm2018}) mesure du décalage de photo-centre du quasar 3C 273 par la phase différentielle
+% (gravity \citep{amorim2020}) mesure de la masse du trou noir central de la galaxie active IRAS 09149-6206 avec la phase différentielle
 
 %%%%%%%%%%%%%%%%
 \subsubsection{Estimation de la phase différentielle}
 
-La phase différentielle spectrale est une observable auto-étalonnée des erreurs et biais de phases instrumentales qui s'ajoutent à la phase inhérente à la source astrophysique lors de la mesure. Pour l'obtenir, on utilise le fait que la phase est mesurée en fonction de la longueur d'onde pour s'affranchir de ces termes d'erreurs. Le concept de base~\citep{buscher2015} est de soustraire la moyenne de la phase sur deux canaux spectraux $\lambda_0 - \Delta\lambda$ et $\lambda_0 + \Delta\lambda$ à la phase du canal spectral central $\lambda_0$. Trois mesures sont donc requises a minima.
+La phase différentielle spectrale est une observable auto-étalonnée des erreurs et biais de phases instrumentales qui s'ajoutent à la phase inhérente à la source astrophysique lors de la mesure. Pour l'obtenir, on utilise le fait que la phase est mesurée en fonction de la longueur d'onde pour s'affranchir de ces termes d'erreurs. Le concept de base \citep{buscher2015} est de soustraire la moyenne de la phase sur deux canaux spectraux $\lambda_0 - \Delta\lambda$ et $\lambda_0 + \Delta\lambda$ à la phase du canal spectral central $\lambda_0$. Trois mesures sont donc requises a minima.
 
-En pratique, on explicite l'expression de la phase mesurée en fonction du nombre d'onde $\sigma = 1 / \lambda$ pour mettre en évidence les erreurs de phase instrumentale, comme cela a été fait pour le traitement des données d'\ac{AMBER}~\citep{millour2008} mais aussi de l'instrument \ac{GRAVITY}~\citep{lapeyrere2014}. Premièrement, la phase de l'objet astrophysique peut être décomposée selon :
+En pratique, on explicite l'expression de la phase mesurée en fonction du nombre d'onde $\sigma = 1 / \lambda$ pour mettre en évidence les erreurs de phase instrumentale, comme cela a été fait pour le traitement des données d'\ac{AMBER} \citep{millour2008} mais aussi de l'instrument \ac{GRAVITY} \citep{lapeyrere2014}. Premièrement, la phase de l'objet astrophysique peut être décomposée selon :
 
 \begin{equation}
     \varphi^{*}_{nn'}(\sigma) = a^{*}_0 + a^{*}_1 \sigma + \delta\varphi^{*}_{nn'}(\sigma) \label{eq:PhaseSource}
@@ -475,5 +476,5 @@ Comme nous l'avons vu, la phase différentielle est une observable auto-étalonn
 
 De plus, il n'est pas nécessaire d'observer une cible non-résolue (appelée calibrateur) pour étalonner les phases différentielles, contrairement aux clôtures de phase. C'est un avantage considérable car cela nécessite moins de temps d'observations sur télescope (rare et précieux).
 
-Enfin, la phase différentielle est une observable au premier ordre et à la différence des clôtures de phase qui sont au troisième ordre. Pour N sous-pupilles combinées, on obtient $N(N-1)/2$ phases différentielles indépendantes et $(N-1)(N-2)/2$ clôtures de phase indépendantes. Ainsi, pour $5$ sous-pupilles on obtient $10$ phases différentielles indépendantes et $6$ clôtures de phase indépendantes. Même si en pratique on pourra utiliser à la fois les clôtures de phase et les phases différentielles, ce qui augmentera les performances de l'ajustement de modèles sur les données de $50 \%$~\citep{millour2006}.
+Enfin, la phase différentielle est une observable au premier ordre et à la différence des clôtures de phase qui sont au troisième ordre. Pour N sous-pupilles combinées, on obtient $N(N-1)/2$ phases différentielles indépendantes et $(N-1)(N-2)/2$ clôtures de phase indépendantes. Ainsi, pour $5$ sous-pupilles on obtient $10$ phases différentielles indépendantes et $6$ clôtures de phase indépendantes. Même si en pratique on pourra utiliser à la fois les clôtures de phase et les phases différentielles, ce qui augmentera les performances de l'ajustement de modèles sur les données de $50 \%$ \citep{millour2006}.
 
