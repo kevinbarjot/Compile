@@ -95,18 +95,34 @@
 
 
 %----------------------------------------------------------------------------------------
+%	Make section appear in the toc
+%----------------------------------------------------------------------------------------
+
+
+% For section that does not appear and is not linked in the toc
+\newcommand{\sectiontotoc}[1]{
+    \phantomsection % Make hyperref link to the right page
+    \addcontentsline{toc}{section}{#1}% Add the title to toc
+    \markboth{#1}{#1}
+}
+
+
+%----------------------------------------------------------------------------------------
 %	Abbreviations
 %----------------------------------------------------------------------------------------
 
 
 \newcommand{\vv}[1]{\overrightarrow{#1}}
-\newcommand{\ha}[0]{H$\alpha$}
+\newcommand{\ha}[0]{\text{$\text{H}\upalpha$}}
+\newcommand{\Lha}[0]{\text{$\text{L}_{\ha}$}}
+\newcommand{\Lacc}[0]{\text{$\text{L}_{\text{acc}}$}}
+\newcommand{\Wd}[0]{\text{$\text{W}_{10}$}}
 \newcommand{\sk}[0]{\textit{Super K}}
 \newcommand{\wiggles}[0]{\textit{wiggles}}
 \newcommand{\degree}[0]{^{\circ}}
 \newcommand{\um}[0]{$\upmu$m}
 \newcommand{\Like}[0]{\mathcal{L}}
-\newcommand{\MJ}[0]{M$_\text{J}$}
+\newcommand{\MJ}[0]{\text{$\text{M}_\text{J}$}}
 
 
 %----------------------------------------------------------------------------------------

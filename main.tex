@@ -13,6 +13,7 @@
 %	Begining of the document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{document}
 
 %% A&A bib macros
@@ -45,7 +46,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \input{Conclusion}
+\input{Conclusion}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,28 +56,32 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
+\sectiontotoc{Liste des figures}
+\renewcommand{\listfigurename}{Liste des figures}
+
 \begingroup
 \hypersetup{linkcolor=black}
 \listoffigures
 \endgroup
-\addcontentsline{toc}{section}{Liste des figures}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
+\sectiontotoc{Liste des tableaux}
+\renewcommand{\listtablename}{Liste des tableaux}
+
 \begingroup
 \hypersetup{linkcolor=black}
 \listoftables
 \endgroup
-\addcontentsline{toc}{section}{Liste des tableaux}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-% \bibliographystyle{unsrt}
+\sectiontotoc{Références}
+
 \bibliographystyle{plainnat}
 \bibliography{biblio}
-\addcontentsline{toc}{section}{Références}
 % When compiling with LaTex on a local machine (without Overleaf), execute these commands:
 % (pdf)latex main.tex
 % BibTex main.aux
