@@ -34,12 +34,12 @@
 \setcounter{MaxMatrixCols}{20}
 \usepackage{upgreek}  % to display greek letters not in italic in math expressions
 \usepackage{graphicx}
-\usepackage[hang,labelfont=it]{caption}
+\usepackage[format=plain,labelfont={bf}]{caption}
 \usepackage{subcaption}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}  % to reference sections, figures, etc...
+\usepackage[pagebackref, colorlinks=true, allcolors=blue]{hyperref}  % to reference sections, figures, etc...
 \usepackage{ulem}  % to underline text
 \usepackage{multirow}  % for tables
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.2}
 \usepackage{pdfpages}  % to integrate pdf pages in the document
 \usepackage{marvosym}  % to get the euro symbols
 \usepackage{hyphenat}  % to specify when hyphenating ('\hyph{}')
@@ -91,7 +91,7 @@
 \titleformat{\paragraph}{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \newcommand{\threesubsection}{\paragraph}
-\newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
+\newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\ \mbox{}}
 
 
 %----------------------------------------------------------------------------------------
@@ -104,8 +104,9 @@
 \newcommand{\sk}[0]{\textit{Super K}}
 \newcommand{\wiggles}[0]{\textit{wiggles}}
 \newcommand{\degree}[0]{^{\circ}}
-\newcommand{\um}{$\upmu$m}
-\newcommand{\Like}{\mathcal{L}}
+\newcommand{\um}[0]{$\upmu$m}
+\newcommand{\Like}[0]{\mathcal{L}}
+\newcommand{\MJ}[0]{M$_\text{J}$}
 
 
 %----------------------------------------------------------------------------------------
