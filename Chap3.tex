@@ -1,21 +1,27 @@
-\clearpage
+\newpage\thispagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Le traitement des données FIRSTv2}
+\chapter{Le traitement des données FIRSTv2}
 \label{sec:DataReduction}
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
+\begingroup
+\hypersetup{linkcolor=black}
+\minitoc
+\endgroup
+
+\clearpage
 L'objectif de cette section est de présenter les données de \ac{FIRSTv2}, depuis leur acquisition et les procédures mises en place dans ce cadre jusqu'à leur traitement. Il s'agit aussi de présenter le formalisme mathématique de ce traitement de données afin d'établir les observables que l'on infère des données de \ac{FIRSTv2}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{L'acquisition des données}
+\section{L'acquisition des données}
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Morphologie des images}
+\subsection{Morphologie des images}
 
 %%%%%%%%
-\threesubsection{Étalonnage du détecteur}
+\subsubsection{Étalonnage du détecteur}
 \label{sec:CameraDark}
 
 Comme décrit dans la section~\ref{sec:InstruCamera}, les images sont d'une taille de $2160 \,$px de hauteur par $2559 \,$px de largeur. La figure~\ref{fig:DarkFull} montre, à gauche, une image sans frange prise avec un temps d'exposition de $100 \,$ms et à droite la médiane d'un cube de $100$ images sans frange au même temps d'exposition. Ces images permettent de caractériser le courant d'obscurité et le bruit du détecteur de la caméra. 
@@ -37,7 +43,7 @@ Un tel cube sans frange est systématiquement acquis à chaque prise de données
 
 
 %%%%%%%%
-\threesubsection{Les images interférométriques}
+\subsubsection{Les images interférométriques}
 
 Les images acquises avec la caméra sont rognées pour cadrer les sorties de la puce d'optique intégrée. La puce $Y$ a $10$ sorties et la puce $X$ a $20$ sorties, qui peuvent être dédoublées lorsqu'elles sont imagées par la caméra quand le prisme de wollaston est installé sur le chemin optique. Les différentes configurations possibles peuvent donc amener à avoir $10$, $20$ ou $40$ sorties à cadrer. Ce rognage dépend aussi de la bande spectrale de la source utilisée (changeant la largeur de l'image) et est choisi de façon à encadrer celle-ci le plus largement possible. Pour chaque montage sur le banc toutes les images (sans franges, \textit{flats} ou interférométriques) sont acquises avec le même rognage. La figure~\ref{fig:FringeCrop} présente deux images obtenues avec la caméra avec les sorties de la puce $X$ imagées sans que le prisme de wollaston soit installé ($20$ sorties sont donc visibles). La \sk est la source utilisée et les images ont alors une taille de $320 \,$px par $1800 \,$px ($1800$ canaux spectraux). En haut est montrée la médiane de $300$ images sans frange, qui est soustraite à une image avec des franges dont le résultat est montré en bas, pour un temps d'exposition de $50 \,$ms.
 
@@ -57,7 +63,7 @@ Les lignes à retard sont au voisinage de leur position d'\ac{OPD} nulle, ce qui
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Étalonnage spectral}
+\subsection{Étalonnage spectral}
 \label{sec:EtalonnageSpectral}
 
 Ici on souhaite associer à chaque pixel une valeur de longueur d'onde. Pour cela, j'utilise une lampe à vapeur de néon (Avalight-CAL-NEON par Avantes, avec sortie fibrée FC-PC). Le spectre d'émission de la vapeur de Néon est connu et présente de nombreuses raies sur la bande spectrale détectée par \ac{FIRSTv2}. La figure~\ref{fig:NeonReference} montre deux spectres de référence de l'émission de la vapeur de Néon, que j'ai utilisés pour les étalonnages spectraux durant ma thèse, celui de gauche étant un spectre que j'ai trouvé sur le site internet Astrosurf\footnote{\url{http://www.astrosurf.com/buil/us/spe2/calib2/neon1.gif}} et le deuxième étant celui mesuré par \ac{FIRSTv1} pendant la thèse d'Elsa Huby. Les deux spectres présentent des pics d'émission à des longueurs d'onde différentes et permettent donc d'identifier toutes les raies mesurées par \ac{FIRSTv2}.
@@ -103,7 +109,7 @@ La figure~\ref{fig:NeonSpecCal} du haut montre l'image résultante de l'étape \
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{La modulation des franges}
+\subsection{La modulation des franges}
 \label{sec:Modulation}
 
 L'acquisition des données interférométriques s'effectue en modulant les franges à l'aide des \ac{MEMS}. Ces derniers sont synchronisés avec la caméra de telle sorte que chaque image d'une séquence contienne les franges pour une valeur différente d'\ac{OPD}. La figure~\ref{fig:FringeSamplingABCD} montre la méthode ABCD utilisée pour mesurer une frange, représentée sur le graphique par une période de la fonction sinusoïdale ($2 \pi$). Cette période est divisée en $8$ et un déphasage de $\frac{3}{8} 2 \pi \,$rad, $\frac{-1}{8} 2 \pi \,$rad, $\frac{1}{8} 2 \pi \,$rad et $\frac{-3}{8} 2 \pi \,$rad est appliqué sur chaque base pour mesurer quatre points de la frange. Pour cela on applique quatre valeurs de piston sur deux segments du \ac{MEMS}, définis comme multiples de la longueur d'onde, prise égale à $750 \,$nm : $\frac{3}{8} \frac{0.750}{4} \,$\um, $\frac{-1}{8} \frac{0.750}{4} \,$\um, $\frac{1}{8} \frac{0.750}{4} \,$\um~et $\frac{-3}{8} \frac{0.750}{4} \,$\um. Comme ce sont les valeurs mises en consignes des segments, deux facteurs $1/2$ sont présents pour prendre en compte que (1) l'\ac{OPD} effective est la somme des déplacements de $2$ segments ainsi que (2) la lumière parcourt deux fois la même distance en étant réfléchie sur les segments.
@@ -138,7 +144,7 @@ Une deuxième approche est de moduler plusieurs bases en même temps et non une 
     \item elle a aussi le bon goût d'être plus courte ($12$ étapes contre $20$) ce qui permet de réduire l'influence des perturbations atmosphériques (lorsque l'instrument fait des mesures sur ciel) et/ou présents sur le banc (mouvements d'air, vibrations, etc.).
 \end{enumerate}
 
-On note que la longueur de cette séquence peut être divisée par deux lorsqu'on utilise la puce $X$. En effet, avec cette puce, chaque image contient deux mesures de frange, déphasées de $\pi \,$rad (voir la section~\ref{sec:ChipConcept}). Mais au cours de cette thèse, cette propriété de la puce $X$ n'a pas été utilisée et les interférogrammes mesurés avec cette puce ont été exploités séparément car il serait nécessaire d'écrire une partie en plus dans le programme de réduction de données et de faire de nouveaux tests pour vérifier la valeur du déphasage entre les couples de sorties. La même séquence de modulation a ainsi été utilisée pour les deux puces.
+On note que la longueur de cette séquence peut être divisée par deux lorsqu'on utilise la puce $X$. En effet, avec cette puce, chaque image contient deux mesures de frange, théoriquement déphasées de $\pi \,$rad (voir la section~\ref{sec:ChipConcept}). Mais au cours de cette thèse, cette propriété de la puce $X$ n'a pas été utilisée et les interférogrammes mesurés avec cette puce ont été exploités séparément car il serait nécessaire d'écrire une partie en plus dans le programme de réduction de données et de faire de nouveaux tests pour vérifier la valeur du déphasage entre les couples de sorties. La même séquence de modulation a ainsi été utilisée pour les deux puces.
 
 \begin{figure}[ht!]
     \centering
@@ -156,12 +162,12 @@ On note que la longueur de cette séquence peut être divisée par deux lorsqu'o
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Étalonnage de l'instrument}
+\section{Étalonnage de l'instrument}
 
 La méthode pour calculer les termes de visibilité complexe qui est utilisée dans le traitement des données de \ac{FIRSTv2} a été adaptée de celle déjà utilisée sur \ac{FIRSTv1} \citep{huby2012, huby2013these, vievard2022}.
 
 %%%%%%%%%%%%%%%%
-\subsubsection{L'interférométrie : une mesure de la cohérence des ondes lumineuses}
+\subsection{L'interférométrie : une mesure de la cohérence des ondes lumineuses}
 
 Pour écrire cette partie, je me suis beaucoup aidé du fabuleux cours de Guy Perrin, que j'ai pu suivre pendant ma deuxième année de master, sur l'interférométrie astronomique et qui fait référence dans le domaine.
 
@@ -191,7 +197,7 @@ A partir d'une séquence d'images sur laquelle les franges sont modulées selon 
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Pixel-To-Visibility Matrix (la pitouvièm)}
+\subsection{Pixel-To-Visibility Matrix (la pitouvièm)}
 \label{sec:P2VM}
 
 \kevinco{Pourquoi on ne fait pas une DSP sur chaque base ?}
@@ -278,7 +284,7 @@ avec $P2VM = V2PM^\dag$ (\textit{Pixel To Visibility Matrix}) la matrice pseudo-
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Étalonnage de la V2PM}
+\subsection{Étalonnage de la V2PM}
 \label{sec:V2PMEtalonnage}
 
 Dans cette partie sont présentées les procédures de mesure de la \ac{V2PM}. Une nouvelle \ac{V2PM} est mesurée sur une source interne avant chaque nouvelle session de mesures : si les conditions instrumentales ont changé (e.g. changement de la séquence de modulation) ou avant chaque nuit d'observation. La figure~\ref{fig:V2PMP2VMmesure}, à gauche, est une représentation graphique de \ac{V2PM} mesurées sur \ac{FIRSTv2} pour le canal spectral $\sim 706 \,$nm et à droite la \ac{P2VM} associée, pour la puce $Y$ (ligne du haut) et la puce $X$ (ligne du bas). Pour $5$ sous-pupilles, la \ac{V2PM} de \ac{FIRSTv2} a donc $25$ colonnes : les cinq premières contiennent les termes $E_{n}^2$, les dix suivantes contiennent les termes $C_{b_i}(x)$ et les dix dernières contiennent les termes $S_{b_i}(x)$. Enfin, il y a $n_B$ paquets de $n_p$ (nombre de pixels sur l'axe des \ac{OPD}s) lignes, ce qui correspond ici à $10 \times 12 = 120$ lignes et $10 \times 20 = 200$ lignes pour la puce $X$, respectivement. Cette différence du nombre de ligne pour l'une et l'autre puce est due au fait que les données sur la puce $X$ ont été prises antérieurement aux données prises sur la puce $Y$, à une période où la séquence de modulation n'avait pas encore été optimisée (de $20$ à $12$ pas) de la façon expliquée dans la section~\ref{sec:Modulation}. Enfin, chaque colonne contient en majorité des zéros et la matrice agit comme un masque sur les pixels des bases lors de la multiplication matricielle de la \ac{V2PM} par les données.
@@ -375,14 +381,14 @@ Ensuite, sont déduites les phases pour chaque point de la séquence de modulati
 
 
 %%%%%%%%%%%%%%%%
-% \subsubsection{Estimation du contraste interférométrique}
+% \subsection{Estimation du contraste interférométrique}
 % les premiers termes de la V2PM
 % comparaison pour les 2 puces
 % comparaison avec le contraste obtenu dans la caractérisation des puces (section précédente)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Ajustement des franges}
+\section{Ajustement des franges}
 
 Maintenant qu'on a formé la \ac{V2PM} il s'agit de faire l'acquisition d'images contenant toutes les bases modulées en phase simultanément. La figure~\ref{fig:FullOnData} présente les interférogrammes mesurés pour la puce $Y$ et la puce $X$ sur les lignes d'images $1$ et $3$, respectivement (pour le canal spectral $\sim 706 \,$nm). Chaque colonne d'images est associé à une base et chaque image est une matrice de dimension $n_p \times n_S$ avec $n_p$ le nombre de points échantillonnés par base en fonction de l'\ac{OPD} (correspondant à une séquence de modulation) et $n_S$ le nombre de fois que la séquence de modulation a été acquise (les interférogrammes sont en fait empilés verticalement). On dispose ainsi de ces matrices pour chaque canal spectral et elles sont toutes associées en une grande matrice $\text{\textbf{I}}$ de dimension $n_{\lambda} \times (n_B*n_p) \times n_S$ avec $n_{\lambda}$ le nombre de canaux spectraux. Cette grande matrice est multiplié par la \ac{P2VM} selon l'équation~\ref{eq:VisibiliteMes} et on obtient la matrice des visibilités $\text{\textbf{P}}$, de dimensions $25 \times n_S$ pour cinq sous-pupilles considérés (et dix bases). On a alors pour chaque base le terme de visibilité complexe selon l'équation~\ref{eq:mu}. Nous verrons dans la section~\ref{sec:PhaseSpecDiff} comment extraire le terme de phase associée à l'objet observé $\varphi_{nn'}$.
 
@@ -409,13 +415,13 @@ On note que sur tous ces interférogrammes on peut reconnaître la séquence de 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La phase différentielle spectrale : une observable auto-étalonnée}
+\section{La phase différentielle spectrale : une observable auto-étalonnée}
 \label{sec:PhaseSpecDiff}
 % (gravity \citep{sturm2018}) mesure du décalage de photo-centre du quasar 3C 273 par la phase différentielle
 % (gravity \citep{amorim2020}) mesure de la masse du trou noir central de la galaxie active IRAS 09149-6206 avec la phase différentielle
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Estimation de la phase différentielle}
+\subsection{Estimation de la phase différentielle}
 
 La phase différentielle spectrale est une observable auto-étalonnée des erreurs et biais de phases instrumentales qui s'ajoutent à la phase inhérente à la source astrophysique lors de la mesure. Pour l'obtenir, on utilise le fait que la phase est mesurée en fonction de la longueur d'onde pour s'affranchir de ces termes d'erreurs. Le concept de base \citep{buscher2015} est de soustraire la moyenne de la phase sur deux canaux spectraux $\lambda_0 - \Delta\lambda$ et $\lambda_0 + \Delta\lambda$ à la phase du canal spectral central $\lambda_0$. Trois mesures sont donc requises a minima.
 
@@ -450,7 +456,7 @@ La phase différentielle $\delta\varphi^{m}_{nn'}(\sigma)$ s'obtient par la sous
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{En pratique sur FIRSTv2}
+\subsection{En pratique sur FIRSTv2}
 \label{sec:PhaseDiffFIRSTv2}
 
 Les canaux spectraux de référence sont définis par toute la bande spectrale en excluant les canaux spectraux de travail. Pour un signal mesuré sur une protoplanète en accrétion qui présente une forte raie d'émission \ha~(voir la section~\ref{sec:ObsProto}), les canaux spectraux de travail sont ceux englobant la longueur d'onde \ha. Le signal de phase sur les canaux spectraux de référence correspond au signal du continuum non résolus par l'instrument (l'étoile centrale) et il est nul. Par conséquent, le signal qu'on mesure effectivement sur les canaux spectraux de référence est égal à la phase provenant des pistons atmosphériques et instrumentaux et son ajustement permet de le corriger par interpolation sur les canaux de travail.
@@ -470,7 +476,7 @@ Les phases différentielles résultantes de la soustraction entre les fonctions 
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Les intérêts de la phase différentielle}
+\subsection{Les intérêts de la phase différentielle}
 
 Comme nous l'avons vu, la phase différentielle est une observable auto-étalonnée des pistons atmosphériques et des biais instrumentaux. Du fait qu'elle s'obtienne par la soustraction du signal de la cible observée sur quelques canaux spectraux de travail par le signal du continuum sur le reste de la bande spectrale, il se trouve qu'elle est très bien adaptée au cas scientifique qui m'intéresse dans le cadre de ma thèse. En effet, comme je le présenterai dans la section~\ref{sec:Protoplanetes}, les protoplanètes en accrétion de matière émettent une forte raie d'émission \ha. Le signal de phase mesuré par \ac{FIRSTv2} sur un tel système présenterait alors un fort pic sur quelques canaux spectraux (canaux de travail), ce qui se prête bien au calcul de la phase différentielle.
 

@@ -1,17 +1,23 @@
-\clearpage
+\newpage\thispagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{La réplique de FIRST en laboratoire : FIRSTv2}
+\chapter{La réplique de FIRST en laboratoire : FIRSTv2}
 \label{sec:FIRSTv2Concept}
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
+\begingroup
+\hypersetup{linkcolor=black}
+\minitoc
+\endgroup
+
+\clearpage
 Le banc de test \ac{FIRSTv2} est une réplique en laboratoire de l'instrument \ac{FIRST} (installé sur le télescope Subaru) afin d'implémenter une nouvelle solution de recombinaison interférométrique. Alors que la première version est un interféromètre multi-axial qui interfère les sous-pupilles du télescope dans le plan focal de la caméra, dans la deuxième nous proposons de recombiner par paire ces sous-pupilles au sein d'un composant d'optique intégré.
 
 Mon travail de thèse s'inscrit dans la continuité du développement du banc de test initié par Nick Cvetojevic. Dans ce chapitre je présenterai le banc dans sa globalité et décrirai en détails les différents composants qui y sont intégrés. Je montrerai aussi la caractérisation des composants les plus cruciaux. Je décrirai également le logiciel de contrôle du banc sur lequel j'ai travaillé à son amélioration et son extension. Enfin, je montrerai les sous-pupilles que j'ai choisis de recombiner lors des prises de données présentées plus tard dans le manuscrit ainsi qu'une étude de stabilité des mesures de phases sur le banc.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Le banc de test à Meudon}
+\section{Le banc de test à Meudon}
 
 Le banc de test nommé \ac{FIRSTv2} est une réplique de l'instrument \ac{FIRST}, qui est déjà installé au télescope de $8 \,$m de diamètre, le Subaru, sur le banc d'optique adaptative extrême \ac{SCExAO}. Ce banc de test a pour objectif d'intégrer un composant d'optique intégré pour la recombinaison interférométrique des faisceaux afin de la caractériser et de participer au développement de cette technologie pour l'imagerie haut contraste de systèmes exoplanétaires.
 
@@ -63,7 +69,7 @@ Tous ces composants seront plus amplement détaillés par la suite. De plus, la 
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Le miroir déformable Iris AO}
+\subsection{Le miroir déformable Iris AO}
 
 Le miroir déformable installé sur le banc de test de \ac{FIRSTv2} est fabriqué par \textit{Iris AO Inc} et je le nommerai par la suite \ac{MEMS}. La figure~\ref{fig:IrisAOMapA} est une photographie du miroir, sur laquelle on voit un des segments qui est cassé, les électrodes de lecture tout autour du miroir et la fenêtre d'ouverture noire. Le miroir dispose de $37$ segments hexagonaux identifiés sur la carte présentée sur la figure~\ref{fig:IrisAOMapB} (la carte est tournée de $+60\degree$ par rapport à la photographie) : le segment gris $17$ est le segment cassé et les segments oranges sont ceux devant lesquels est placée une fibre optique du toron (voir la section~\ref{sec:FiberInjection}). Lors du choix des cinq sous-pupilles à injecter dans la puce d'optique intégrée, les cinq segments correspondant ne peuvent donc être choisi que parmi ces $10$ segments oranges. Enfin, le cercle circonscrit de chaque segment mesure $700 \,$\um de diamètre et celui de l'ensemble du pavage mesure $4,2 \,$mm de diamètre. Tous les segments, excepté le segment $17$, sont contrôlables en piston sur une plage de $\pm 1,5 \,$\um et en tip-tilt sur une plage de $\pm 2\,$mrad.
 
@@ -87,11 +93,11 @@ Le miroir déformable installé sur le banc de test de \ac{FIRSTv2} est fabriqu�
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{L'injection dans les fibres optiques}
+\subsection{L'injection dans les fibres optiques}
 \label{sec:FiberInjection}
 
 %%%%%%%%
-\threesubsection{Mise en oeuvre}
+\subsubsection{Mise en oeuvre}
 
 Les faisceaux des sous-pupilles sont injectés dans des fibres optiques monomodes à maintien de polarisation de type panda, de la gamme PM630-HP, fabriquées par Thorlabs\footnote{\url{https://www.thorlabs.com/}}. Les fibres ont une ouverture numérique égale à $0,12$, un diamètre de mode égal à $4,5 \pm 0,5 \,$\um (à $630 \,$nm) et leur cœur a un diamètre égal à $3,5 \,$\um. La propriété monomode de ces fibres permet de filtrer les aberrations du front d'onde du faisceau injecté en convertissant les variations de phases en variations d'intensité. Un ensemble de $19$ fibres est disposé dans un toron fabriqué par \textit{Fiberguide Industries}\footnote{\url{https://www.molex.com/molex/products/group/fiberguide}}, dont la photographie est montrée sur la figure~\ref{fig:InjectionCompB}, selon un motif hexagonal avec un espacement de $500 \,$\um schématisé sur la figure~\ref{fig:InjectionCompC}. On remarque la même disposition de ces fibres que les segments oranges de la figure~\ref{fig:IrisAOMapB}.
 
@@ -123,7 +129,7 @@ Une matrice de micro-lentille, dont une photographie est présentée sur la figu
 
 
 %%%%%%%%
-\threesubsection{Procédure d'alignement}
+\subsubsection{Procédure d'alignement}
 
 Ce trio de composants nécessite d'être précisément aligné et toute la procédure qui suit est effectuée régulièrement car les dilatations mécaniques dues aux variations de température induisent un désalignement. Le toron de fibres est d'abord retiré du foyer des micro-lentilles et une caméra est installé à la place afin d'imager les segments du miroir à travers les micro-lentilles. Une telle image est montrée sur la figure~\ref{fig:MLAalignment} où l'on voit les faisceaux des sous-pupilles défocalisés à travers les micro-lentilles, elles-mêmes entourées des bords des segments hexagonaux. Le but est d'alignement les cercles au centre des hexagones et les lignes jaunes sont tracées sur l'image pour effectuer cet alignement sur toutes les micro-lentilles du champ à la fois.
 
@@ -138,7 +144,7 @@ Ensuite, la caméra est retiré et le toron est remis devant la matrice de micro
 
 
 %%%%%%%%
-\threesubsection{Optimisation de l'injection}
+\subsubsection{Optimisation de l'injection}
 \label{sec:OptiInj}
 
 Une procédure programmée dans le logiciel de contrôle du banc permet d'optimiser l'injection des faisceaux des sous-pupilles dans les fibres optiques, en contrôlant les segments du \ac{MEMS} en synchronisation avec la caméra. Pour ce faire, les segments sont un à un déplacés en tip et en tilt sur un quadrillage dont la taille et le pas sont donnés en paramètres d'entrée de la procédure. Chaque segment quadrille la zone pendant que les autres sont mis en bout de course (à $2 \,$mrad) pour ne pas injecter de lumière. Pour chaque nouvelle position du segment, une image est prise sur la caméra et le flux total sur les sorties illuminées est calculé (il y a donc $4$ et $8$ sorties illuminées, respectivement, pour la puce $Y$ et la puce $X$). Une carte de ces valeurs de flux est construite en fonction des positions de tip et de tilt pour déduire les coordonnées pour lesquelles le maximum de flux est mesuré, à l'aide d'un ajustement d'une fonction gaussienne. 
@@ -154,10 +160,10 @@ La figure~\ref{fig:OptiInj} est une capture d'écran de l'ordinateur de contrôl
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Les lignes à retard}
+\subsection{Les lignes à retard}
 
 %%%%%%%%
-\threesubsection{Concept}
+\subsubsection{Concept}
 
 Les lignes à retard (ou \ac{ODL}) sont cruciales pour compenser les longueurs différentes entre les fibres optiques utilisées. En effet, il est nécessaire que l'\ac{OPD} entre toutes les fibres optiques soit nulle pour obtenir la frange centrale des interférogrammes imagés sur la caméra. La figure~\ref{fig:ODLScheme} montre le schéma de principe d'une ligne à retard, fabriquée par \textit{Oz Optics}. Le faisceau d'une fibre d'entrée, en haut à gauche, est collimaté par une lentille (nommé \textit{lenses} sur le schéma) sur un prisme, à droite. Ce prisme induit un aller-retour au faisceau qui est focalisé par une autre lentille dans une fibre de sortie (qui est en fait une fibre d'entrée de la puce photonique), en bas à gauche du schéma. Le prisme est monté sur un moteur contrôlable en position depuis le logiciel de contrôle du banc, sur un intervalle de $25 \,$mm, ce qui résulte une distance parcourue de $50 \,$mm par le faisceau. Cet intervalle est subdivisé en $100\,000$ pas de $500 \,$nm.
 
@@ -170,7 +176,7 @@ Les lignes à retard (ou \ac{ODL}) sont cruciales pour compenser les longueurs d
 
 
 %%%%%%%%
-\threesubsection{Transmission}
+\subsubsection{Transmission}
 
 Au cours de ma thèse, on s'est rendu compte que les \ac{ODL}s transmettaient peu de flux lumineux. En effet, lors de l'intégration anticipée de cinq nouvelles \ac{ODL}s sur l'instrument \ac{FIRSTv1}, la différence d'intensité lumineuse mesurée sur la caméra a été flagrante. Les transmissions les plus basses de celles-ci ont été mesurées à $20 - 30 \%$ alors que la spécification constructeur était une perte de $1,2\,$dB maximum, correspondant à une valeur de transmission de $75\%$. Avec Elsa Huby et Manon Lallement, on a mesuré des transmissions entre $30\%$ et $80\%$ à $675 \,$nm. La figure~\ref{fig:ODLThroughput} présente les mesures de transmission des \ac{ODL}s (exceptée l'\ac{ODL} $\#2$) en fonction de la longueur d'onde à l'aide d'un spectrographe fibré. Pour chaque \ac{ODL}, ces mesures sont effectuées en injectant la lumière soit dans la fibre d'entrée (\textit{In Out}) soit dans la fibre de sortie (\textit{Out In}) pour évaluer si on peut obtenir de meilleures transmissions en injectant dans le sens opposé. On remarque premièrement que la transmission n'est pas assez différentes selon le sens de l'injection pour qu'on le change sur le banc de test. Deuxièmement, la transmission est très dépendante de la longueur d'onde et atteint un maximum vers $675 \,$nm. Les transmissions les plus basses sont celles des lignes à retard $\#3$ et $\#4$. De plus, nous ne disposons pas de la mesure de transmission de l'\ac{ODL} $\#2$ car elle avait été expédiée au fabriquant pour investigation sur la très mauvaise transmission (mesurée à $12\%$ au laboratoire). Il a été diagnostiqué que les fibres d'entrée et de sortie étaient la cause de la faible transmission car elles ont été trouvées tordue.
 
@@ -192,13 +198,13 @@ Nous avons finalement décidé d'en ouvrir une afin d'investiguer par nous-même
 
 
 %%%%%%%%
-\threesubsection{La recherche des franges}
+\subsubsection{La recherche des franges}
 
 J'ai programmé une procédure de recherche de franges dans le logiciel de contrôle du banc consistant à balayer les lignes à retard sur leur intervalle de position. Plus précisément, une des lignes à retard est laissée immobile à la position la plus basse pendant que toutes les autres \ac{ODL}s sont commandées en translation sur des intervalles de $1\,000$ pas. La vitesse du moteur des \ac{ODL}s dépend de la longueur de l'intervalle sur lequel il est commandé et celle qui est à la fois suffisamment lente pour laisser apparaître les franges sur les images acquises par la caméra et suffisamment rapide pour que la procédure totale ne soit pas trop longue est celle atteinte pour l'intervalle de $1\,000$ pas. Pendant que les \ac{ODL}s se déplacent, la variation de flux est inspectée sur les quatre sorties correspondant aux quatre bases formées par le faisceau passant par l'\ac{ODL} immobile et les quatre autres faisceaux des \ac{ODL}s en mouvement. Dès que les franges sont détectées sur une base, l'\ac{ODL} correspondante est arrêtée et sa position est enregistrée. Si les franges sur les quatre bases sont trouvées, les franges sur toutes les autres bases le sont aussi, nécessairement. Si à la fin du balayage des quatre \ac{ODL}s les franges de toutes les bases ne sont pas trouvées, la ligne à retard restée immobile est déplacée en bout de course (à la position $100\,00$) et le balayage recommence. A la fin de la procédure, lorsque les franges de toutes les bases sont trouvées, on affine les positions des \ac{ODL}s à la main, en regardant l'image en temps réel de la caméra afin de trouver la frange centrale avant de les enregistrer dans un fichier local à l'ordinateur de contrôle. Dans le cas où les franges ne sont pas trouvées sur toutes les bases, on branche les fibres sur d'autres \ac{ODL}s (nous disposons en tout de neuf lignes à retard car à terme il est question de recombiner neuf sous-pupilles comme sur \ac{FIRSTv1}). Les fibres internes aux lignes à retard ont une longueur égale à $\sim 1 \,$m et les incertitudes sur ces longueurs impliquent qu'il n'est parfois pas possible d'égaliser les longueurs de tous les fibres du banc.
 
 
 %%%%%%%%
-\threesubsection{Discussions}
+\subsubsection{Discussions}
 
 Étant donné que l'instrument est très peu transmissif du fait de la technique de masquage de pupille et que les composants d'optique intégré ont une faible transmission, il est très important de réduire au maximum toutes les sources de pertes de transmission. Cette étude présentée dans cette partie, nous montre que les lignes à retard présentent une perte de transmission considérable et de nouvelles solutions sont envisagées afin de les retirer de l'instrument.
 
@@ -213,7 +219,7 @@ Deuxièmement, on envisage d'intégrer une lanterne photonique \citep{leonsaval2
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Les composants d'optique intégrée}
+\subsection{Les composants d'optique intégrée}
 \label{sec:PhotonicChip}
 % Low bend radius ---> high refractive index difference
 % IMEC material of Si3N4 core with SiO2 cladding but the waveguide has to be very small and difficult to use them in the visible
@@ -229,10 +235,10 @@ Deuxièmement, on envisage d'intégrer une lanterne photonique \citep{leonsaval2
 
 
 %%%%%%%%
-\threesubsection{Concept}
+\subsubsection{Concept}
 \label{sec:ChipConcept}
 
-Les puces d'optique intégrée (photonique) sont conçues à l'\ac{IPAG} et testées sur le banc \ac{FIRSTv2} \citep{martin2020, martin2022b, lallement2022} et sont fabriquées par \textit{Teem Photonics}\footnote{\url{https://www.teemphotonics.com}}. Elles consistent en un bloc de glace de quelques centimètres (voir la photographie de la puce $Y$ sur la figure~\ref{fig:ChipYPhoto}), utilisant la technologie IoNext par échange des ions $\text{K}_+ : \text{Na}_+$, dans lequel des guides d'onde sont gravés par photolithographie. Les fibres d'entrées et de sorties sont celles de V-Groove collés au bloc de verre par le fabriquant et sont branchées sur les \ac{ODL}s et sur un V-Groove, respectivement. Cette technologie est beaucoup utilisée dans le domaine des télécommunications optiques en infrarouge et les puces développées pour le projet \ac{FIRSTv2} ont été optimisées pour être transmissives dans la bande spectrales $\sim 600 - 800 \,$nm.
+Les puces d'optique intégrée (photonique) sont conçues à l'\ac{IPAG} et testées sur le banc \ac{FIRSTv2} \citep{martin2020, martin2022b, lallement2022} et sont fabriquées par \textit{Teem Photonics}\footnote{\url{https://www.teemphotonics.com}}. Elles consistent en un bloc de verre de quelques centimètres (voir la photographie de la puce $Y$ sur la figure~\ref{fig:ChipYPhoto}), utilisant la technologie IoNext par échange des ions $\text{K}_+ : \text{Na}_+$, dans lequel des guides d'onde sont gravés par photolithographie. Les fibres d'entrée et de sortie sont celles de V-Grooves collés au bloc de verre par le fabriquant et sont branchées sur les \ac{ODL}s et sur un autre V-Groove, respectivement. Cette technologie est beaucoup utilisée dans le domaine des télécommunications optiques en infrarouge et les puces développées pour le projet \ac{FIRSTv2} ont été optimisées pour être transmissives dans la bande spectrales $\sim 600 - 800 \,$nm.
 
 \begin{figure}[ht!]
     \centering
@@ -241,7 +247,7 @@ Les puces d'optique intégrée (photonique) sont conçues à l'\ac{IPAG} et test
     \label{fig:ChipYPhoto}
 \end{figure}
 
-Durant ma thèse, j'ai testé \citep{barjot2020} sur \ac{FIRSTv2} deux technologies de puces photoniques nommées $X$ et $Y$, dont les schémas de principe sont montrés sur la figure~\ref{fig:ChipSchemes}, à gauche et à droite, respectivement. Les deux puces ont cinq guides d'onde en entrée (à gauche des schémas) qui sont divisés en quatre (zone nommée \textit{splitting}) afin d'être recombiné par pair avec les quatre autres guides d'onde (zone nommée \textit{recombination}). Les faisceaux des cinq sous-pupilles du banc sont injectés dans ces entrées. La puce $X$ contient des coupleurs dit directionnels qui recombinent les faisceaux par couplage évanescent et la puce $Y$ recombine les faisceaux à l'aide de coupleurs $Y$. En sortie, dix bases ($5 \times 4 / 2$) sont ainsi formées et la puce $X$ dispose de deux sorties par base, du fait de la technique de couplage directionnel. Pour chaque base, les franges d'interférences obtenues sur les deux sorties ont alors un déphasage de $\pi \,$rad.
+Durant ma thèse, j'ai testé \citep{barjot2020} sur \ac{FIRSTv2} deux technologies de puces photoniques nommées $X$ et $Y$, dont les schémas de principe sont montrés sur la figure~\ref{fig:ChipSchemes}, à gauche et à droite, respectivement. Les deux puces ont cinq guides d'onde en entrée (à gauche des schémas) qui sont chacun divisé en quatre (zone nommée \textit{splitting}). Chaque faisceau est recombiné par paire avec les quatre autres (zone nommée \textit{recombination}). Les faisceaux des cinq sous-pupilles du banc sont injectés dans ces entrées. La puce $X$ contient des coupleurs dit directionnels qui recombinent les faisceaux par couplage évanescent : il y a deux guides d'entrée et deux guides de sortie. La puce $Y$ recombine les faisceaux à l'aide de coupleurs $Y$ qui fusionne deux guides en un seul : il y a deux guides d'entrée et un guide de sortie. En sortie, dix bases ($5 \times 4 / 2$) sont ainsi formées et la puce $X$ dispose donc de deux sorties par base, du fait de la technique de couplage directionnel. Pour chaque base, les franges d'interférences obtenues sur les deux sorties ont alors un déphasage théorique de $\pi \,$rad.
 
 \begin{figure}[ht!]
     \centering
@@ -253,13 +259,13 @@ Durant ma thèse, j'ai testé \citep{barjot2020} sur \ac{FIRSTv2} deux technolog
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/5TC_Y_ChipScheme_rot_l_02.png}
     \end{subfigure}
-    \caption[Schémas de principe des puces photoniques $X$ et $Y$.]{Schémas de principe des puces photoniques $X$ à gauche et $Y$ à droite. Les lignes représentent les guides d'onde dont les entrées sont à gauche et les sorties sont à droite. De la gauche vers la droite, les deux puces ont cinq guides d'onde en entrée qui sont d'abord divisés en quatre (zone nommée \textit{splitting}), afin d'être (plus loin) recombiné par pair avec les quatre autres (zone nommée \textit{recombination}). La puce $X$ a deux fois plus de fibres de sortie que la puce $Y$ du fait de la technique de couplage directionnel. Crédit : Guillermo Martin.}
+    \caption[Schémas de principe des puces photoniques $X$ et $Y$.]{Schémas de principe des puces photoniques $X$ à gauche et $Y$ à droite. Les lignes représentent les guides d'onde dont les entrées sont à gauche et les sorties sont à droite. De la gauche vers la droite, les deux puces ont cinq guides d'onde en entrée qui sont d'abord divisés en quatre (zone nommée \textit{splitting}), afin d'être (plus loin) recombinés par paire avec les quatre autres (zone nommée \textit{recombination}). La puce $X$ a deux fois plus de fibres de sortie que la puce $Y$ du fait de la technique de couplage directionnel. Crédit : Guillermo Martin.}
     \label{fig:ChipSchemes}
 \end{figure}
 
 
 %%%%%%%%
-\threesubsection{Caractérisation}
+\subsubsection{Caractérisation}
 \label{sec:ChipCharacterization}
 
 Pour caractériser les deux puces photoniques, j'ai utilisé une source large bande halogène de la gamme \textit{HL-2000-FHSA-HP}, fabriquée par \textit{Ocean Insight}\footnote{\url{https://www.oceaninsight.com/}}, lumineuse dans la gamme spectrale $360 - 2400 \,$nm. Cette caractérisation est publiée dans \cite{barjot2020} et je la rappelle ici. Trois études sont conduites sur les deux puces :
@@ -272,11 +278,11 @@ Pour caractériser les deux puces photoniques, j'ai utilisé une source large ba
 
 
 % Caractérisation du cross-talk
-\mysubparagraph{\textit{Cross-talk}}
+\threesubsection{\textit{Cross-talk}}
 
-Pour estimer le \textit{cross-talk}, cinq images de la caméra sont acquises successivement en illuminant les cinq entrées des puces photoniques, sans passer par le reste du banc de test en amont. La figure~\ref{fig:ChipCrossTalk} présente les cinq histogrammes correspondant de l'intensité lumineuse mesurée sur toutes les sorties de la puce $X$ en haut et de la puce $Y$ en bas. On s'attend à mesurer une intensité lumineuse sur $4$ ou $8$ sorties (représentées par les barres de couleur bleue) pour les puces $Y$ et $X$, respectivement et une intensité nulle sur les sorties restantes (représentées par les barres de couleur rouge). Ainsi, le flux mesuré sur les sorties en rouge est l'estimation du \textit{cross-talk}. On estime ainsi que le \textit{cross-talk} est au plus égal à $10 \%$ et à $20 \%$ en moyenne pour la puce $X$ et pour la puce $Y$, respectivement. Notre objectif est d'abaisser ce niveau à moins de $1\%$ et de nouvelles puces utilisant d'autre technologies et d'autres matériaux sont en cours de développement et de test par l'équipe travaillant à Grenoble, dans ce but.
+Pour estimer le \textit{cross-talk}, cinq images de la caméra sont acquises successivement en illuminant les cinq entrées des puces photoniques, sans passer par le reste du banc de test en amont. La figure~\ref{fig:ChipCrossTalk} présente les cinq histogrammes correspondant à l'intensité lumineuse mesurée sur toutes les sorties de la puce $X$ en haut et de la puce $Y$ en bas. On s'attend à mesurer une intensité lumineuse sur $4$ ou $8$ sorties (représentées par les barres de couleur bleue) pour les puces $Y$ et $X$, respectivement et une intensité nulle sur les sorties restantes (représentées par les barres de couleur rouge). Ainsi, le flux mesuré sur les sorties en rouge est l'estimation du \textit{cross-talk}. On estime ainsi que le \textit{cross-talk} est en moyenne égal à $\sim 1\%$ pour les deux puces et est dans le pire des cas égal à $10 \%$ et à $20 \%$ en moyenne pour la puce $X$ et pour la puce $Y$, respectivement. Notre objectif est d'abaisser ce niveau à moins de $1\%$ (dans le pire des cas) et de nouvelles puces utilisant d'autre technologies et d'autres matériaux sont en cours de développement et de test par l'équipe travaillant à Grenoble, dans ce but.
 
-Le \textit{cross-talk} intervient ici de deux façons différentes. Premièrement, la lumière fuit au niveau des croisements entre les guides et la fuite est d'autant plus importante que l'angle au croisement est petit \citep{labeye2008}. En effet, les niveaux de \textit{cross-talk} les plus élevés sur la figure~\ref{fig:ChipCrossTalk} correspondent aux guides d'onde qui croisent les guides dans lesquels la lumière est injectée. E.g. sur le graphique du haut (de la puce $X$), dans l'histogramme du cas où la lumière est injectée dans l'entrée $1$, ce sont les sorties $5$, $6$ et $7$ qui sont concernées par ce phénomène. La difficulté dans la conception des puces réside dans le fait que la courbure des guides d'onde est limitée (la fuite de la lumière en dehors des guides augmente avec la courbure des guides) ne permettant pas de croiser les guides avec des angles plus grand que $5\degree$ (l'ordre de grandeur des angles des croisements dans les puces testées sur \ac{FIRSTv2}). Il est possible d'utiliser des matériaux différents dans le but de diminuer les rayons de courbure des guides d'onde. Il s'agit de choisir les matériaux du coeur et de la gaine de sorte que la différence de leurs indices de réfraction soit plus élevée. Les inconvénients de cette solution sont que ces puces sont moins transmissives dans le visible et que les coeurs doivent être plus fins, ce qui augmente la difficulté de fabrication. Deuxièmement, une partie du flux est diffusée dans toute la puce à l'extérieur des guides, au niveau de l'injection de la lumière en entrée de la puce. Ce phénomène peut se mesurer sur les sorties qui ne sont pas en aval de croisements avec les guides dont la lumière est injectée. Sur les mesures de caractérisation, le niveau de \textit{cross-talk} sur ces sorties est mesuré $10 \times$ inférieur que les autres sorties (en aval de croisement). Par exemple sur le graphique du haut de la figure~\ref{fig:ChipCrossTalk}, lorsque l'entrée $1$ est illuminée, les sorties dont le niveau de \textit{cross-talk} est concerné par ce phénomène sont celles numérotées de $12$ à $20$. De plus, on remarque que ce niveau décroît avec la distance entre la sortie et l'entrée dans laquelle la lumière est injectée. On retrouve cet effet sur tous les histogrammes des deux graphiques.
+Le \textit{cross-talk} intervient ici de deux façons différentes. Premièrement, la lumière fuit au niveau des croisements entre les guides et la fuite est d'autant plus importante que l'angle au croisement est petit \citep{labeye2008}. En effet, les niveaux de \textit{cross-talk} les plus élevés sur la figure~\ref{fig:ChipCrossTalk} correspondent aux guides d'onde qui croisent les guides dans lesquels la lumière est injectée. Par exemple, sur le graphique du haut (de la puce $X$), dans l'histogramme du cas où la lumière est injectée dans l'entrée $1$, ce sont les sorties $5$, $6$ et $7$ qui sont concernées par ce phénomène. La difficulté dans la conception des puces réside dans le fait que la courbure des guides d'onde est limitée (la fuite de la lumière en dehors des guides augmente avec la courbure des guides) car ces puces sont basées sur des guides à faible contraste d'indice. Cela ne permet donc pas de croiser les guides avec des angles plus grand que $5\degree$ (l'ordre de grandeur des angles des croisements dans les puces testées sur \ac{FIRSTv2}). Il est possible d'utiliser des matériaux différents dans le but de diminuer les rayons de courbure des guides d'onde. Il s'agit pour cela de choisir les matériaux du coeur et de la gaine de sorte que la différence de leurs indices de réfraction soit plus élevée. Les inconvénients de cette solution sont que ces puces sont moins transmissives dans le visible et que les coeurs doivent être plus fins, ce qui augmente la difficulté de fabrication. Deuxièmement, une partie du flux est diffusée dans toute la puce à l'extérieur des guides, au niveau de l'injection de la lumière en entrée de la puce. Ce phénomène peut se mesurer sur les sorties qui ne sont pas en aval de croisements avec les guides dont la lumière est injectée. Sur les mesures de caractérisation, le niveau de \textit{cross-talk} sur ces sorties est mesuré $10 \times$ inférieur que les autres sorties (en aval de croisement). Par exemple sur le graphique du haut de la figure~\ref{fig:ChipCrossTalk}, lorsque l'entrée $1$ est illuminée, les sorties dont le niveau de \textit{cross-talk} est concerné par ce phénomène sont celles numérotées de $12$ à $20$. De plus, on remarque que ce niveau décroît avec la distance entre la sortie et l'entrée dans laquelle la lumière est injectée. On retrouve cet effet sur tous les histogrammes des deux graphiques.
 
 \begin{figure}[ht!]
     \centering
@@ -294,22 +300,22 @@ Le \textit{cross-talk} intervient ici de deux façons différentes. Premièremen
 
 
 % Caractérisation de la transmission
-\mysubparagraph{Transmission}
+\threesubsection{Transmission}
 
-Le flux total transmis par la puce est calculé par la somme des flux mesurés sur les cinq images acquises pour la caractérisation du \textit{cross-talk}. Ensuite on obtient la transmission par la normalisation de ce flux par le flux mesuré en injectant la lumière juste après la puce, dans une des fibres du V-Groove connecté aux sorties de la puce. La figure~\ref{fig:ChipThroughput} présente les courbes de transmission calculées de cette façon, en fonction de la longueur d'onde, pour la puce $X$ en trait continu et pour la puce $Y$ en pointillés. Dans la bande spectrale $600 - 800 \,$nm, la transmission de la puce $X$ et de la puce $Y$ est mesurée à $\sim 30\%$ et à $\sim 13\%$, respectivement. Ces valeurs de transmission sont bien plus élevées que celles des puces précédentes testées avant ma thèse (moins de $1\%$) et sont mêmes suffisantes pour qu'on puisse intégrer les puces sur \ac{SCExAO} afin de les tester sur des cibles astrophysiques (pour plus de détails voir la section~\ref{sec:FIRSTv2Subaru}). Le facteur $2$ entre les deux transmissions mesurées est attendu, étant donné que le flux injecté dans le coupleur $Y$ est à moitié transmis dans le sortie et à moitié diffusé en dehors des guides. Le couplage directionnel transmet cette moitié diffusée dans le deuxième guide de sortie (voir plus de détails dans la section II-B-6 de \cite{labeye2008}). On pourrait avoir une préférence pour l'utilisation de la puce $X$ sur \ac{FIRSTv2} pour sa meilleure transmission, mais comme on le verra par la suite, elle ne permet pas d'estimation satisfaisante des observables interférométriques et la puce $Y$ se révèle bien meilleure de ce point de vue là.
+Le flux total transmis par la puce est calculé par la somme des flux mesurés sur les cinq images acquises pour la caractérisation du \textit{cross-talk}. On note que le flux provenant du \textit{cross-talk} n'a pas été retiré dans la somme du flux total, ainsi les valeurs de transmission présentées ci-après sont surestimées d'environ $5\%$. Ensuite on obtient la transmission par la normalisation de ce flux par le flux mesuré en injectant la lumière juste après la puce, dans une des fibres du V-Groove connecté aux sorties de la puce. La figure~\ref{fig:ChipThroughput} présente les courbes de transmission calculées de cette façon, en fonction de la longueur d'onde, pour la puce $X$ en trait continu et pour la puce $Y$ en pointillés. Dans la bande spectrale $600 - 800 \,$nm, la transmission de la puce $X$ et de la puce $Y$ est mesurée à $\sim 30\%$ et à $\sim 13\%$, respectivement. Ces valeurs de transmission sont bien plus élevées que celles des puces précédentes testées avant ma thèse (moins de $1\%$) et sont mêmes suffisantes pour qu'on puisse intégrer les puces sur \ac{SCExAO} afin de les tester sur des cibles astrophysiques (pour plus de détails voir la section~\ref{sec:FIRSTv2Subaru}). Le facteur $2$ entre les deux transmissions mesurées est attendu, étant donné que le flux injecté dans le coupleur $Y$ est à moitié transmis dans le sortie et à moitié diffusé en dehors des guides. Le couplage directionnel transmet cette moitié diffusée dans le deuxième guide de sortie (voir plus de détails dans la section II-B-6 de \cite{labeye2008}). On pourrait avoir une préférence pour l'utilisation de la puce $X$ sur \ac{FIRSTv2} pour sa meilleure transmission, mais comme on le verra par la suite, elle ne permet pas d'estimation satisfaisante des observables interférométriques et la puce $Y$ se révèle bien meilleure de ce point de vue là.
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{Figure_Chap2/ThroughputComparison_20201124_20201119_LaTex.png}
-    \caption[Transmission spectrale mesurée des puces $X$ et $Y$, à Meudon.]{Transmission spectrale mesurée des puces $X$ en trait continu et $Y$ en pointillés, à Meudon.}
+    \caption[Transmission spectrale mesurée des puces $X$ et $Y$.]{Transmission spectrale mesurée des puces $X$ en trait continu et $Y$ en pointillés.}
     \label{fig:ChipThroughput}
 \end{figure}
 
 
 % Caractérisation du contraste interférométrique
-\mysubparagraph{Contraste interférométrique}
+\threesubsection{Contraste interférométrique}
 
-Cette partie présente la limite haute du contraste interférométrique des bases des deux puces. Pour une base donnée résultante de la combinaison des faisceaux $n$ et $n'$, je calcule ce contraste C à partir de la mesure de l'intensité des faisceaux $\text{I}_{n}$ et $\text{I}_{n'}$ selon l'équation :
+Cette partie présente la limite haute du contraste interférométrique des bases des deux puces calculé par la différence de flux entre les paires de faisceaux qui interfèrent. Pour une base donnée résultante de la combinaison des faisceaux $n$ et $n'$, je calcule ce contraste C à partir de la mesure de l'intensité des faisceaux $\text{I}_{n}$ et $\text{I}_{n'}$ selon l'équation :
 
 \begin{equation}
     \text{C} = \frac{2 \sqrt{\text{I}_{n} \text{I}_{n'}}}{\text{I}_{n} + \text{I}_{n'}}
@@ -320,25 +326,25 @@ J'utilise les cinq images décrites précédemment pour estimer les valeurs d'in
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{Figure_Chap2/ContrastComparison_20201124_20201119_LaTex.png}
-    \caption[Contraste interférométrique estimé pour toutes les bases avec les puces $X$ et $Y$, à Meudon.]{Contraste interférométrique estimé pour toutes les bases avec les puces $X$ (représenté par les points) et $Y$ (représenté par les croix), à Meudon.}
+    \caption[Contraste interférométrique estimé pour toutes les bases avec les puces $X$ et $Y$.]{Contraste interférométrique estimé pour toutes les bases avec les puces $X$ (représenté par les points) et $Y$ (représenté par les croix).}
     \label{fig:ChipContrast}
 \end{figure}
 
 
 % Conclusion
-\mysubparagraph{Conclusion sur la caractérisation}
+\threesubsection{Conclusion sur la caractérisation}
 
-En résumé, j'ai mesuré un niveau de \textit{cross-talk} équivalent pour les deux puces, mais un contraste interférométrique dégradé de $\sim 20\%$ sur les mesures de la puce $X$. De plus, les transmissions des puces $X$ et $Y$ sont estimées à $30\%$ et $13\%$, respectivement. Le facteur $2$ observé entre les transmissions des deux puces est attendu du fait des natures transmissives différentes des coupleurs directionnel et en $Y$. La puce $X$ offre ainsi le double avantage, premièrement, d'être plus transmissive et, deuxièmement, de disposer de deux points de mesures des franges déphasés de $\pi \,$rad sur chaque image acquise. Un travail qui reste encore à faire serait de rajouter au programme de réduction de données la fonctionnalité de combiner les sorties par deux, permettant l'acquisition de moitié moins de données. Cela demanderait aussi de mettre en place la vérification du déphasage entre les paires de sorties, qui doit être connu pour l'analyse des données.
+En résumé, j'ai mesuré un niveau de \textit{cross-talk} équivalent pour les deux puces, mais un contraste interférométrique dégradé de $\sim 20\%$ sur les mesures de la puce $X$. De plus, les transmissions des puces $X$ et $Y$ sont estimées à $30\%$ et $13\%$, respectivement. Le facteur $2$ observé entre les transmissions des deux puces est attendu du fait des natures transmissives différentes des coupleurs directionnel et des jonctions $Y$. La puce $X$ offre ainsi le double avantage, premièrement, d'être plus transmissive et, deuxièmement, de disposer de deux points de mesures des franges déphasés de $\pi \,$rad sur chaque image acquise, permettant de diviser par 2 la quantité de données nécessaire (plus de détails dans la section~\ref{sec:Modulation}).
 
 On peut alors conclure qu'il sera préférable d'utiliser la puce $X$ lors de futurs prises de données, mais comme nous le verrons dans la section~\ref{sec:BinaryCharac}, je ne suis pas parvenu à estimer les observables interférométriques avec cette puce et la puce $Y$ produit de bien meilleurs résultats.
 
-Ainsi, les valeurs de transmission mesurées sont suffisantes pour permettre leur intégration et de les tester sur le banc \ac{SCExAO} en conditions d'observations du ciel, ce que j'ai pu faire durant ma thèse et que j'exposerai dans la section~\ref{sec:FIRSTv2Subaru}. En revanche, elles ne sont pas suffisantes pour une exploitation de l'instrument \ac{FIRSTv2} ouverte à la communauté scientifique. Guillermo Martin et Manon Lallement travaillent à Grenoble sur le développement de nouvelles puces avec de meilleurs performances. Par exemple, des puces 3D \citep{martin2022a} dont les guides d'onde ont été gravés par laser non pas dans un même plan mais dans le volume de la puce, permettent d'éviter les croisements qui engendrent le \textit{cross-talk} et les pertes en transmission. De même, des puces avec une modulation électro-optique fabriquées par \textit{FEMTO-ST}\footnote{\url{https://www.femto-st.fr/en}} dans un matériau différents avec une meilleure transmission ont été caractérisées sur le banc de test \ac{FIRSTv2} durant ma thèse \citep{martin2022b}. Enfin, des puces utilisant différents types de coupleurs (ABCD, directionnel asymétrique) dont les paramètres physiques sont explorés ont été fabriquées et caractérisées dans \cite{lallement2022}.
+Ainsi, les valeurs de transmission mesurées sont suffisantes pour permettre leur intégration et de les tester sur le banc \ac{SCExAO} en conditions d'observations du ciel, ce que j'ai pu faire durant ma thèse et que j'exposerai dans la section~\ref{sec:FIRSTv2Subaru}. En revanche, elles ne sont pas suffisantes pour une exploitation de l'instrument \ac{FIRSTv2} ouverte à la communauté scientifique. Guillermo Martin et Manon Lallement travaillent à Grenoble sur le développement de nouvelles puces avec de meilleures performances. Par exemple, des puces 3D \citep{martin2022a} dont les guides d'onde ont été gravés par laser non pas dans un même plan mais dans le volume de la puce, permettent d'éviter les croisements qui engendrent le \textit{cross-talk} et les pertes en transmission. De même, des puces avec une modulation électro-optique fabriquées par \textit{FEMTO-ST}\footnote{\url{https://www.femto-st.fr/en}} dans un matériau différent avec une meilleure transmission ont été caractérisées sur le banc de test \ac{FIRSTv2} durant ma thèse \citep{martin2022b}. Enfin, des puces utilisant différents types de coupleurs (ABCD, directionnel asymétrique) dont les paramètres physiques sont explorés ont été fabriquées et caractérisées dans \cite{lallement2022}.
 
 
 %%%%%%%%
-\threesubsection{La polarisation}
+\subsubsection{La polarisation}
 
-Les deux polarisations ne sont pas transmises de la même façon à travers les composants d'optique intégrée. En effet, en plaçant un prisme de Wollaston en sortie de la puce (juste après le réseau holographique) pour imager les deux polarisations et un polariseur en entrée de la puce (juste avant la matrice de micro-lentilles) que l'on place successivement sur les deux polarisations, on peut estimer la façon dont les deux polarisations se propagent dans la puce. La figure~\ref{fig:PolaComparison} présente le flux des $20$ sorties de la puce $Y$ ($10$ pour chaque polarisation) lorsque le polariseur sélectionne la polarisation V (dénommée ici \og Pola X \fg) sur l'image de gauche, lorsque le polariseur est enlevé du chemin optique sur l'image du milieu et lorsque le polariseur sélectionne la polarisation H (dénommée ici \og Pola Y \fg) sur l'image de droite. Les flèches bleues et rouges identifient les polarisation V et H séparées par le prisme de Wollaston, respectivement. La source utilisée ici est la source SLED 650 fabriquée par \textit{Exalos Inc.}\footnote{\url{https://www.exalos.com/}} de largeur spectrale égale à $\sim 10 \,$nm. Ce qu'on peut déduire de ces mesures c'est que premièrement, lorsque le polariseur sélectionne une polarisation ou une autre, on mesure une intensité lumineuse sur les sorties dans les deux polarisations discriminées par le prisme de Wollaston. Il semblerait qu'une partie de la polarisation sélectionnée est projetée dans l'autre polarisation au cours de la transmission dans la puce. Deuxièmement, on remarque qu'il y a moins de flux converti dans l'autre polarisation lorsque c'est la polarisation V qui est sélectionnée par le polariseur en entrée de la puce.
+Les deux polarisations ne sont pas transmises de la même façon à travers les composants d'optique intégrée. En effet, en plaçant un prisme de Wollaston en sortie de la puce (juste après le réseau holographique) pour imager les deux polarisations et un polariseur en entrée de la puce (juste avant la matrice de micro-lentilles) que l'on place successivement sur les deux polarisations, on peut estimer la façon dont les deux polarisations se propagent dans la puce. La figure~\ref{fig:PolaComparison} présente le flux des $20$ sorties de la puce $Y$ ($10$ pour chaque polarisation) lorsque le polariseur sélectionne la polarisation V (dénommée ici \og Pola X \fg) sur l'image de gauche, lorsque le polariseur est enlevé du chemin optique sur l'image du milieu et lorsque le polariseur sélectionne la polarisation H (dénommée ici \og Pola Y \fg) sur l'image de droite. Les flèches bleues et rouges identifient les polarisation V et H séparées par le prisme de Wollaston, respectivement. La source utilisée ici est la source SLED 650 fabriquée par \textit{Exalos Inc.}\footnote{\url{https://www.exalos.com/}} de largeur spectrale mesurée de $\sim 10 \,$nm. Ce qu'on peut déduire de ces mesures c'est que premièrement, lorsque le polariseur sélectionne l'une ou l'autre des polarisations, on mesure une intensité lumineuse sur les sorties dans les deux polarisations discriminées par le prisme de Wollaston (et aucune position du polariseur ne permet d'annuler totalement le flux d'une des deux moitiés des sorties sur la caméra). Il semblerait qu'une partie de la polarisation sélectionnée est projetée dans l'autre polarisation au cours de la transmission dans la puce. Deuxièmement, on remarque qu'il y a moins de flux converti dans l'autre polarisation lorsque c'est la polarisation V qui est sélectionnée par le polariseur en entrée de la puce.
 
 \begin{figure}[ht!]
     \centering
@@ -347,7 +353,7 @@ Les deux polarisations ne sont pas transmises de la même façon à travers les 
     \label{fig:PolaComparison}
 \end{figure}
 
-Ainsi, lors de l'intégration du polariseur sur le banc de test, l'angle de celui-ci est réglé sur la polarisation V et affiné de façon à minimiser le flux observé sur les sorties dans la polarisation H sur l'image de la caméra. La figure~\ref{fig:PolaRotation} montre l'intensité lumineuse moyenne de toutes les sorties de la puce $X$, en polarisation V en trait continu et en polarisation H en trait-point, en fonction de l'angle du polariseur. La polarisation V est sélectionnée lorsque l'angle du polariseur est égal à $\sim 0\degree$. Ce graphique permet de quantifier l'échange de polarisation dans la puce photonique et on voit que la polarisation H (angle du polariseur égal à $\sim 75\degree$) est celle dont le flux est le plus converti dans la polarisation opposée (V). On souhaite donc placer le polariseur à l'angle égal à $\sim 0\degree$ qui sélectionne la polarisation V. Autrement dit, on souhaite régler l'angle du polariseur qui minimise le flux dans la polarisation opposée à celle qu'il sélectionne.
+Ainsi, lors de l'intégration du polariseur sur le banc de test, l'angle de celui-ci est réglé sur la polarisation V et affiné de façon à minimiser le flux observé sur les sorties dans la polarisation H sur l'image de la caméra. La figure~\ref{fig:PolaRotation} montre l'intensité lumineuse moyenne de toutes les sorties de la puce $X$, en polarisation V en trait continu et en polarisation H en trait-point, en fonction de l'angle du polariseur. La polarisation V est sélectionnée lorsque l'angle du polariseur est égal à $\sim 0\degree$. Ce graphique permet de quantifier l'échange de polarisation \kevinco{(Guillermo : est-ce qu'on sait ce qui peut être à l'origine de ce phénomène ?)} dans la puce photonique et on voit que la polarisation H (angle du polariseur égal à $\sim 75\degree$) est celle dont le flux est le plus converti dans la polarisation opposée (V). On souhaite donc placer le polariseur à l'angle égal à $\sim 0\degree$ qui sélectionne la polarisation V. Autrement dit, on souhaite régler l'angle du polariseur qui minimise le flux dans la polarisation opposée à celle qu'il sélectionne.
 
 \begin{figure}[ht!]
     \centering
@@ -356,11 +362,11 @@ Ainsi, lors de l'intégration du polariseur sur le banc de test, l'angle de celu
     \label{fig:PolaRotation}
 \end{figure}
 
-Des travaux sont actuellement en cours par Harry-Dean Kenchington Goldsmith et Manon Lallement, afin d'améliorer notre compréhension du comportement de la polarisation dans les puces photoniques. Ce sujet est très lié aux problèmes de \wiggles~que nous discuterons par la suite dans la section~\ref{sec:wiggles}. De plus, de récentes analyses montreraient qu'injecter un faisceau polarisé dans les fibres optiques induirait des effets sur les polarisations similaires à ceux qu'on vient d'exposer dans cette partie. Cela constitue une source de perturbations à prendre en compte dans l'analyse présentée ici, qui s'ajoute probablement à de possibles perturbations induites par les puces.
+Des travaux sont actuellement en cours par Harry-Dean Kenchington Goldsmith et Manon Lallement, afin d'améliorer notre compréhension du comportement de la polarisation dans les puces photoniques. Ce sujet est très lié aux problèmes de \wiggles~que nous discuterons par la suite dans la section~\ref{sec:wiggles}. De plus, de récentes analyses montreraient que la biréfringence des fibres optiques ai un effet sur la polarisation des faisceaux injectés. Cela constitue une source de perturbations à prendre en compte dans l'analyse présentée ici, qui s'ajoute probablement à de possibles perturbations induites par les puces.
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Le spectro-imageur}
+\subsection{Le spectro-imageur}
 \label{sec:InstruSpectro}
 
 Le principe optique du spectro-imageur du banc de test a été changé au cours de ma thèse dans le but d'augmenter sa résolution spectrale. À l'origine, il était composé d'un objectif de microscope, d'un prisme de Wollaston, d'un prisme équilatéral en SF2 et d'une lentille d'imagerie et fournissait une résolution spectrale égale à $\sim 600$. Durant son stage en 2021, Manon Lallement a spécifié, optimisé et intégré au banc le nouveau concept de spectro-imageur. Les caractéristiques requises (récapitulées dans la deuxième colonne du tableau~\ref{tab:SpectroSpec}) étaient (CR1) d'imager une bande spectrale égale à $\Delta \lambda = 140 \,$nm (entre $633 \,$nm et $773 \,$nm) sur moins que la largeur de la caméra; (CR2) que la résolution spectrale $\lambda / \delta \lambda$ soit égale à $2\,200$ pour $\lambda = 656,3 \,$nm; (CR3) que les sorties dans les deux polarisations ne se superposent pas lorsqu'elles sont imagées sur la caméra.
@@ -414,7 +420,7 @@ L'analyse des mesures effectuées pour l'étalonnage spectrale de l'instrument, 
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{La caméra}
+\subsection{La caméra}
 \label{sec:InstruCamera}
 
 % Brève description
@@ -485,11 +491,11 @@ Les détecteurs permettent aujourd'hui l'acquisition de données très peu affec
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Le logiciel de contrôle}
+\section{Le logiciel de contrôle}
 \label{sec:ControlSoftware}
 
 %%%%%%%%%%%%%%%%
-\subsubsection{L'architecture}
+\subsection{L'architecture}
 
 Une partie du travail de ma thèse a consisté en l'amélioration du logiciel de contrôle du banc de test \ac{FIRSTv2}, écrit en Python\footnote{\url{https://www.python.org/}}. Il s'agissait d'une part de faire la mise à jour des programmes depuis la version $2.7$ vers la version $3.9$ de Python (avec l'aide précieuse de Pierre Fedou, Franck Marchis et Clément Chalumeau), ce qui n'est pas évident surtout vis-à-vis des \ac{SDK} associées aux composants, fournis par les constructeurs. Le \ac{SDK} du miroir déformable \textit{Iris AO} que nous avons adapté à la version $3+$ de Python est disponible sur GitHub\footnote{\url{https://github.com/scexao-org/Iris-AO_MEMS_Software-control.git}} et celui de la caméra est fournis directement par \textit{Andor}. D'autre part, il s'agissait de changer toute l'architecture du logiciel car un unique script (dont un schéma est présenté sur la figure\ref{fig:SoftwareArchitecture} du haut) était exécuté pour établir la connexion et contrôler tous les composants (\ac{MEMS}, \ac{ODL} et la caméra), ce qui induisait une lenteur dans l'utilisation du terminal de commande par l'opérateur. Sur le schéma, chaque rectangle jaune correspond à un script et décrit son contenu. Certaines parties du logiciel étaient écrites dans d'autres scripts comme \texttt{memsCtrl.py} et \texttt{odlCtrl.py} mais étaient exécutés dans le script principal. Les rectangles bleus clairs représentent des connexions entre processus/processus ou processus/composants et les rectangles bleus foncés représentent les composants.
 
@@ -525,7 +531,7 @@ La figure~\ref{fig:SoftwareScreenShot} montre une capture de l'écran de l'ordin
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{La communication serveur/client avec la librairie ZeroMQ}
+\subsection{La communication serveur/client avec la librairie ZeroMQ}
 \label{sec:ZMQ}
 
 La version écrite en Python de la librairie \textit{ZeroMQ}\footnote{\url{https://github.com/zeromq/pyzmq.git}} permet de créer en parallèle des processus se comportant comme des serveurs et des clients se connectant ensemble afin de s'échanger des chaînes de caractères ou des dictionnaires (objet simple du langage Python). Cette librairie rend l'implémentation de ces processus très facile (une vingtaine de lignes de code suffisent). Il existe plusieurs types de schéma de communication et les deux que j'ai utilisés son schématisés sur la figure~\ref{fig:ZMQProtocols}. Le premier (schématisé à gauche), est le schéma \textit{request/reply} nommé \textit{REQ/REP}. Un script est écrit pour le processus serveur et un autre est écrit pour le processus client. Le principe est que le processus associé au client envoie une requête sous forme d'une chaîne de caractères à une adresse définie et se met en attente d'une réponse. Le serveur est implémenté en étant associé à cette adresse et se met dans un premier temps en attente d'une requête et dans un second temps envoie une réponse (sous forme d'une chaîne de caractères) lorsqu'il reçoit la requête, avant de se remettre en attente. Enfin, le client reçoit à son tour la réponse du serveur. Cela permet, par exemple, de mettre en place un serveur hébergeant un site internet sur lequel des utilisateurs font des requêtes de connexion. La librairie \textit{ZeroMQ} se charge d'implémenter les ports de connexion identifiés par une adresse, l'envoie des informations, la mise en attente du serveur et du client, etc de manière très simple. J'ai ainsi utilisé ce schéma de communication pour que le processus nommé \texttt{p2vmView.py} puisse se connecter successivement à chaque composant, en s'assurant que les composants sont disponibles, afin d'envoyer des commandes de contrôle et d'attendre que l'exécution de ces commandes se termine avant d'en envoyer une autre.
@@ -548,7 +554,7 @@ Le deuxième schéma de communication (à droite sur la figure~\ref{fig:ZMQProto
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{La gestion des flux de données avec la librairie pyMilk}
+\subsection{La gestion des flux de données avec la librairie pyMilk}
 \label{sec:SHM}
 % Vincent Déo : MILK est tout a fait concu pour le streaming à haute fréquence. La limite est imposée par la vitesse à laquelle la mémoire arrive à copier les données encore et encore, plus quelques glitch quand on dépasse les 10kHz. On fait régulièrement des acquisitions à 10kHz sur SCExAO. On a déjà fait tourner des SHMs à 35kHz expérimentalement. C'est moins stable mais c'est possible!
 
@@ -584,7 +590,7 @@ La librairie dispose aussi d'un module de visualisation de données qui passent 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La configuration des bases}
+\section{La configuration des bases}
 \label{sec:BaseConfig}
 
 Les sous-pupilles choisies sur le banc de test lors de l'acquisition de toutes les données qui sont présentées et analysées par la suite, sont représentées sur la figure~\ref{fig:SegUVSimuleA} à l'aide de la carte des segments du \ac{MEMS}. Les segments considérés pour former les bases sont en orange et le plan UV correspondant est tracé sur la figure~\ref{fig:SegUVSimuleB}. J'ai choisi ces sous-pupilles pour avoir les trois types de signaux de phases différents qu'on peut obtenir avec \ac{FIRSTv2}. En effet, comme l'indique l'équation~\ref{eq:PhaseBinaireCentree} les signaux de phases dépendent de la projection des bases sur l'orientation de la binaire observée et la binaire étant orientée horizontalement par rapport à la carte des segments (dans la même direction que la base $37-33$ par exemple), il n'y a bien que trois signaux d'intensités différentes qui peuvent être mesurés. Ces trois types de signaux proviennent des groupes de bases suivants :
@@ -616,7 +622,7 @@ Historiquement, sur les instruments implémentant la technique de masquage de pu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La stabilité des mesures sur le banc FIRSTv2}
+\section{La stabilité des mesures sur le banc FIRSTv2}
 
 Pour caractériser la stabilité des mesures de phases de \ac{FIRSTv2}, j'acquiers des données sur la source interne du banc de test, qui est non résolue. Ainsi, on s'attend à ce que le module des visibilités complexes estimées sur une telle source soit égale à $|V_{nn'}| = 1$ et sa phase à $\varphi_{nn'} = 0$. Par conséquent, l'équation~\ref{eq:mu} du terme de cohérence complexe de la base formée par les sous-pupilles $n$ et $n'$ devient $\mu_{nn'} = A_n A_{n'} e^{i(\Delta\Phi_{nn'})}$. La mesure de la phase de la cohérence complexe sur la source interne revient donc à mesurer le piston différentiel des perturbations sur le banc $\Delta\Phi_{nn'} = 2 \pi \sigma \delta_{nn'} [2 \pi]$. Pour ce faire, une fonction polynomiale d'ordre $2$ est ajustée à chaque mesure de phase déroulée selon la méthode présentée dans la section~\ref{sec:PhaseDiffFIRSTv2}, ce qui permet d'extraire le terme d'\ac{OPD} $\delta_{nn'}$ selon la relation :
 
@@ -644,7 +650,7 @@ Sous l'hypothèse que les variations temporelles du piston différentiel des per
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Conclusion}
+\section{Conclusion}
 
 Ce chapitre nous a permis de présenter les avancées de l'intégration de la technologie d'optique intégrée sur le banc de test \ac{FIRSTv2} tout en le présentant dans sa globalité. Une partie de mon travail de thèse, qui est présentée dans ce chapitre, est la caractérisation en transmission, \textit{cross-talk}, contraste interférométrique et polarisation de deux puces photoniques utilisant deux concepts de recombinaison différentes : couplage directionnel et couplage en $Y$. La transmission de la première est estimée à $30\%$ et celle de la deuxième à $13\%$, ce qui nous a conduis à décider de les intégrer sur le banc \ac{SCExAO} pour la première lumière de \ac{FIRSTv2} (présentée dans la section~\ref{sec:FIRSTv2Subaru}). Malgré cela, il est nécessaire de disposer de puces plus transmissives ($> 75\%$) car d'autres sources de pertes de transmission sont présentes sur le reste du banc. Ainsi, de nouvelles puces sont actuellement en cours de développement à l'\ac{IPAG} pour améliorer ces performances.
 

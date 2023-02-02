@@ -7,6 +7,8 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+% french: remove space character after comas in equations
+\DecimalMathComma               
 
 
 %----------------------------------------------------------------------------------------
@@ -50,7 +52,20 @@
 %----------------------------------------------------------------------------------------
 
 
-% \input{Configurations/fancy_header}
+\input{Configurations/fancy_header}
+
+
+%----------------------------------------------------------------------------------------
+%	Mini toc
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{minitoc}
+\setcounter{minitocdepth}{3}
+
+% Space after minitoc
+\newlength{\spaceafterminitoc}
+\setlength{\spaceafterminitoc}{0.7cm}
 
 
 %----------------------------------------------------------------------------------------
@@ -76,9 +91,9 @@
 %----------------------------------------------------------------------------------------
 
 
-\renewcommand{\thefigure}{\thesection.\arabic{figure}}
-\renewcommand{\thetable}{\thesection.\arabic{table}}
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 
 %----------------------------------------------------------------------------------------
@@ -100,9 +115,9 @@
 
 
 % For section that does not appear and is not linked in the toc
-\newcommand{\sectiontotoc}[1]{
+\newcommand{\chaptertotoc}[1]{
     \phantomsection % Make hyperref link to the right page
-    \addcontentsline{toc}{section}{#1}% Add the title to toc
+    \addcontentsline{toc}{chapter}{#1}% Add the title to toc
     \markboth{#1}{#1}
 }
 
@@ -123,6 +138,7 @@
 \newcommand{\um}[0]{$\upmu$m}
 \newcommand{\Like}[0]{\mathcal{L}}
 \newcommand{\MJ}[0]{\text{$\text{M}_\text{J}$}}
+\newcommand{\MS}[0]{\text{$\text{M}_{\odot}$}}
 
 
 %----------------------------------------------------------------------------------------

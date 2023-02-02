@@ -1,10 +1,16 @@
-\clearpage
+\newpage\thispagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{La caractérisation de systèmes binaires avec FIRSTv2}
+\chapter{La caractérisation de systèmes binaires avec FIRSTv2}
 \label{sec:BinaryCharac}
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
+\begingroup
+\hypersetup{linkcolor=black}
+\minitoc
+\endgroup
+
+\clearpage
 Il est crucial pour montrer les performances d'un interféromètre de caractériser un système binaire. Il s'agit d'estimer à la fois le contraste entre les deux composantes ainsi que leur séparation. Dans cette section, je montrerai d'abord comment j'ai pu simuler un système protoplanétaire sur le banc de test de \ac{FIRSTv2} afin de montrer sa détection. Dans un second temps, j'exposerai le modèle de phases différentielle pour un tel système, leur mesure et analyse sur la source binaire du banc de test. Nous verrons la détection du compagnon d'un tel système à partir de l'analyse des phases différentielles. Enfin, j'exposerai et analyserai les limitations rencontrées sur ces mesures.
 
 Dans toute cette étude, je ne montrerai aucune mesure de visibilité car il n'est pas possible de les normaliser dans la configuration de \ac{FIRSTv2}. En effet, pour ce faire nous avons besoin de la mesure indépendante de la photométrie sur chacune des sous-pupilles (comme expliqué dans le cadre du traitement de données de l'instrument \ac{AMBER} \citep{tatulli2007}), ce que nous n'avons pas à disposition. Il est possible de se passer de cette normalisation en ajoutant de la redondance lors du choix des bases, ce qui augmenterait le nombre de mesures par rapport au nombre d'inconnues \citep{lacour2007}. Mais cette méthode serait plus délicate à implémenter que de se passer d'exploiter la norme des visibilités et d'utiliser les observables auto-étalonnées que sont les phases différentielles.
@@ -13,7 +19,7 @@ Dans toute cette étude, je ne montrerai aucune mesure de visibilité car il n'e
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Le simulateur de source binaire sur le banc optique}
+\section{Le simulateur de source binaire sur le banc optique}
 \label{sec:SystBinaire}
 
 Afin d'évaluer les capacités de l'instrument à détecter et étudier une binaire d'étoiles ou un système exoplanétaire, j'ai mis en place un système optique simulant une telle source. Dans le but de simuler une protoplanète en accrétion (voir section~\ref{sec:AccretionAlpha}) j'utilise une source à bande spectrale étroite (un laser) et pour simuler une étoile j'utilise une source à bande spectrale large. Les deux sources doivent être injectées sur le banc, vues à l'infini avec une séparation angulaire définie. À cette fin, j'injecte ces deux sources dans les fibres d'un V-Groove (voir la figure~\ref{fig:VGroove}) qui est un composant alignant plusieurs fibres optiques côte à côte avec une séparation de $127 \,$\um. Une lentille convergente de $30 \,$cm de focale collimate ensuite les faisceaux de sorties de ce V-Groove selon le schéma présenté sur la figure~\ref{fig:BinarySystA}. Ainsi, j'obtiens une source centrale (tracés bleus) qui simule l'étoile sur l'axe optique de l'instrument et une source décentrée (tracés rouges) qui simule un compagnon hors axe avec un angle $\Theta$. Cet angle se calcule simplement à partir de la séparation $r$ des fibres du V-Groove et de la focale $f'$ de la lentille comme suit : $\Theta_m = r / f' = 4,23 . 10^{-4} \,$rad (ou $87,3 \,$as), soit une taille de $0,68 \lambda / B$ et de $1,37 \lambda / B$ pour les bases les plus petites et pour les bases les plus grandes, respectivement. À titre de comparaison, la base la plus grande à laquelle on a accès sur le télescope Subaru a une longueur de $\text{B} = 6,86 \,$m, ce qui correspond à observer un système binaire avec une séparation de $13 \,$mas ($0,68 \lambda / B$).
@@ -42,12 +48,12 @@ Ce système a été d'une grande utilité pendant ma thèse pour tester et amél
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{L'analyse des phases différentielles spectrales de FIRSTv2 sur une source binaire simulée}
+\section{L'analyse des phases différentielles spectrales de FIRSTv2 sur une source binaire simulée}
 \label{sec:PhaseDiffAnalyse}
 %\kevinco{préciser sur quelle puce les phases sont mesurées, notamment si je ne présente les phases que d'une puce}
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Les observables interférométriques sur un système protoplanétaire}
+\subsection{Les observables interférométriques sur un système protoplanétaire}
 
 Pour comprendre et analyser les phases différentielles on souhaite exprimer la forme d'un tel signal de phase pour un système binaire tel que le système PDS70. Pour commencer, la distribution d'intensité d'une telle source s'exprime comme :
 
@@ -79,7 +85,7 @@ La phase dépend donc de la position de la binaire par rapport au point pointé 
     \varphi = atan \left( \frac{\rho(\lambda) sin(2\pi \vv{\Theta} \cdot \vv{f})}{1 + \rho(\lambda) cos(2\pi \vv{\Theta} \cdot \vv{f})} \right) \label{eq:PhaseBinaireCentree}
 \end{equation}
 
-De plus, pour une binaire avec un haut contraste telle que les systèmes exoplanétaires, i.e. $\rho(\lambda) \ll 1$ l'équation~\ref{eq:PhaseBinaireCentree} de la manière suivante :
+De plus, pour une binaire avec un haut contraste telle que les systèmes exoplanétaires, i.e. $\rho(\lambda) \ll 1$, l'équation~\ref{eq:PhaseBinaireCentree} s'approxime de la manière suivante :
 
 \begin{equation}
     \varphi \approx \rho(\lambda) sin(2\pi \vv{\Theta} \cdot \vv{f})
@@ -88,7 +94,7 @@ De plus, pour une binaire avec un haut contraste telle que les systèmes exoplan
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Le modèle des signaux de phase différentielle pour un système protoplanétaire}
+\subsection{Le modèle des signaux de phase différentielle pour un système protoplanétaire}
 
 Le signal de phase différentielle mesuré par un interféromètre dépend des bases (de leur longueur et de leur orientation) mais aussi de la séparation entre les deux composantes de la source binaire. Pour illustrer ce propos, le signal de phase attendu, d'après l'équation~\ref{eq:PhaseBinaireCentree}, pour les bases présentées précédemment, est tracé en fonction de la séparation de la binaire pour un contraste de luminosité de la binaire égal à $1$ sur la figure~\ref{fig:PhaseDiffBinSizeSimuleA}, à $0.1$ sur la figure~\ref{fig:PhaseDiffBinSizeSimuleB} et à $0.01$ sur la figure~\ref{fig:PhaseDiffBinSizeSimuleC}. On voit bien que le signal mesuré dépend fortement de la séparation de la binaire observée. On retrouve bien les trois amplitudes de phase correspondant aux trois groupes de bases identifiés dans la section~\ref{sec:BaseConfig} avec celui qui est nul quelle que soit la séparation (correspondant aux bases orthogonales à la binaire). De plus, comme l'indique l'équation~\ref{eq:PhaseBinaireHautContraste}, on remarque que la phase est sinusoïdale pour des hauts contrastes de la binaire, avec une amplitude égale à ce contraste, ici $\pm 1.0 \,$rad $ = \pm 57\degree$, $\pm 0.1 \,$rad $ = \pm 5.7\degree$ et $\pm 0.01 \,$rad $ = \pm 0.57\degree$, comme attendu, pour les figures~\ref{fig:PhaseDiffBinSizeSimuleA}, \ref{fig:PhaseDiffBinSizeSimuleB} et \ref{fig:PhaseDiffBinSizeSimuleC}, respectivement. Par conséquent, plus le système binaire présente un contraste élevé, plus le signal de phase attendu est faible et plus la binaire est difficile à détecter. Les systèmes protoplanétaires qui présentent un contraste plus faible dans la raie d'émission \ha~sont donc particulièrement intéressants car le signal de phase à détecter est de plus forte amplitude.
 
@@ -169,7 +175,7 @@ La loi de densité est obtenue après avoir normalisé numériquement cette expr
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Les phases différentielles mesurées sur une source non résolue}
+\subsection{Les phases différentielles mesurées sur une source non résolue}
 
 Dans un premier temps, je vais présenter les mesures de phases différentielles sur une source non résolue par l'instrument. Sur le banc de test, c'est la source qui simule l'étoile centrale : la source fibrée Leukos-SM8-OEM ou super continuum (dénommé par la suite \sk), fabriquée par \textit{Leukos}\footnote{\url{https://www.leukos-laser.com/}} et qui est lumineuse sur la large bande $400 - 2400 \,$nm. La source est injectée dans une fibre optique PM630-HP fabriquée par Thorlabs\footnote{\url{https://www.thorlabs.com/}} avec pour \ac{MFD} égal à $4,5 \pm 0,5 \,$\um, correspondant à une taille angulaire de la source vue par le reste du banc égale à $3,1 \,$as, soit une taille angulaire de $\sim 0,05 \lambda / \text{B}$ (avec $\text{B} = 2,1 \,$mm, la longueur de la plus grande base). La figure~\ref{fig:SuperKSpectrum} montre l'intensité lumineuse normalisée de la \sk~mesurée par \ac{FIRSTv2} en fonction de la longueur d'onde, qui a une forme qui dépend de la transmission du banc. On note que le spectre présente des oscillations hautes fréquences, qu'on appellera \wiggles~par la suite. Comme nous le verrons ces oscillations sont problématiques pour les mesures de phases, je présenterai leur caractérisation dans la section~\ref{sec:wiggles}.
 
@@ -193,7 +199,7 @@ Les mesures de phases subissent donc les effets indésirables de phénomènes in
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Mesure et étalonnage des phases différentielles sur une source binaire}
+\subsection{Mesure et étalonnage des phases différentielles sur une source binaire}
 \label{sec:PhaseDiffMesure}
 
 Dans cette partie sont présentées les mesures des phases différentielles sur la source binaire simulée sur le banc de test. Pour cela, la source simulant l'étoile centrale est la source de référence décrite dans la partie précédente et la source simulant une protoplanète en accrétion est un laser fibré, à $635 \,$nm, fabriqué par Thorlabs\footnote{\url{https://www.thorlabs.com/}}. La figure~\ref{fig:BinarySpectrum} montre l'intensité lumineuse en fonction de la longueur d'onde de la binaire simulée, mesurée par \ac{FIRSTv2}. Le graphique est une superposition de l'intensité de l'étoile centrale en trait discontinu et de l'intensité de la binaire (étoile + protoplanète) en trait plein, normalisées par l'intensité de la source centrale à $635 \,$nm, où est visible le pic du laser. La largeur spectrale (largeur à mi-hauteur) du laser est mesurée à $\sim 0.4 \,$nm. À l'aide de ces courbes, une première estimation du rapport de flux entre les deux composantes est faite à $\sim 0.39$. Je règle grossièrement ce contraste lumineux entre les deux sources en desserrant le connecteur de la fibre optique de la source laser.
@@ -229,7 +235,7 @@ Dans le cadre d'observations sur les cibles du cas scientifique auquel cette th�
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Résultats de l'ajustement du modèle de binaire sur les phases différentielles}
+\subsection{Résultats de l'ajustement du modèle de binaire sur les phases différentielles}
 
 Après avoir étalonné les phases différentielles, il s'agit de les ajuster au modèle de la protoplanète. Pour ce faire, je calcule les paramètres ($\rho, \alpha, \beta$) qui minimisent la fonction de l'équation~\ref{eq:chi2}, dans le canal spectral du pic du signal de la binaire ($635 \,$nm). Les intervalles de ces paramètres sur lesquels le calcul de la fonction $\chi^2$ est effectué, sont définis comme suit :
 
@@ -289,7 +295,7 @@ La même étude est faite pour des données acquises sur la source binaire avec 
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Conclusion}
+\subsection{Conclusion}
 % en parlant de bruit, je me demande si on ne pourrait pas te demander à quelle magnitude équivalente le signal avec lequel tu travailles correspond. Mais ce n'est pas simple comme question... Sylvestre tu as peut être une idée sur ce point ?
 
 Dans cette partie j'ai montré le système de source binaire que j'ai mis en place sur le banc de test, ce qui a été primordiale pour le développement de \ac{FIRSTv2} pour la caractérisation de systèmes protoplanétaires. Les mesures montrées précédemment montrent la validité de la technique des phases différentielles mesurées sur une source binaire de type protoplanétaire, présentant un contraste plus faible sur une bande spectrale étroite.
@@ -300,8 +306,10 @@ Une grande partie des efforts de l'équipe se concentre actuellement sur la comp
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Les wiggles}
+\section{Les wiggles}
 \label{sec:wiggles}
+\kevinco{Work in progress}
+\begin{comment}
 % Harry-Dean study:
 % - tests on different polarizers with differents thickness => didn't change the wiggles frequency
 % - no polar + Wolla in spectro => no wiggles
@@ -347,7 +355,7 @@ Dans cette partie je présente une étude réaliser sur les \wiggles~mesurés su
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Caractérisation des wiggles sur la puce X}
+\subsection{Caractérisation des wiggles sur la puce X}
 
 Cette sous-partie présente une analyse des \wiggles~sur des données acquises sur la puce $X$. Le polariseur placé juste avant l'injection des faisceaux des sous-pupilles dans les fibres optiques sélectionne la polarisation V. De plus, le prisme de wollaston est installé devant le spectrographe donc le flux des sorties correspondant à la sélection de la polarisation V est plus élevé que celui des sorties correspondant à la polarisation H. Dans un premier temps, j'analyserai les spectres de flux sans franges d'interférences, obtenus en illuminant une à une chacune des cinq entrées de la puce.
 
@@ -503,7 +511,7 @@ Les coefficients polynomiaux sont les moyennes des coefficients ajustés pour to
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Caractérisation des wiggles sur la puce Y}
+\subsection{Caractérisation des wiggles sur la puce Y}
 
 Les résultats de cette étude sur les données prises avec la puce $Y$ sont similaire à ceux obtenus sur la puce $X$. De la même façon, les \wiggles~ne se superposent pas quelles que soient les sorties. Le contraste moyen des franges est mesuré à $\sim 0,14$ et l'équation polynomiale moyenne qui ajuste les pics maxima des transformés de Fourier en fonction de la longueur d'onde est :
 
@@ -555,7 +563,7 @@ En effet, la figure~\ref{fig:WigglesPhaseDiffMeanA} et la figure~\ref{fig:Wiggle
 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Les derniers tests en date sur le banc}
+\subsection{Les derniers tests en date sur le banc}
 
 De récentes mesures effectuées sur le banc par Manon Lallement et Harry-Dean Kenchington semblent montrer que les puces ne sont pas à l'origine des \wiggles. Plusieurs tests ont été fait en injectant le faisceau à travers seulement une fibre qui illumine le spectrographe de \ac{FIRSTv2} :
 
@@ -566,4 +574,4 @@ De récentes mesures effectuées sur le banc par Manon Lallement et Harry-Dean K
 \end{itemize}
 
 Ainsi, il semblerait que la sélection d'une polarisation avant l'injection des faisceaux dans les fibres soit la cause de l'apparition de \wiggles. Or les puces ne sont pas à maintien de polarisation, c'est pour cela qu'on ne doit pas en injecter deux en entrée de la puce. De plus amples analyses sont nécessaires afin de déterminer une solution pour contourner ce problème.
-
+\end{comment}
