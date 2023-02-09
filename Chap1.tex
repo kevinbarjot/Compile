@@ -3,11 +3,9 @@
 \chapter{Introduction}
 \setcounter{figure}{0}
 \setcounter{table}{0}
+\setcounter{equation}{0}
 
-\begingroup
-\hypersetup{linkcolor=black}
 \minitoc
-\endgroup
 
 \clearpage
 Les détections de plusieurs milliers d'exoplanètes sont actuellement confirmées grâce à de multiple méthodes de détection. Les méthodes de détection indirectes sont celles qui ont été les plus fructueuses pour détecter de nouvelles planètes mais, contrairement aux méthodes de détection directes, elle ne permettent pas (ou peu) la caractérisation chimique et astrométrique des exoplanètes. En effet, pour cela il s'agit de concevoir des instruments atteignant des hautes performances en terme de résolution angulaire et de contraste afin de détecter la lumière provenant directement de la planète.
@@ -27,7 +25,7 @@ Depuis la première détection d'une exoplanète, 51 Peg b \citep{mayor1995}, en
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure_Chap1/20230120_exoplanet_diagram_RV_PT_ML_IM.png}
+    \includegraphics[width=\figwidth]{Figure_Chap1/20230120_exoplanet_diagram_RV_PT_ML_IM.png}
     \caption[Graphique des exoplanètes détectées à ce jour suivant les quatre techniques de détection principales.]{Graphique de la masse mesurées des exoplanètes détectées à ce jour en fonction de leur demi-grand axe estimé. Les détections sont identifiées par les techniques de détection par vitesse radiale (cercle orange), par transite (triangle vert), par micro-lentille gravitationnelle (point violet) et par imagerie directe (carré bleu). Seules $2\,150$ exoplanètes, dont le demi-grand axe est mesuré, sont affichées. Données tirées de la base de données de \textit{exoplanet.eu} (\url{http://exoplanet.eu/}).}
     \label{fig:ExoplanetDetection}
 \end{figure}
@@ -43,15 +41,13 @@ Par conséquent, il est nécessaire de garder à l'esprit que l'exploration de l
 \subsection{L'imagerie directe des systèmes exoplanétaires}
 \label{sec:ImagerieDirecte}
 
-\kevinco{j'ai tiré pas mal des refs de cette partie de currie2022a, j'espère que ça ne s'apparente pas à du plagiat ou que c'est ok ?}
-
 L'imagerie directe d'un système exoplanétaire permet d'une part l'étude du mouvement orbital du compagnon \citep{chauvin2012, wang2018} et d'autre part la mesure spectroscopique de sa lumière. Cette dernière rend possible l'étude de la composition chimique de l'atmosphère de la planète (détection de la présence d'eau ou de molécules organiques comme le méthane ou le monoxyde de carbone), d'inférer la présence de nuages \citep{marley2015} (en ajustant des modèles atmosphériques), la gravité de surface \citep{marley2012} (la présence de nuages dans l'atmosphère et sa chimie sont fortement influencées par la gravité de surface) ou la rotation de l'exoplanète \citep{bryan2020} (à partir de l'élargissement des raies spectrales). Actuellement, seulement une vingtaine d'images directes de systèmes exoplanétaires ont été obtenues \citep{currie2022a} car les performances à atteindre sont ambitieuses. En effet, il s'agit de relever deux défis techniques majeures : un grand pouvoir de résolution angulaire et un haut contraste.
 
 Pour illustrer ce propos, la figure~\ref{fig:ContrastSeparation} tirée de \cite{mawet2012} présente le contraste de l'intensité lumineuse entre le compagnon et l'étoile centrale (\textit{Planet/Star Contrast}) en fonction de la séparation apparente, pour les planètes du système solaire (dans la partie inférieur du graphique) telles qu'elles seraient observées à une distance de $10 \,$pc (distance typique entre la Terre et les systèmes exoplanétaires) ainsi que pour les exoplanètes imagées du système HR8799 \citep{marois2008} et $\upbeta$ Pic b \citep{lagrange2010} (dans la partie supérieur du graphique). Les domaines de performances de quelques instruments en services et futurs sont représentés par les lignes colorées nommées par leur nom. On remarque que les performances à atteindre pour observer des planètes telles que celles du système solaire sont encore hors d'atteinte de $1-2$ ordres de grandeur par les instruments futurs (en cours de construction) et de $2-4$ ordres de grandeur pour les instruments actuels.
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure_Chap1/Mawet2012_ContrastVSSeparation_InstruPerformances_02.png}
+    \includegraphics[width=\figwidth]{Figure_Chap1/Mawet2012_ContrastVSSeparation_InstruPerformances_02.png}
     \caption[Contraste en fonction de la séparation apparente de certaines exoplanètes imagées et des planètes du système solaire.]{Contraste (\textit{Planet/Star Contrast}) en fonction de la séparation apparente (en arcsec) des exoplanètes du système HR8799 (bcde) et de $\upbeta$ Pic b (dans la partie supérieur) et des planètes du système solaire telles que vu à une distance de $10 \,$pc (dans la partie inférieur). Un deuxième axe des ordonnées, à gauche, indique l'erreur rms (en unité de longueur d'onde) sur le front d'onde à atteindre pour imager un système exoplanétaire au contraste correspondant à la même ordonnée. Un troisième axe des ordonnées, à droite, indique la différence de magnitude entre l'étoile et la planète. Les limites hautes des performances de quelques instruments actuels (Keck-NIRC2, VLT-NACO, Palomar-WCS, HST-ACS, GPI, SPHERE, Palomar-P3K-P1640 et JWST-NIRCam) et de futurs instruments (TMT-PFI et E-ELT-EPICS) sont tracées par les lignes colorées (on note que ce graphique datant de 2012, il indique par une étoile certains futurs projets qui sont actuellement en fonctionnement). La zone de couleur violette dégradée indique le domaine de performances des systèmes coronographiques sur les télescopes de $10 \,$m. Le rectangle en tirets violets indique le domaine de performances de la technique de masquage de pupille sur les télescopes de $10 \,$m. Les rectangles en tirets bleus et en trait continu bleu indiquent les domaines de performance de la technique de masquage de pupille dans le visible des instruments FIRSTv1 et FIRSTv2, respectivement.}
     \label{fig:ContrastSeparation}
 \end{figure}
@@ -130,7 +126,7 @@ Comme on vient de le voir, ces techniques atteignent un pouvoir de résolution a
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure_Chap1/Fernandes2019_Figure02.jpg}
+    \includegraphics[width=\figwidth]{Figure_Chap1/Fernandes2019_Figure02.jpg}
     \caption[Le nombre d'occurrence des exoplanètes détectées par la méthode des vitesses radiales et par la mission Kepler en fonction de la période orbitale et du demi-grand axe.]{Le nombre d'occurrence des exoplanètes géantes en fonction de la période orbitale (axe du bas) et du demi-grand axe (axe du haut) détectées par la méthode des vitesses radiales (ligne continue verte) et par la mission Kepler (ligne continue violette). Les courbes sont données pour plusieurs intervalles de masse et de rayon (lignes continues ou discontinues). Figure tirée de \cite{fernandes2019}.}
     \label{fig:Fernandes2019F2}
 \end{figure}
@@ -145,7 +141,7 @@ L'instrument \ac{FIRST} a été développé \citep{kotani2008} pour appliquer le
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure_Chap1/FIRSTv1Scheme_36Outputs_Fringes_b.png}
+    \includegraphics[width=\figwidth]{Figure_Chap1/FIRSTv1Scheme_36Outputs_Fringes_b.png}
     \caption[Schéma de principe de FIRSTv1.]{Schéma de principe de FIRSTv1. La lumière se propage de gauche à droite, sur les composants suivants : (1) le miroir segmenté représenté avec l'obstruction centrale du télescope, (2) la matrice de micro-lentilles, (3) les fibres optiques monomodes, (4) le V-Groove pour le réarrangement de pupille, (5) le spectrographe et (6) la caméra. Crédit : Elsa Huby.}
     \label{fig:FIRSTv1Scheme}
 \end{figure}
@@ -222,7 +218,7 @@ Tout d'abord, l'étoile centrale se forme par effondrement de matière au sein d
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure_Chap1/Williams2011_Fig06_PlanetaryDiskEvolution.png}
+    \includegraphics[width=\figwidth]{Figure_Chap1/Williams2011_Fig06_PlanetaryDiskEvolution.png}
     \caption[Évolution typique d'un disque protoplanétaire.]{Évolution typique d'un disque protoplanétaire, tiré de \cite{williams2011}. Le gaz est représenté en bleu et les poussières en marron. (a) Le disque dans son stade d'évolution primitif ($0-1\,$Myr) perd de la matière par accrétion sur l'étoile et photo-évaporation par les rayonnements \ac{UV} émis par l'étoile. (b) Les grains de poussières s'agglomèrent en débris de plus en plus gros tout en se répartissant sur un même plan. (c) L'étoile a fini de se former et le disque interne est dépourvu de gaz, devenant optiquement fin en quelques $0.1 \,$Myr. (d) Les plus petits grains de matière se font soit retirer par pression de radiation soit sont accrétés par les planètes et il ne reste que les planétésimaux au sein du disque, qui devient de plus en plus difficile à détecter, en l'espace de quelques $100 \,$Myr.}
     \label{fig:DiskEvo}
 \end{figure}
@@ -298,7 +294,7 @@ PDS 70 est une étoile âgée de $5 - 10 \,$Myr de masse égale à $0,9 \,$\MS. 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure_Chap1/Currie2022_Figure7a.png}
+    \includegraphics[width=\figwidth]{Figure_Chap1/Currie2022_Figure7a.png}
     \caption[Images du système PDS 70.]{Image dans la gamme de longueur d'onde millimétrique obtenue sur le télescope ALMA (Atacama Large Millimeter/Submillimiter Array) \citep{benisty2021}, mettant en évidence le disque protoplanétaire et sa cavité de PDS 70 ainsi que le compagnon PDS 70 c et son disque circumplanétaire. Image dans la raie \ha~obtenue sur l'instrument MUSE du VLT \citep{haffert2019} sur laquelle les deux compagnons sont détectés. Le champ de vue de cette dernière correspond au champ de vue délimité par le rectangle blanc sur l'image de gauche. La composition d'images est tirée de \cite{currie2022a}.}
     \label{fig:PDS70Image}
 \end{figure}
@@ -312,4 +308,3 @@ Les mesures de largeur à $10\%$, \Wd, des raies d'émission \ha~de \cite{haffer
 
 % Des forts taux d'accrétion favorisent CA
 % It should be noted that the community remains unsure of the formation mechanism of the PDS 70 planets. Bright and widely separated exoplanets such as the HR 8799 planets are often thought to have been formed by disk instability (Boss 2011). However, due to the presence of accretion on the PDS 70 planets, core accretion is one of the potential scenarios (as for the planets in our own solar system, e.g. Nesvorny, 2018). In the case of planets formed by core accretion, the accretion rate is expected to be at least as high as what is observed in the PDS 70 planets. The closer in time they are to the run-away accretion phase (that is when the planets acquire a critical mass to clear the gas and create a gap in the transitional disk), the more material the planets accrete (Fig. 1 top panel)
-
