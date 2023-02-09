@@ -1,0 +1,248 @@
+%----------------------------------------------------------------------------------------
+%	FIRST PARGE ENVIRONMENT
+%----------------------------------------------------------------------------------------
+
+
+\newenvironment{mytitlepage}
+{
+}%
+{
+}
+
+% Logos
+\newcommand{\logoupc}{
+	\hspace{-2cm}\raisebox{-2cm}{\includegraphics[width=6cm]{Openings/logo_upc.png}}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	BOXES FOR CHAPTERS
+%----------------------------------------------------------------------------------------
+
+
+\newlength{\ongletwidth}
+\setlength{\ongletwidth}{3cm}% 1.5cm apparent sur PDF A4 (coupé)
+
+\newlength{\ongletheight}
+
+\newcommand{\ongletfontI}{%
+	\fontfamily{pag}\fontseries{b}\fontshape{n}\fontsize{1cm}{1cm}\selectfont\color{white}
+}
+
+\newcommand{\ongletfontII}{%
+	\fontfamily{pag}\fontseries{b}\fontshape{n}\fontsize{1cm}{1cm}\selectfont\color{white}
+} 
+
+\newcommand{\ongletfont}{%	
+	\ifnum\pdfstrcmp{\thechapter}{A}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{B}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII% 
+	\else\ifnum\pdfstrcmp{\thechapter}{C}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII% 
+	\else\ifnum\pdfstrcmp{\thechapter}{D}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII% 
+	\else\ifnum\pdfstrcmp{\thechapter}{E}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{F}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{G}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{H}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{I}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{J}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{K}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{L}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{M}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else\ifnum\pdfstrcmp{\thechapter}{N}=0 % teste si les 2 strings sont indentiques
+		\ongletfontII%
+	\else
+		\ongletfontI%
+	\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+}
+
+\newcommand{\valueforonglet}{%	
+	%\ifnum\value{chapter}=0
+	\ifnum\pdfstrcmp{\thechapter}{A}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{B}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{C}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber% 
+	\else\ifnum\pdfstrcmp{\thechapter}{D}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber% 
+	\else\ifnum\pdfstrcmp{\thechapter}{E}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{F}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{G}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{H}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{I}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{J}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{K}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{L}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{M}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else\ifnum\pdfstrcmp{\thechapter}{N}=0 % teste si les 2 strings sont indentiques
+		\conclusionchapternumber%
+	\else
+		\thechapter%
+	\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+}
+
+\newcommand{\coulorforonglet}{%	
+	%\ifnum\value{chapter}=0
+	\ifnum\pdfstrcmp{\thechapter}{A}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{B}=0% teste si les 2 strings sont indentiques
+		colorboxchap% 
+	\else\ifnum\pdfstrcmp{\thechapter}{C}=0% teste si les 2 strings sont indentiques
+		colorboxchap% 
+	\else\ifnum\pdfstrcmp{\thechapter}{D}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{E}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{F}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{G}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{H}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{I}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{J}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{K}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{L}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{M}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else\ifnum\pdfstrcmp{\thechapter}{N}=0% teste si les 2 strings sont indentiques
+		colorboxchap%
+	\else%
+		color16_126_179%
+	\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+}	
+
+
+\newcommand{\textforonglet}{%
+	\ifnum\pdfstrcmp{\thechapter}{0}=0% teste si les 2 strings sont indentiques
+		I% % pour introduction
+	\else\ifnum\pdfstrcmp{\thechapter}{6}=0% teste si les 2 strings sont indentiques
+		C% pour conclusion (vérifier que c'est le 6e chapitre)
+	\else%
+		\thechapter%
+	\fi\fi
+}
+
+\newlength{\ongletvtop}
+\setlength{\ongletvtop}{25cm}
+
+\newlength{\ongletvpos}
+
+\newlength{\frameboxsize}
+
+\newlength{\espacepaire}
+
+\newcommand{\ongletcote}{%
+	% Fixer \ongletheight, \ongletvpos et \frameboxsize
+	%%% Traiter manuellement les annexes constituées d'un insert de pdf car pb taille boîtes (bug ?) %%%
+	\ifnum\pdfstrcmp{\thechapter}{D}=0% teste si les 2 strings sont indentiques
+		\setlength{\ongletheight}{1.7cm}
+		\setlength{\frameboxsize}{1.5cm}
+		\setlength{\espacepaire}{0.1cm}
+		\setlength{\ongletvpos}{\ongletvtop-\ongletheight*\real{\valueforonglet}*\real{1.19}}%
+	\else\ifnum\pdfstrcmp{\thechapter}{E}=0% teste si les 2 strings sont indentiques
+		\setlength{\ongletheight}{1.7cm}
+		\setlength{\frameboxsize}{1.5cm}
+		\setlength{\espacepaire}{0.1cm}
+		\setlength{\ongletvpos}{\ongletvtop-\ongletheight*\real{\valueforonglet}*\real{1.19}}%
+	\else%
+		\setlength{\ongletheight}{1.5cm}% environ 1.7cm apparent sur PDF A4 (colorbox déborbe framebox)
+		\setlength{\frameboxsize}{1.25cm}
+		\setlength{\espacepaire}{0.cm}
+		\setlength{\ongletvpos}{\ongletvtop-\ongletheight*\real{\valueforonglet}*\real{1.2}}%
+	\fi\fi	%
+	% Boîtes
+	\ifthenelse{\isodd{\value{page}}}{% IF (Boîte page impaire)
+%		\begin{minipage}{3cm}
+		\makebox[0pt][l]{%
+			\hspace{0.42cm}% petit espace étrange
+			\hspace{1cm}% margin outer (2.5cm) - 1.5cm = 1cm (bien centré)
+			\raisebox{\ongletvpos}[0pt][0pt]{%
+				\colorbox{\coulorforonglet}{%
+					\parbox[t][\ongletheight][c]{\ongletwidth}{%
+						\setlength{\fboxrule}{0pt}% Masquer trait de framebox
+						\framebox[\frameboxsize]{%
+							\ongletfont\textforonglet%
+						}
+					}
+				}
+			}
+		}
+%		\end{minipage}
+	}{% ELSE (Boîte page paire)
+		\makebox[0pt][r]{%
+			\raisebox{\ongletvpos}[0pt][0pt]{%
+				\colorbox{\coulorforonglet}{%
+					\parbox[t][\ongletheight][c]{\ongletwidth}{%
+						\setlength{\fboxrule}{0pt}% Masquer trait de framebox
+						\framebox[1.25cm]{%
+							% ne rien écrire
+						}
+					}
+				}
+			}
+			\hspace{\espacepaire}% petit espace étrange
+			\hspace{1cm}% margin outer (2.5cm) - 1.5cm = 1cm (bien centré)
+		}
+	}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITRE SOUS ONGLETS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\titreongletfont}{%
+	\fontfamily{pag}\fontseries{b}\fontshape{n}\fontsize{0.5cm}{0.6cm}\selectfont\textcolor{\coulorforonglet}%
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+
+\newlength{\titreongletvpos}
+
+\newcommand{\titreongletcote}{%
+	% Fixer \titreongletvpos
+	%%% Traiter manuellement les annexes constituées d'un insert de pdf car pb taille boîtes (bug ?) %%%
+	\ifnum\pdfstrcmp{\thechapter}{D}=0% teste si les 2 strings sont indentiques
+		\setlength{\titreongletvpos}{\ongletvtop-\ongletheight*\real{\valueforonglet}*\real{1.19}-\ongletheight*\real{1.19}}%
+	\else\ifnum\pdfstrcmp{\thechapter}{E}=0% teste si les 2 strings sont indentiques
+		\setlength{\titreongletvpos}{\ongletvtop-\ongletheight*\real{\valueforonglet}*\real{1.19}-\ongletheight*\real{1.19}}%
+	\else%
+		\setlength{\titreongletvpos}{\ongletvtop-\ongletheight*\real{\valueforonglet}*\real{1.2}-\ongletheight*\real{1.2}}%
+	\fi\fi%
+	% Boîtes
+	\ifthenelse{\isodd{\value{page}}}{% IF (Boîte page impaire)
+		\makebox[0pt][l]{%
+			\hspace{0cm}% (bien centré sur bord texte avant décallage = 0cm)
+			\hspace{1.75cm}% margin outer (2.5cm) - 1.5cm = 1cm + moitié boite (0.75cm)
+			\raisebox{\titreongletvpos}[0pt][0pt]{\rotatebox{270}{\titreongletfont\leftmark}}
+		}
+	}{% ELSE (Boîte page paire)
+		% ne rien faire
+	}
+}	
+

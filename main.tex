@@ -3,10 +3,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\documentclass[a4paper,12pt,twoside,openright]{book}
+\documentclass[
+    12pt, 				% The default document font size, options: 10pt, 11pt, 12pt
+    twoside, 			% Two side (alternating margins) for binding by default, uncomment to switch to one side
+    openright, 
+    french, 
+    singlespacing, 		% Single line spacing, alternatives: onehalfspacing or doublespacing or singlespacing (voir \setstretch ci-dessous)
+    %draft, 			% Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+    %nolistspacing, 	% If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+    %liststotoc, 		% Uncomment to add the list of figures/tables/etc to the table of contents
+    %toctotoc, 			% Uncomment to add the main table of contents to the table of contents
+    parskip, 			% Uncomment to add space between paragraphs
+    %nohyperref, 		% Uncomment to not load the hyperref package
+    %headsepline, 		% Uncomment to get a line under the header
+    %chapterinoneline, 	% Uncomment to place the chapter title next to the number on one line
+    %consistentlayout, 	% Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+]{Configurations/Template_Thesis} % The class file specifying the document structure
 
-% Import all document settings
+
+% Include all document settings
 \input{Configurations/configurations}
+
+
+% To modify: set the number of chapters before the conclusion to shift appendices onglet
+\newcommand{\conclusionchapternumber}{6}
+
+
+% Include macros for chapter onglets
+\input{Configurations/macros}
+
+
+% Include user's thesis information
+\input{Configurations/thesis_info}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -19,78 +47,100 @@
 %% A&A bib macros
 \include{Configurations/macro_aa}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Openings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagenumbering{Alph} % pour avoir bonnes refs pages dans biblio
+\KOMAoptions{headsepline=false} % trait sous en-tête
+\pagestyle{firstpage}
+
+% Include the title page
+\include{Openings/Title} % ATTENTION : penser à demander une impression sur la tranche
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+\KOMAoptions{headsepline=false} % trait sous en-tête
+\pagestyle{frontpage} % Default to the plain heading style until the thesis style is called for the body content
+
+
+% \include{Openings/Acknowledgements}
+% \include{Openings/Dedicace}
+% \include{Openings/Quotation}
+\input{Openings/Abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tabel of contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %% Build a per-chapter table of content
 \dominitoc
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{empty}
-\input{Opennings/Title}
-
-% Roman page numbering and non-numbered sections still in toc
-\frontmatter
-\pagestyle{fancy}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{Opennings/Abstract}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\thispagestyle{empty}
-\begingroup
-\hypersetup{linkcolor=black}
 \tableofcontents
-\endgroup
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Manuscript content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begingroup{
+\KOMAoptions{headsepline=true} % trait sous en-tête
 % Re-initialize page numbering and set it to arabic numbers
 \mainmatter
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{Chap1}
-\input{Chap2}
-\input{Chap3}
+%\input{Chap1}
+%\input{Chap2}
+%\input{Chap3}
 \input{Chap4}
-\input{Chap5}
+%\input{Chap5}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Conclusion}
-
+} \endgroup
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Print glossary
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newpage\thispagestyle{empty}
 \printglossary[type=\acronymtype, style=indexgroup, title=Acronymes, toctitle=Acronymes]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Print the list of figures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newpage\thispagestyle{empty}
 \renewcommand{\listfigurename}{Liste des figures}
 
-\begingroup
-\hypersetup{linkcolor=black}
 \phantomsection
 \listoffigures
-\endgroup
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Print the list of tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newpage\thispagestyle{empty}
 \renewcommand{\listtablename}{Liste des tableaux}
 
-\begingroup
-\hypersetup{linkcolor=black}
 \phantomsection
 \listoftables
-\endgroup
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Print the bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newpage\thispagestyle{empty}
 
-%\addstarredchapter{\bibname}
 \bibliographystyle{plainnat}
 \bibliography{biblio}
 % \addcontentsline{toc}{chapter}{Bibliographie}
