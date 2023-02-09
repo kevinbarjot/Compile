@@ -3,9 +3,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% \documentclass[a4paper,11pt,twoside]{article}
-\documentclass[a4paper,11pt,twoside,openright]{book}
+\documentclass[a4paper,12pt,twoside,openright]{book}
 
+% Import all document settings
 \input{Configurations/configurations}
 
 
@@ -27,13 +27,13 @@
 \pagestyle{empty}
 \input{Opennings/Title}
 
-% Numerotation des pages en Roman, sections non numerotees mais quand meme presentes dans le toc
+% Roman page numbering and non-numbered sections still in toc
 \frontmatter
 \pagestyle{fancy}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \input{Opennings/Abstract}
+\input{Opennings/Abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,7 +57,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \input{Conclusion}
+\input{Conclusion}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,35 +67,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage\thispagestyle{empty}
-% \chaptertotoc{Liste des figures}
 \renewcommand{\listfigurename}{Liste des figures}
 
 \begingroup
 \hypersetup{linkcolor=black}
+\phantomsection
 \listoffigures
 \endgroup
-\addcontentsline{toc}{chapter}{Liste des figures}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage\thispagestyle{empty}
-% \chaptertotoc{Liste des tableaux}
 \renewcommand{\listtablename}{Liste des tableaux}
 
 \begingroup
 \hypersetup{linkcolor=black}
+\phantomsection
 \listoftables
 \endgroup
-\addcontentsline{toc}{chapter}{Liste des tableaux}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage\thispagestyle{empty}
-% \chaptertotoc{Références}
 
+%\addstarredchapter{\bibname}
 \bibliographystyle{plainnat}
 \bibliography{biblio}
-\addcontentsline{toc}{chapter}{Bibliographie}
+% \addcontentsline{toc}{chapter}{Bibliographie}
 % When compiling with LaTex on a local machine (without Overleaf), execute these commands:
 % (pdf)latex main.tex
 % BibTex main.aux
