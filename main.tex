@@ -3,6 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%\documentclass[a4paper,12pt,twoside,openright]{book}
 \documentclass[
     12pt, 				% The default document font size, options: 10pt, 11pt, 12pt
     twoside, 			% Two side (alternating margins) for binding by default, uncomment to switch to one side
@@ -23,10 +24,6 @@
 
 % Include all document settings
 \input{Configurations/configurations}
-
-
-% To modify: set the number of chapters before the conclusion to shift appendices onglet
-\newcommand{\conclusionchapternumber}{6}
 
 
 % Include macros for chapter onglets
@@ -58,16 +55,20 @@
 \pagestyle{firstpage}
 
 % Include the title page
-\include{Openings/Title} % ATTENTION : penser à demander une impression sur la tranche
+\input{Openings/Title} % ATTENTION : penser à demander une impression sur la tranche
 
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
 \KOMAoptions{headsepline=false} % trait sous en-tête
 \pagestyle{frontpage} % Default to the plain heading style until the thesis style is called for the body content
 
+\newpage\thispagestyle{empty}
+\null
+\newpage\thispagestyle{empty}
+\null
 
-% \include{Openings/Acknowledgements}
-% \include{Openings/Dedicace}
-% \include{Openings/Quotation}
+% \input{Openings/Acknowledgements}
+% \input{Openings/Dedicace}
+% \input{Openings/Quotation}
 \input{Openings/Abstract}
 
 
@@ -80,9 +81,11 @@
 \dominitoc
 \tableofcontents
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Manuscript content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begingroup{
 \KOMAoptions{headsepline=true} % trait sous en-tête
@@ -91,15 +94,16 @@
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
 
 
-%\input{Chap1}
-%\input{Chap2}
-%\input{Chap3}
+\input{Chap1}
+\input{Chap2}
+\input{Chap3}
 \input{Chap4}
 %\input{Chap5}
 
+%\input{Conclusion}
 
-\input{Conclusion}
 } \endgroup
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Print glossary

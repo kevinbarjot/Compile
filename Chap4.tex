@@ -1,4 +1,3 @@
-\newpage\thispagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Caractérisation de systèmes protoplanétaires}
 \label{sec:BinaryCharac}
@@ -136,7 +135,7 @@ Le signal de phase différentielle mesuré par un interféromètre dépend des b
     \label{fig:PhaseDiffBinSizeSimule}
 \end{figure}
 
-Mais encore, l'équation~\ref{eq:PhaseBinaireHautContraste} nous renseigne sur les séparations pour lesquelles les signaux de toutes les bases sont nuls (possible ici car la longueur de la plus grande base est le double de la longueur de la plus petite) : i.e. pour $2\pi \vv{\Theta} \cdot \vv{f} = \pi [\pi]$ soit une séparation valant $\text{k} \lambda / 2B$ avec k un entier relatif. Ce qui donne pour B, la longueur de la base la plus grande, ainsi que pour $\text{k} \in \llbracket 0; 3 \rrbracket$, les séparations $0 \,$as, $31,2 \,$as, $62,4 \,$as et $93,6 \,$as. En revanche, le signal de phase est maximal lorsque $2\pi \vv{\Theta} \cdot \vv{f} = \pi / 2 [\pi]$, i.e. pour une séparation valant : $(2\text{k}+1) \lambda / 4B$. De même, pour la plus grande longueur de base B et pour $\text{k} \in \llbracket 0; 3 \rrbracket$, les séparations qui induisent un signal de phase maximal sont $16,1 \,$as, $48,3 \,$as, $80,5 \,$as et $113 \,$as. Pour l'autre longueur de base la séparation égale à $96,6 \,$as maximise le signal. La séparation choisie sur le banc de test, égale à $87,3 \,$as (voir la section~\ref{sec:SystBinaire}) est un bon compromis entre les séparations $80,5 \,$as et $96,6 \,$as, pour maximiser le signal de phase sur toutes les bases et tout en utilisant le matériel qui était à disposition pour simuler la source protoplanétaire (le V-Groove et la lentille).
+Mais encore, l'équation~\ref{eq:PhaseBinaireHautContraste} nous renseigne sur les séparations pour lesquelles les signaux de toutes les bases sont nuls (possible ici car la longueur de la plus grande base est le double de la longueur de la plus petite) : i.e. pour $2\pi \vv{\Theta} \cdot \vv{f} = \pi [\pi]$ soit une séparation valant $\text{k} \lambda / 2B$ avec k un entier relatif. Ce qui donne pour B, la longueur de la base la plus grande, pour la longueur d'onde du laser simulant la protoplanète sur le banc de test $\uplambda = 635 \,$nm, ainsi que pour $\text{k} \in \llbracket 0; 3 \rrbracket$, les séparations $0 \,$as, $31,2 \,$as, $62,4 \,$as et $93,6 \,$as. En revanche, le signal de phase est maximal lorsque $2\pi \vv{\Theta} \cdot \vv{f} = \pi / 2 [\pi]$, i.e. pour une séparation valant : $(2\text{k}+1) \lambda / 4B$. De même, pour la plus grande longueur de base B et pour $\text{k} \in \llbracket 0; 3 \rrbracket$, les séparations qui induisent un signal de phase maximal sont $16,1 \,$as, $48,3 \,$as, $80,5 \,$as et $113 \,$as. Pour l'autre longueur de base la séparation égale à $96,6 \,$as maximise le signal. La séparation choisie sur le banc de test, égale à $87,3 \,$as (voir la section~\ref{sec:SystBinaire}) est un bon compromis entre les séparations $80,5 \,$as et $96,6 \,$as, pour maximiser le signal de phase sur toutes les bases et tout en utilisant le matériel qui était à disposition pour simuler la source protoplanétaire (le V-Groove et la lentille).
 
 A présent, pour la séparation choisie, les phases différentielles sont simulées en fonction de la longueur d'onde et sont présentées pour un contraste de la source égal à $1$ sur la figure~\ref{fig:PhaseDiffWaveSimuleA}, à $0,1$ sur la figure~\ref{fig:PhaseDiffWaveSimuleB} et à $0,01$ sur la figure~\ref{fig:PhaseDiffWaveSimuleC}. Dans ces simulations, le compagnon présente une raie d'émission à $656 \,$nm (raie \ha), avec une largeur à mi-hauteur égale à $0,4 \,$nm, donnant à cette longueur d'onde les contrastes cités. Cette largeur est prise pour correspondre à la largeur de bande du laser qu'on utilise sur le banc de test, comme mesuré dans la section~\ref{sec:PhaseDiffMesure}. La résolution spectrale a été fixée à $3\,200$ ce qui correspond à la résolution spectrale de \ac{FIRSTv2} (mesurée et présentée dans la section~\ref{sec:EtalonnageSpectral}).
 
@@ -216,7 +215,7 @@ Les mesures de phases subissent donc les effets indésirables de phénomènes in
 \subsection{Mesure et étalonnage des phases différentielles sur une source protoplanétaire simulée}
 \label{sec:PhaseDiffMesure}
 
-Dans cette partie sont présentées les mesures des phases différentielles sur la source protoplanétaire simulée sur le banc de test. Pour cela, la source simulant l'étoile centrale est la source de référence décrite dans la partie précédente et la source simulant une protoplanète en accrétion est un laser fibré, à $635 \,$nm, fabriqué par \textit{Thorlabs}. La figure~\ref{fig:BinarySpectrum} montre l'intensité lumineuse en fonction de la longueur d'onde de la source protoplanétaire simulée, mesurée par \ac{FIRSTv2}. Le graphique est une superposition de l'intensité de l'étoile centrale en trait discontinu et de l'intensité de la source du système (étoile + protoplanète) en trait plein, normalisées par l'intensité de la source centrale à $635 \,$nm, où est visible le pic du laser. La largeur spectrale (largeur à mi-hauteur) du laser est mesurée à $\sim 0,4 \,$nm. À l'aide de ces courbes, une première estimation du rapport de flux entre les deux composantes est faite à $\sim 0,39$. Je règle grossièrement ce contraste lumineux entre les deux sources en desserrant le connecteur de la fibre optique de la source laser.
+Les résultats préliminaires portant sur les mesures que je vais présenter ici ont été présentés dans la conférence \cite{barjot2022} (voir la section~\ref{sec:HypatiaProceeding}). Dans cette partie je vais exposer les mesures des phases différentielles sur la source protoplanétaire simulée sur le banc de test. Pour cela, la source simulant l'étoile centrale est la source de référence décrite dans la partie précédente et la source simulant une protoplanète en accrétion est un laser fibré, à $635 \,$nm, fabriqué par \textit{Thorlabs}. La figure~\ref{fig:BinarySpectrum} montre l'intensité lumineuse en fonction de la longueur d'onde de la source protoplanétaire simulée, mesurée par \ac{FIRSTv2}. Le graphique est une superposition de l'intensité de l'étoile centrale en trait discontinu et de l'intensité de la source du système (étoile + protoplanète) en trait plein, normalisées par l'intensité de la source centrale à $635 \,$nm, où est visible le pic du laser. La largeur spectrale (largeur à mi-hauteur) du laser est mesurée à $\sim 0,4 \,$nm. À l'aide de ces courbes, une première estimation du rapport de flux entre les deux composantes est faite à $\sim 0,39$. Je règle grossièrement ce contraste lumineux entre les deux sources en desserrant le connecteur de la fibre optique de la source laser.
 
 \begin{figure}[ht!]
     \centering
@@ -239,7 +238,7 @@ Avant toute chose, il faut préciser que le laser utilisé pour simuler le compa
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap4/20221010_Bin01_SpeDiffPhase_Calp2vm_BaseSubplot_Pola1_LaTex.png}
     \end{subfigure}
-    \caption[Phases différentielles de la source protoplanétaire mesurée par FIRSTv2.]{Phases différentielles de la source protoplanétaire mesurée par FIRSTv2, sur toutes les bases, en fonction de la longueur d'onde. Le graphique du haut présente les phases avant et le graphique du bas présente les phases après l'étalonnage par les phases différentielles de la source non résolue.}
+    \caption[Phases différentielles de la source protoplanétaire mesurée par FIRSTv2.]{Phases différentielles de la source protoplanétaire mesurée par FIRSTv2, sur toutes les bases, en fonction de la longueur d'onde. Le graphique du haut présente les phases avant et le graphique du bas présente les phases après l'étalonnage par les phases différentielles de la source non résolue. On note que l'étalonnage n'a pas réduit l'amplitude des \wiggles~mais seulement la pente globale.}
     \label{fig:PhaseDiffBinary}
 \end{figure}
 
@@ -251,7 +250,7 @@ Dans le cadre d'observations sur les cibles du cas scientifique auquel cette th�
 %%%%%%%%%%%%%%%%
 \subsection{Résultats de l'ajustement du modèle de protoplanète sur les phases différentielles}
 
-Après avoir étalonné les phases différentielles, il s'agit de les ajuster au modèle de la protoplanète. Pour ce faire, je calcule les paramètres ($\rho, \alpha, \beta$) qui minimisent la fonction de l'équation~\ref{eq:chi2}, dans le canal spectral du pic central de la raie d'émission du compagnon ($635 \,$nm). Les intervalles de ces paramètres sur lesquels le calcul de la fonction $\chi^2$ est effectué, sont définis comme suit :
+Nous continuons cependant à étalonner les phases différentielles car cela corrige les pentes globales comme nous l'avons vu dans la partie précédente. Il s'agit maintenant de les ajuster au modèle de la protoplanète. Pour ce faire, je calcule les paramètres ($\rho, \alpha, \beta$) qui minimisent la fonction de l'équation~\ref{eq:chi2}, dans le canal spectral du pic central de la raie d'émission du compagnon ($635 \,$nm). Les intervalles de ces paramètres sur lesquels le calcul de la fonction $\chi^2$ est effectué, sont définis comme suit :
 
 \begin{itemize}
     \item le contraste entre l'étoile et le compagnon sur le canal spectral où se situe le pic d'émission, $\rho \in [0,05; 0,995]$ avec un pas de $0,005$, constituant $190$ valeurs;
@@ -368,6 +367,17 @@ Dans ce chapitre j'ai présenté le simulateur de source protoplanétaire que j'
 J'ai ainsi montré la détection d'un compagnon à une séparation de $0,68 \lambda / B$ avec un contraste égal à $\sim 0,55$, à partir du calcul et de l'analyse des phases différentielles. Le contraste atteint dans cette étude est encore assez faible comparé au contraste des protoplanètes que l'on connaît actuellement (contraste de $\sim 10^{-2} - 10^{-3}$ pour la protoplanète PDS 70 b). En effet, les mesures de phases différentielles sont limitées par les \wiggles~dont l'erreur moyenne qu'elle ajoute est estimée à $\sim 8\degree$, correspondant à un contraste de $\sim 0,14$, soit $\sim 0,56$ pour un signal de phase au moins quatre fois plus grand que les \wiggles.
 
 Une partie des efforts de l'équipe se concentre actuellement sur la compréhension de l'origine de ces \wiggles~ainsi que sur leur correction.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section*{Conférence Hypatia Colloquium}
+\label{sec:HypatiaProceeding}
+\phantomsection
+\addcontentsline{toc}{section}{Conférence Hypatia Colloquium}
+
+\clearpage
+\includepdf[pages=-, templatesize={1\textwidth}{1\textheight}]{Paper/Barjot2022_HypatiaProceeding_Pub.pdf}
 
 
 % Original comprehensive wiggles part (first draft)

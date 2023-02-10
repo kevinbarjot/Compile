@@ -1,4 +1,3 @@
-\newpage\thispagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{La réplique de FIRST en laboratoire : FIRSTv2}
 \label{sec:FIRSTv2Concept}
@@ -78,7 +77,7 @@ Le miroir déformable installé sur le banc de test de \ac{FIRSTv2} est fabriqu�
         \includegraphics[width=0.8\textwidth]{Figure_Chap2/20191114_BrokenSegment_02.jpg}
         \caption{Photographie de la surface du miroir segmenté.}
         \label{fig:IrisAOMapA}
-    \end{subfigure}%
+    \end{subfigure}\hspace{0.01\textwidth}
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=0.8\textwidth]{Figure_Chap2/MemsMap_AllFibers.png}
@@ -190,8 +189,8 @@ Nous avons finalement décidé d'en ouvrir une afin d'investiguer par nous-même
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Figure_Chap2/ODL_Inside_LightInjected_02.png}
-    \caption[Photographie d'une ODL démontée.]{Photographie de l'ODL $\#1$ démontée. En haut, sont les fibres d'entrée (à gauche) et de sortie (à droite). La lumière d'un laser rouge est injectée dans la fibre d'entrée. Puis plus bas, on voit les lentilles de collimation des faisceaux ainsi que la colle qui les maintient. Le prisme qui réfléchit le faisceau est en bas. Crédit : Elsa Huby et Manon Lallement.}
+    \includegraphics[width=0.6\textwidth]{Figure_Chap2/ODL_Inside_LightInjected_02.png}
+    \caption[Photographie d'une ODL ouverte.]{Photographie de l'ODL $\#1$ ouverte. En haut, sont les fibres d'entrée (à gauche) et de sortie (à droite). La lumière d'un laser rouge est injectée dans la fibre d'entrée. Puis plus bas, on voit les lentilles de collimation des faisceaux ainsi que la colle qui les maintient. Le prisme qui réfléchit le faisceau est en bas. Crédit : Elsa Huby et Manon Lallement.}
     \label{fig:ODLOpened}
 \end{figure}
 
@@ -215,7 +214,7 @@ Une autre solution serait de changer tout le système d'injection et deux concep
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.7\textwidth]{Figure_Chap1/Martin2022_FIRST573D_Figure1.png}
+    \includegraphics[width=0.8\textwidth]{Figure_Chap1/Martin2022_FIRST573D_Figure1.png}
     \caption[Schéma de principe du concept de puce photonique 3D.]{Schéma de principe du concept de puce photonique 3D. Les entrées sont en bas et les sorties en haut. Trois types de guides d'onde sont représentés : dans le plan (en rouge), qui monte puis descend (en orange) et qui descend puis monte (en bleu). Crédit : Guillermo Martin.}
     \label{fig:Chip5T3D}
 \end{figure}
@@ -274,7 +273,7 @@ Durant ma thèse, j'ai testé \citep{barjot2020} sur \ac{FIRSTv2} deux technolog
 \subsubsection{Caractérisation}
 \label{sec:ChipCharacterization}
 
-Pour caractériser les deux puces photoniques, j'ai utilisé une source large bande halogène de la gamme \textit{HL-2000-FHSA-HP}, fabriquée par \textit{Ocean Insight}\footnote{\url{https://www.oceaninsight.com/}}, lumineuse dans la gamme spectrale $360 - 2400 \,$nm. Cette caractérisation est publiée dans \cite{barjot2020} et je la rappelle ici. Trois études sont conduites sur les deux puces :
+Pour caractériser les deux puces photoniques, j'ai utilisé une source large bande halogène de la gamme \textit{HL-2000-FHSA-HP}, fabriquée par \textit{Ocean Insight}\footnote{\url{https://www.oceaninsight.com/}}, lumineuse dans la gamme spectrale $360 - 2400 \,$nm. Cette caractérisation est publiée dans \cite{barjot2020} (voir la section~\ref{sec:SPIEproceeding}) et je la rappelle ici. Trois études sont conduites sur les deux puces :
 
 \begin{enumerate}
     \item le cross-talk, qui caractérise la quantité de fuite du signal entre les différents guides d'onde
@@ -292,11 +291,11 @@ Le \textit{cross-talk} intervient ici de deux façons différentes. Premièremen
 
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}{0.8\textwidth}
+    \begin{subfigure}{0.9\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/20201124_5TC_5OutputFluxesLog_OOptics_LaTex.png}
     \end{subfigure}
-    \begin{subfigure}{0.8\textwidth}
+    \begin{subfigure}{0.9\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/20201119_5TC_5OutputFluxesLog_OOptics_LaTex.png}
     \end{subfigure}
@@ -344,7 +343,7 @@ En résumé, j'ai mesuré un niveau de \textit{cross-talk} équivalent pour les 
 
 On peut alors conclure qu'il sera préférable d'utiliser la puce $X$ lors de futurs prises de données, mais comme nous le verrons dans la section~\ref{sec:BinaryCharac}, je ne suis pas parvenu à estimer les observables interférométriques avec cette puce et la puce $Y$ produit de bien meilleurs résultats.
 
-Ainsi, les valeurs de transmission mesurées sont suffisantes pour permettre leur intégration et de les tester sur le banc \ac{SCExAO} en conditions d'observations du ciel, ce que j'ai pu faire durant ma thèse et que j'exposerai dans la section~\ref{sec:FIRSTv2Subaru}. En revanche, elles ne sont pas suffisantes pour une exploitation de l'instrument \ac{FIRSTv2} ouverte à la communauté scientifique. Guillermo Martin et Manon Lallement travaillent à Grenoble sur le développement de nouvelles puces avec de meilleures performances. Par exemple, des puces 3D \citep{martin2022a} dont les guides d'onde ont été gravés par laser non pas dans un même plan mais dans le volume de la puce, permettent d'éviter les croisements qui engendrent le \textit{cross-talk} et les pertes en transmission. De même, des puces avec une modulation électro-optique fabriquées par \textit{FEMTO-ST}\footnote{\url{https://www.femto-st.fr/en}} dans un matériau différent (Niobate de Lithium LiNi) avec une meilleure transmission ont été caractérisées sur le banc de test \ac{FIRSTv2} durant ma thèse \citep{martin2022b}. Enfin, des puces utilisant différents types de coupleurs (ABCD, directionnel asymétrique) dont les paramètres physiques sont explorés ont été fabriquées et caractérisées dans \cite{lallement2022}.
+Ainsi, les valeurs de transmission mesurées sont suffisantes pour permettre leur intégration et de les tester sur le banc \ac{SCExAO} en conditions d'observations du ciel, ce que j'ai pu faire durant ma thèse et que j'exposerai dans la section~\ref{sec:FIRSTv2Subaru}. En revanche, elles ne sont pas suffisantes pour une exploitation de l'instrument \ac{FIRSTv2} ouverte à la communauté scientifique. Guillermo Martin et Manon Lallement travaillent à Grenoble sur le développement de nouvelles puces avec de meilleures performances. Par exemple, des puces fabriquées avec un dopage aux ions Ag+, augmentant le contraste d'indice des guides ce qui permet des rayons de courbure plus petits. Le but est de faire les croisements avec des angles plus grands afin de diminuer le \textit{cross-talk}. Mais aussi, des puces 3D \citep{martin2022a} dont les guides d'onde ont été gravés par laser non pas dans un même plan mais dans le volume de la puce, permettent d'éviter les croisements qui engendrent le \textit{cross-talk} et les pertes en transmission. De même, des puces avec une modulation électro-optique fabriquées par \textit{FEMTO-ST}\footnote{\url{https://www.femto-st.fr/en}} dans un matériau différent (Niobate de Lithium LiNi) avec une meilleure transmission ont été caractérisées sur le banc de test \ac{FIRSTv2} durant ma thèse \citep{martin2022b}. Enfin, des puces utilisant différents types de coupleurs (ABCD, directionnel asymétrique) dont les paramètres physiques sont explorés ont été fabriquées et caractérisées dans \cite{lallement2022}.
 
 
 %%%%%%%%
@@ -404,14 +403,14 @@ Le principe optique du spectro-imageur du banc de test a été changé au cours 
         \hline
         \multirow{3}{*}{Caméra} & \multirow{3}{*}{N/A} & Andor Zyla 5.5 USB 3.0 \\
          & & taille des pixels $6,5 \,$\um \\
-         & & nombre de pixels en largeur $2560 \,$px \\
+         & & $2\,560 \,$px en largeur \\
         \hline
     \end{tabular}
     \caption[Spécifications de conception et caractéristiques des composants du nouveau spectro-imageur.]{Spécifications de conception et caractéristiques des composants du nouveau spectro-imageur. Le type de composant est indiqué dans la colonne de gauche, la caractéristique requise est rappelée dans la colonne du milieu (N/A est indiqué lorsque le composant existait déjà au laboratoire) et les caractéristiques finales du composant sont présentées dans la colonne de droite. CR1 : imager une bande spectrale égale à $\Delta \lambda = 160 \,$nm (entre $623 \,$nm et $781 \,$nm) sur moins que la largeur de la caméra ($1430 \,$px). CR2 : la résolution spectrale $\lambda / \Delta \lambda$ doit être égale à $2\,200$ pour $\lambda = 656,3 \,$nm. CR3 : les sorties dans les deux polarisations ne doivent pas se superposer lorsqu'elles sont imagées sur la caméra.}
     \label{tab:SpectroSpec}
 \end{table}
 
-Les caractéristiques des composants choisis pour la solution du nouveau spectro-imageur sont récapitulées dans la colonne de droite du tableau~\ref{tab:SpectroSpec}. Les composants dont la spécification n'est pas renseignée sont ceux qui étaient déjà disponibles au laboratoire, constituant les paramètres fixés de l'optimisation de la conception du spectro-imageur. 
+Les caractéristiques des composants choisis pour la solution du nouveau spectro-imageur sont récapitulées dans la colonne de droite du tableau~\ref{tab:SpectroSpec}. Les composants dont la spécification n'est pas renseignée sont ceux qui étaient déjà disponibles au laboratoire, constituant les paramètres fixés de l'optimisation de la conception du spectro-imageur.
 
 La figure~\ref{fig:SpectroPhoto} montre une photographie du nouveau spectro-imageur après intégration sur le banc de test. La source est le V-Groove (1) sur lequel sont branchées les fibres optiques de sortie de la puce photonique. Les faisceaux des fibres sont ensuite collimatés par un objectif de microscope (2) fabriqué par \textit{Thorlabs}\footnote{\url{https://www.thorlabs.com/}} qui a un grossissement $\times 2$. L'élément de dispersion (3) choisi est un réseau \ac{VPH} fabriqué par \textit{Wasatch Photonics}\footnote{\url{https://wasatchphotonics.com/}}, que j'appelle réseau holographique dans tout le manuscrit, de fréquence spatiale égale à $600 \,\text{l}.\text{mm}^{-1}$. Celui-ci travaille en transmission et est constitué d'une couche de gélatine photosensible dans laquelle le réseau de diffraction a été gravé au laser. Cette couche est confinée entre deux parois de verre en BK7 traitées en surface avec un revêtement anti-réflection pour les longueurs d'onde du visible. Le prisme de Wollaston (4) est fabriqué par \textit{Optique Fichou}\footnote{\url{https://optique-fichou.com/}} et les nouvelles optiques ont été dimensionnées en s'assurant que les sorties de la puce photonique imagées sur la caméra, après la séparation des polarisations par le prisme, soient séparées d'environ $5 - 8 \,$px sur l'axe vertical pour éviter une superposition du flux de deux sorties adjacentes. Le système imageur juste avant la caméra doit avoir une focale de $83 \,$mm pour répondre aux performances attendues et il a été choisi d'installer un objectif de Lister\footnote{\url{https://www.degruyter.com/document/doi/10.1515/aot-2019-0002/html}} afin de limiter les aberrations optiques, composé de deux lentilles (5) et (6) de focales égales à $150 \,$mm et $80 \,$mm, respectivement, disposées à $80 \,$mm l'une de l'autre. Enfin, la caméra (7) est de la gamme Andor Zyla $5.5$ disposant de $2\,560 \,$px de taille égale à $6,5 \,$\um. Le nombre de pixels choisis sur lesquels la bande spectrale est imagée est de $1\,430 \,$px ce qui permet d'intégrer le spectro-imageur sur le banc \ac{SCExAO} avec des caméras de tailles différentes, sans changer son concept et la largeur de la bande spectrale imagée.
 
@@ -421,6 +420,8 @@ La figure~\ref{fig:SpectroPhoto} montre une photographie du nouveau spectro-imag
     \caption[Photographie du spectro-imageur du banc de test de FIRSTv2.]{Photographie du spectro-imageur du banc de test de FIRSTv2. Les composants sont numérotés comme suit : (1) le V-Groove branché aux fibres de sorties de la puce photonique; (2) l'objectif de microscope de collimation (grossissement $\times 2$); (3) le réseau holographique; (4) le prisme de Wollaston; (5) la première lentille d'imagerie de focale égale $150 \,$mm; (6) la deuxième lentille d'imagerie de focale égale à $80 \,$mm; (7) la caméra.}
     \label{fig:SpectroPhoto}
 \end{figure}
+
+La caméra de la gamme ORCA-Quest qCMOS fabriquée par \textit{Hamamatsu}\footnote{\url{https://www.hamamatsu.com/}} a récemment été acquise et est intégrée dans \ac{FIRSTv1} au télescope Subaru. Elle dispose de meilleurs performances que la caméra utilisant la technologie \ac{EMCCD} jusqu'ici utilisée : entre autre, l'écart-type sur le bruit de courant d'obscurité est égal à $0,006 \,\text{e}^-.px^{-1}.s^{-1}$ et l'efficacité quantique est de $65 - 80\%$ dans la gamme $600 - 700\,$nm. Le capteur est composé de $4\,000 \times 2\,300 \,$px et les pixels ont une taille égale à $4,6 \,$\um. Cela nous permettrait d'augmenter, à terme, la résolution spectrale, lorsque la transmission de l'instrument sera plus élevée, ce qui est un atout non négligeable pour l'étude de protoplanètes, comme nous l'avons vu dans la section~\ref{sec:Protoplanetes}.
 
 L'analyse des mesures effectuées pour l'étalonnage spectral de l'instrument, présentés dans la section~\ref{sec:EtalonnageSpectral}, permet d'estimer la résolution spectrale du nouveau spectro-imageur à $\sim 3\,400$. Celle-ci est plus élevée que prévu car les composants ont été alignés à l'aide du visionnage de l'image de la caméra ce qui ne permet pas de s'assurer que les spots lumineux aient une taille de $2 \,$px a minima (pour respecter le critère de Shanon). Comme nous le verrons par la suite, cela n'empêche pas de caractériser la source protoplanétaire simulée présentée plus loins dans la section~\ref{sec:SystBinaire} car la source utilisée pour le compagnon a une largeur spectrale s'étendant sur plus de quatre pixels.
 
@@ -476,7 +477,7 @@ Le rapport signal sur bruit obtenu ou \ac{SNR} sur les images de la caméra avec
     \text{SNR} = \frac{\eta \times \text{P} \times \text{t}}{\sqrt{\sigma_{lec}^{2} + \sigma_{obsc}^{2} + \sigma_{p}^{2}}}
 \end{equation}
 
-\noindent avec $\eta$ l'efficacité quantique, $\sigma_{lec} = 1,11 \,\text{e}^-$ l'écart-type du bruit de lecture, $\sigma_{obsc} = \sqrt{\text{t} \times 0,1453 \,\text{e}^-.px^{-1}.s^{-1}}$ l'écart-type du bruit sur le courant d'obscurité et $\sigma_{p} = \sqrt{\eta \times P \times t}$ l'écart-type du bruit de photons. Les capteurs de type \ac{CMOS} actuellement fabriqués remplacent petit à petit les capteurs \ac{CCD} qui étaient incontournables ces dernières décennies. En effet, les capteurs \ac{CMOS} consomment moins d'énergie, sont plus rapides lors de la lecture des charges des pixels du capteur et présentent un bruit de courant d'obscurité et de lecture bien plus faibles.
+\noindent avec $\eta$ l'efficacité quantique, $\sigma_{lec} = 1,11 \,\text{e}^-$ l'écart-type du bruit de lecture, $\sigma_{obsc} = \sqrt{\text{t} \times 0,1453 \,\text{e}^-.px^{-1}.s^{-1}}$ l'écart-type du bruit sur le courant d'obscurité et $\sigma_{p} = \sqrt{\eta \times P \times t}$ l'écart-type du bruit de photons. Les capteurs de type \ac{CMOS} actuellement fabriqués remplacent petit à petit les capteurs \ac{CCD} qui étaient incontournables ces dernières décennies. En effet, les capteurs \ac{CMOS} consomment moins d'énergie, sont plus rapides lors de la lecture des charges des pixels du capteur et présentent un bruit de courant d'obscurité et de lecture bien plus faibles. La caméra de \ac{FIRSTv1} utilise la technologie \ac{EMCCD} qui dispose d'un gain d'amplification du signal mais, comparée à la technologie \ac{CMOS}, cela nécessite un fort gain induisant une faible dynamique et un bruit d'amplification est ajouté (voir plus de détails dans la section 2.1.1.3 de la thèse d'Elsa Huby \cite{huby2013these}).
 
 % Par exemple, l'équipe travaillant sur \ac{SCExAO} a pu montré que leur caméra fabriquée par \textit{Hamamatsu}\footnote{\url{https://www.hamamatsu.com/eu/en.html}} comptait les photons incident au capteur (de type \ac{CMOS}). Comme le montre le graphique de la figure~\ref{fig:HamamatsuSCExAO}, qui est le nombre d'occurrence (axe des ordonnées) des valeurs d'\ac{ADU} (axe des abscisses) mesurées à faible intensité lumineuse, le bas bruit permet d'atteindre une résolution sur la mesure de l'intensité lumineuse pour mesurer.
 % First, we've tried photon counting in the lab in Hilo with one of the Hamamatsu cameras. Attached is a histogram of pixel counts in the near-dark and another in the slightly less dark. #of occurence (y-axis) vs. px value in ADU (x-axis). Blue is the standard readout mode (fast) and orange is the "ultraquiet readout". As you can see, we're counting photons with probably just a few percent of errors due to the feet of each lobe.
@@ -507,12 +508,12 @@ Une partie du travail de ma thèse a consisté en l'amélioration du logiciel de
 
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}{0.9\textwidth}
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/SoftwareArchitecture_FIRSTv2_v1.png}
     \end{subfigure}
-    \line(1,0){385}\\
-    \begin{subfigure}{0.9\textwidth}
+    \line(1,0){430}\\
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/SoftwareArchitecture_FIRSTv2_v2.png}
     \end{subfigure}
@@ -530,7 +531,7 @@ La figure~\ref{fig:SoftwareScreenShot} montre une capture de l'écran de l'ordin
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=\figwidth]{Figure_Chap2/FIRSTv2_ControlSoftware_ScreenShot.png}
+    \includegraphics[angle=90,height=0.78\textheight]{Figure_Chap2/FIRSTv2_ControlSoftware_ScreenShot.png}
     \caption[Capture d'écran du logiciel de contrôle du banc de test de FIRSTv2, à Meudon.]{Capture d'écran du logiciel de contrôle du banc de test de FIRSTv2, à Meudon. À gauche, sont affichés les terminaux, de haut en bas, pour l'exécution des commandes par l'utilisateur, de l'affichage de tous les messages des différents processus et ceux qui s'ouvrent à l'exécution des programmes de la caméra, du MEMS, des ODLs et de \texttt{p2vmView.py}. En haut à droite est la fenêtre d'affichage en temps réel du flux d'images de la caméra. En bas à droite est la fenêtre d'affichage en temps réel de la carte de phase de la surface du MEMS, dont cinq segments sont commandés sur leur position qui optimise l'injection du flux dans les fibres.}
     \label{fig:SoftwareScreenShot}
 \end{figure}
@@ -608,13 +609,13 @@ Les sous-pupilles choisies sur le banc de test lors de l'acquisition de toutes l
 
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}{0.4\textwidth}
+    \begin{subfigure}{0.39\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/BaselineMap_37_7_26_15_28.png}
         \caption{Configuration des sous-pupilles choisies (en orange) dans le plan pupille sur la carte des segments du MEMS.}
         \label{fig:SegUVSimuleA}
-    \end{subfigure}%
-    \begin{subfigure}{0.6\textwidth}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.59\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap2/UVplane_37_7_26_15_28.png}
         \caption{La répartition des bases choisies représentée dans l'espace de Fourier, appelée aussi la couverture du plan UV des fréquences spatiales. Les couleurs représentent la longueur d'onde.}
@@ -635,3 +636,16 @@ Ce chapitre nous a permis de présenter les avancées de l'intégration de la te
 Dans le même but d'augmenter la transmission de l'instrument, il est envisagé de retirer les lignes à retard car leur transmission s'avère être trop faible. Pour cela, on pourra concevoir des fibres de compensation qui égaliseraient tous les chemins optiques et/ou opter pour une nouvelle technologie de puce photonique telle qu'un composant 3D ou une lanterne photonique qui permettraient aussi de se passer du toron de fibres en plus des \ac{ODL}s.
 
 Une autre partie de mon travail est la restructuration et la continuation du développement du logiciel de contrôle du banc de test. Cela a permis d'améliorer sa rapidité d'exécution, sa modularité ainsi que d'ajouter des processus d'acquisitions automatiques de données interférométriques. Je l'ai ainsi déployé sur l'ordinateur de contrôle de \ac{FIRSTv1} au télescope Subaru et il a été utilisé lors de quelques nuits d'observations avec succès.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section*{Conférence SPIE}
+\label{sec:SPIEproceeding}
+\phantomsection
+\addcontentsline{toc}{section}{Conférence SPIE}
+
+\clearpage
+\includepdf[pages=-, pagecommand={}, offset=-10 -20, templatesize={0.8\textwidth}{0.8\textheight}]{Paper/Barjot2020_SPIE_FIRSTv2LabPhotonicCharacterization.pdf}
+
+

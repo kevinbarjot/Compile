@@ -471,12 +471,12 @@ KOMA-script documentation for details.}]{fancyhdr}
 \ifbool{hyperrefsupport}{% If the nohyperref class option has not been specified
 \AtEndPreamble{\RequirePackage{hyperref}
 \hypersetup{pdfpagemode={UseOutlines},
-	pagebackref, 
+	%pagebackref, 
 	bookmarksopen=true,
 	bookmarksopenlevel=0,
 	hypertexnames=true, % pour avoir bonnes refs pages dans biblio
 	colorlinks=true, 
-	linkcolor=color16_126_179, % The color of references to document elements (sections, figures, etc)
+	linkcolor=color16_126_179,
 	citecolor=blue, 
 	urlcolor=blue, 
 	pdfstartview={FitV},
