@@ -220,7 +220,7 @@ Une autre solution serait de changer tout le système d'injection et deux concep
 \end{figure}
 
 % Alternative 3 : photonic lantern
-Deuxièmement, on envisage d'intégrer une lanterne photonique \citep{leonsaval2005} à la place des puces actuelles. Le principe de cette technologie est de convertir un faisceau injecté dans une fibre optique multi-mode en plusieurs faisceaux dans des fibres optiques mono-modes. En mesurant l'intensité en sortie des fibres optiques mono-modes, il est possible de remonter à la phase du front d'onde d'entrée. La relation entre les sorties et l'entrée d'une telle puce est non-linéaire et \cite{norris2020} propose d'utiliser un réseau de neurones pour remonter aux aberrations du front d'onde d'entrée et utilise ce système comme senseur de front-d'onde pour l'optique adaptative. Des discussions ont lieu avec Barnaby Norris afin de dimensionner un tel composant travaillant dans le visible pour son application future dans le projet \ac{FIRST}. Cela permettrait de se passer de la matrice de micro-lentille, du toron de fibres et des lignes à retard (seule une lentille suffirait pour injecter le faisceau dans la fibre d'entrée de la lanterne photonique) et optimiserait l'utilisation de tout le flux lumineux injecté dans l'instrument puisque toute la pupille est injectée dans le composant.
+Deuxièmement, on envisage d'intégrer une lanterne photonique \citep{leonsaval2005} à la place des puces actuelles. Le principe de cette technologie est de convertir un faisceau injecté dans une fibre optique multi-mode en plusieurs faisceaux dans des fibres optiques mono-modes. En mesurant l'intensité en sortie des fibres optiques mono-modes, il est possible de remonter à la phase du front d'onde d'entrée. La relation entre les sorties et l'entrée d'une telle puce est non-linéaire et \cite{norris2020a} propose d'utiliser un réseau de neurones pour remonter aux aberrations du front d'onde d'entrée et utilise ce système comme senseur de front-d'onde pour l'optique adaptative. Des discussions ont lieu avec Barnaby Norris afin de dimensionner un tel composant travaillant dans le visible pour son application future dans le projet \ac{FIRST}. Cela permettrait de se passer de la matrice de micro-lentille, du toron de fibres et des lignes à retard (seule une lentille suffirait pour injecter le faisceau dans la fibre d'entrée de la lanterne photonique) et optimiserait l'utilisation de tout le flux lumineux injecté dans l'instrument puisque toute la pupille est injectée dans le composant.
 
 
 %%%%%%%%%%%%%%%%
@@ -248,7 +248,7 @@ Les puces d'optique intégrée (photonique) sont conçues à l'\ac{IPAG} et test
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=\figwidth]{Figure_Chap2/PhotonicChip_5T_YComb_Meudon_04_crop.jpg}
-    \caption[Photographie de la puce $Y$ testée sur le banc de test de \ac{FIRSTv2} à Meudon.]{Photographie de la puce $Y$ testée sur le banc de test de \ac{FIRSTv2} à Meudon.}
+    \caption[Photographie de la puce $Y$ testée sur le banc de test de FIRSTv2 à Meudon.]{Photographie de la puce $Y$ testée sur le banc de test de FIRSTv2 à Meudon.}
     \label{fig:ChipYPhoto}
 \end{figure}
 
@@ -617,7 +617,7 @@ Les sous-pupilles choisies sur le banc de test lors de l'acquisition de toutes l
     \end{subfigure}\hfill
     \begin{subfigure}{0.59\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Figure_Chap2/UVplane_37_7_26_15_28.png}
+        \includegraphics[width=\textwidth]{Figure_Chap2/UVplane_Meudon_37_7_26_15_28.png}
         \caption{La répartition des bases choisies représentée dans l'espace de Fourier, appelée aussi la couverture du plan UV des fréquences spatiales. Les couleurs représentent la longueur d'onde.}
         \label{fig:SegUVSimuleB}
     \end{subfigure}
