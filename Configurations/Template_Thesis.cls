@@ -209,7 +209,7 @@
 \RequirePackage{longtable} % Required for tables that span multiple pages (used in the symbols, abbreviations and physical constants pages)
 
 %\RequirePackage{siunitx} % Required for \SI commands
-\RequirePackage[output-decimal-marker={,}]{siunitx}
+%\RequirePackage[output-decimal-marker={,}]{siunitx}
 
 \RequirePackage{graphicx} % Required to include images
 

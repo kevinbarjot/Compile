@@ -158,6 +158,7 @@ La figure~\ref{fig:OptiInj} est une capture d'écran de l'ordinateur de contrôl
 
 %%%%%%%%%%%%%%%%
 \subsection{Les lignes à retard}
+\label{sec:InstruODL}
 
 %%%%%%%%
 \subsubsection{Concept}
@@ -203,6 +204,7 @@ J'ai programmé une procédure de recherche de franges dans le logiciel de contr
 
 %%%%%%%%
 \subsubsection{Discussions}
+\label{sec:ODLDiscussions}
 
 Étant donné que la transmission est le point critique à améliorer pour augmenter la sensibilité de l'instrument, il est essentiel d'identifier les sources de pertes de transmission. L'étude présentée dans la partie~\ref{sec:OdlThroughput}, nous montre que les lignes à retard présentent une perte de transmission considérable et de nouvelles solutions sont envisagées afin de les retirer de l'instrument.
 
@@ -306,6 +308,7 @@ Le \textit{cross-talk} intervient ici de deux façons différentes. Premièremen
 
 % Caractérisation de la transmission
 \threesubsection{Transmission}
+\label{sec:IOChipThroughput}
 
 Le flux total transmis par la puce est calculé par la somme des flux mesurés sur les cinq images acquises pour la caractérisation du \textit{cross-talk}. On note que le flux provenant du \textit{cross-talk} n'a pas été retiré dans la somme du flux total, ainsi les valeurs de transmission présentées ci-après sont surestimées d'environ $5\%$. Ensuite on obtient la transmission par la normalisation de ce flux par le flux mesuré en injectant la lumière juste après la puce, dans une des fibres du V-Groove connecté aux sorties de la puce. La figure~\ref{fig:ChipThroughput} présente les courbes de transmission calculées de cette façon, en fonction de la longueur d'onde, pour la puce $X$ en trait continu et pour la puce $Y$ en pointillés. Dans la bande spectrale $600 - 800 \,$nm, la transmission de la puce $X$ et de la puce $Y$ est mesurée à $\sim 30\%$ et à $\sim 13\%$, respectivement. Ces valeurs de transmission sont bien plus élevées que celles des puces précédentes testées avant ma thèse (moins de $1\%$) et sont mêmes suffisantes pour qu'on puisse intégrer les puces sur \ac{SCExAO} afin de les tester sur des cibles astrophysiques (pour plus de détails voir la section~\ref{sec:FIRSTv2Subaru}). Le facteur $2$ entre les deux transmissions mesurées est attendu, étant donné que le flux injecté dans le coupleur $Y$ est à moitié transmis dans le sortie et à moitié diffusé en dehors des guides. Le couplage directionnel transmet cette moitié diffusée dans le deuxième guide de sortie (voir plus de détails dans la section II-B-6 de \cite{labeye2008}). On pourrait avoir une préférence pour l'utilisation de la puce $X$ sur \ac{FIRSTv2} pour sa meilleure transmission, mais comme on le verra par la suite, elle ne permet pas d'estimation satisfaisante des observables interférométriques et la puce $Y$ se révèle bien meilleure de ce point de vue là.
 
@@ -338,6 +341,7 @@ J'utilise les cinq images décrites précédemment pour estimer les valeurs d'in
 
 % Conclusion
 \threesubsection{Conclusion sur la caractérisation}
+\label{sec:ChipCharacDiscu}
 
 En résumé, j'ai mesuré un niveau de \textit{cross-talk} équivalent pour les deux puces, mais un contraste interférométrique dégradé de $\sim 20\%$ sur les mesures de la puce $X$. De plus, les transmissions des puces $X$ et $Y$ sont estimées à $30\%$ et $13\%$, respectivement. Le facteur $2$ observé entre les transmissions des deux puces est attendu du fait des natures transmissives différentes des coupleurs directionnel et des jonctions $Y$. La puce $X$ offre ainsi le double avantage, premièrement, d'être plus transmissive et, deuxièmement, de disposer de deux points de mesures des franges déphasés de $\pi \,$rad sur chaque image acquise, permettant de diviser par 2 la quantité de données nécessaire (plus de détails dans la section~\ref{sec:Modulation}).
 
@@ -348,6 +352,7 @@ Ainsi, les valeurs de transmission mesurées sont suffisantes pour permettre leu
 
 %%%%%%%%
 \subsubsection{La polarisation}
+\label{sec:ChipPolar}
 
 Les deux polarisations ne sont pas transmises de la même façon à travers les composants d'optique intégrée. En effet, en plaçant un prisme de Wollaston en sortie de la puce (juste après le réseau holographique) pour imager les deux polarisations et un polariseur en entrée de la puce (juste avant la matrice de micro-lentilles) que l'on place successivement sur les deux polarisations, on peut estimer la façon dont les deux polarisations se propagent dans la puce. On note que le prisme de Wollaston ne peut pas être réglé en rotation autour de son axe $Z$, contrairement au polariseur en entrée. La figure~\ref{fig:PolaComparison} présente le flux des $20$ sorties de la puce $Y$ ($10$ pour chaque polarisation) lorsque le polariseur sélectionne la polarisation verticale (V) (dénommée ici \og Pola X \fg) sur l'image de gauche, lorsque le polariseur est enlevé du chemin optique sur l'image du milieu et lorsque le polariseur sélectionne la polarisation horizontale (H) (dénommée ici \og Pola Y \fg) sur l'image de droite. Les flèches bleues et rouges identifient les polarisation V et H séparées par le prisme de Wollaston, respectivement. La source utilisée ici est la source SLED 650 fabriquée par \textit{Exalos Inc.}\footnote{\url{https://www.exalos.com/}} de largeur spectrale mesurée de $\sim 10 \,$nm. Ce qu'on peut déduire de ces mesures c'est que premièrement, lorsque le polariseur sélectionne l'une ou l'autre des polarisations à l'injection de la puce, on mesure une intensité lumineuse sur les sorties dans les deux polarisations discriminées par le prisme de Wollaston (et aucune position du polariseur ne permet d'annuler totalement le flux d'une des deux moitiés des sorties sur la caméra). Il semblerait qu'une partie de la polarisation sélectionnée est projetée dans l'autre polarisation au cours de la transmission dans la puce. Deuxièmement, on remarque qu'il y a moins de flux converti dans l'autre polarisation lorsque c'est la polarisation V qui est sélectionnée par le polariseur en entrée de la puce.
 
@@ -611,7 +616,7 @@ Les sous-pupilles choisies sur le banc de test lors de l'acquisition de toutes l
     \centering
     \begin{subfigure}{0.39\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Figure_Chap2/BaselineMap_37_7_26_15_28.png}
+        \includegraphics[width=\textwidth]{Figure_Chap2/BaselineMap_Meudon_37_7_26_15_28.png}
         \caption{Configuration des sous-pupilles choisies (en orange) dans le plan pupille sur la carte des segments du MEMS.}
         \label{fig:SegUVSimuleA}
     \end{subfigure}\hfill

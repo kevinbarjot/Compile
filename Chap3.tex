@@ -411,6 +411,7 @@ Ensuite, sont déduites les phases pour chaque point de la séquence de modulati
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ajustement des franges}
+\label{sec:FullOnFit}
 
 Maintenant que la \ac{V2PM} est estimée, il s'agit de faire l'acquisition d'images contenant toutes les bases modulées en phase simultanément. La figure~\ref{fig:FullOnData} présente les interférogrammes mesurés pour la puce $Y$ et la puce $X$ sur les lignes d'images $1$ et $3$, respectivement (pour le canal spectral $\sim 706 \,$nm). Chaque colonne d'images est associé à une base et chaque image est une matrice de dimension $n_p \times n_S$ avec $n_p$ le nombre de points échantillonnés par base en fonction de l'\ac{OPD} (correspondant à une séquence de modulation) et $n_S$ le nombre de fois que la séquence de modulation a été acquise (les interférogrammes sont en fait empilés verticalement). On dispose ainsi de ces matrices pour chaque canal spectral et elles sont ensuite chacune multipliées par la \ac{P2VM} du canal spectral correspondant selon l'équation~\ref{eq:VisibiliteMes}. Le résultat sont les matrices des visibilités $\text{\textbf{P}}$, de dimensions $25 \times n_S$ pour cinq sous-pupilles considérées (et dix bases). On a alors pour chaque base (et chaque canal spectral) le terme de visibilité complexe selon l'équation~\ref{eq:mu}, dans lequel est inclus le terme de piston différentiel intrinsèque à l'instrument, $\psi_{nn'}$. Nous verrons dans la section~\ref{sec:PhaseSpecDiff} comment extraire le terme de phase associée à l'objet observé $\varphi_{nn'}$.
 
@@ -516,6 +517,7 @@ Enfin, la phase différentielle est une observable au premier ordre et à la dif
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La stabilité des mesures sur le banc FIRSTv2}
+\label{sec:CPStabilityMeudon}
 
 Pour caractériser la stabilité des mesures de phases sur le banc de test de \ac{FIRSTv2}, j'acquiers des données sur la source interne non résolue. Ainsi, on s'attend à ce que le module des visibilités complexes estimées sur une telle source soit égale à $|V_{nn'}| = 1$ et sa phase à $\varphi_{nn'} = 0$. Par conséquent, l'équation~\ref{eq:mu} du terme de cohérence complexe de la base formée par les sous-pupilles $n$ et $n'$ devient $\mu_{nn'} = A_n A_{n'} e^{i(\Delta\Phi_{nn'})}$. La mesure de la phase de la cohérence complexe sur la source interne revient donc à mesurer le piston différentiel des perturbations sur le banc $\Delta\Phi_{nn'} = 2 \pi \sigma \delta_{nn'} [2 \pi]$. Pour ce faire, une fonction polynomiale d'ordre $2$ est ajustée à chaque mesure de phase déroulée selon la méthode présentée dans la section~\ref{sec:PhaseDiffFIRSTv2}, ce qui permet d'extraire le terme d'\ac{OPD} $\delta_{nn'}$, qui est le coefficient du terme polynomial d'ordre $1$.
 
