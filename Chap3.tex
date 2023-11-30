@@ -29,11 +29,11 @@ Un tel cube sans frange est systématiquement acquis à chaque prise de données
 \begin{figure}[ht!]
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20220705_DarkFullImage_100ms_24C_Im0.png}
+        \includegraphics[width=\textwidth]{Figure_Chap3/20220705_DarkFullImage_100ms_24C_Im0_clip.png}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20220705_DarkFullImage_100ms_24C_median.png}
+        \includegraphics[width=\textwidth]{Figure_Chap3/20220705_DarkFullImage_100ms_24C_median_clip.png}
     \end{subfigure}
     \caption[Images du courant d'obscurité de la caméra de FIRSTv2.]{A gauche une image de la caméra non illuminée et à droite la médiane de $100$ de ces images, pour le même temps d'exposition de $100 \,$ms. Les valeurs des pixels données sur les échelles sont en \ac{ADU}.}
     \label{fig:DarkFull}
@@ -68,10 +68,10 @@ Ici on souhaite associer à chaque pixel une valeur de longueur d'onde. Pour cel
 
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.9\textwidth}
         \includegraphics[width=\textwidth]{Figure_Chap3/Neon_SpectrumReference_Astrosurf.png}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
+    \end{subfigure}
+    \begin{subfigure}{0.9\textwidth}
         \includegraphics[width=\textwidth]{Figure_Chap3/Neon_SpectrumReference_ThesisEHuby.png}
     \end{subfigure}
     \caption[Spectres de référence d'émission du Néon utilisés pour l'étalonnage spectral de FIRSTv2.]{Spectres de références d'émission du Néon utilisés pour l'étalonnage spectral de FIRSTv2. À gauche est un spectre trouvé sur le site Astrosurf, présentant l'intensité des raies d'émissions du Néon (axe des ordonnées) en fonction de la longueur d'onde en Angstrom (axe des abscisses). À droite est le spectre tel que mesuré par FIRSTv1 pendant la thèse d'Elsa Huby traçant l'intensité des raies d'émission du Néon (axe des ordonnées) en fonction des pixels (axe des abscisses) de la caméra utilisée. Sur les deux spectres la longueur d'onde des pics est notée sur le graphique au-dessus de chaque pic.}
@@ -183,7 +183,7 @@ Où l'intensité lumineuse des deux faisceaux est supposée égale et où le fac
     \mu_{nn'}(\vv{S}) = \frac{\int_{\alpha, \beta} I_{\lambda}(\alpha,\beta) e^{-2i\pi (\alpha u + \beta v)} d\alpha d\beta}{\int_{\alpha, \beta} I_{\lambda}(\alpha,\beta) d\alpha d\beta} \label{eq:ZVC}
 \end{equation}
 
-Avec $(\alpha,\beta)$ les coordonnées du vecteur $\vv{Z}$, $(u, v)$ les coordonnées du vecteur fréquence spatiale $\vv{S} = \vv{B}/\lambda$ projeté selon $\vv{Z}$. L'équation~\ref{eq:ZVC} est le résultat du théorème de Zernike - Van Cittert, qui énonce que la cohérence complexe est la transformée de Fourier de la distribution spatiale d'intensité de la source. C'est donc ce terme là que l'on cherche à mesurer pour obtenir des informations sur la cible observée. On l'appelle aussi communément la visibilité complexe que l'on note donc comme suit :
+Avec $(\alpha,\beta)$ les coordonnées du vecteur $\vv{Z}$, $(u, v)$ les coordonnées du vecteur fréquence spatiale $\vv{S} = \vv{B}/\lambda$ projeté selon $\vv{Z}$. L'équation~\ref{eq:ZVC} est le résultat du théorème de Zernike - Van Cittert, qui énonce que la cohérence complexe est la transformée de Fourier de la distribution spatiale d'intensité de la source normalisée par le flux de cette dernière. C'est donc ce terme là que l'on cherche à mesurer pour obtenir des informations sur la cible observée. On l'appelle aussi communément la visibilité complexe que l'on note donc comme suit :
 
 \begin{equation}
 	\mu_{nn'} = |V_{nn'}| e^{i\varphi_{nn'}} A_n A_{n'} e^{i(\psi_{nn'} + \Delta\Phi_{nn'})} \label{eq:mu}
@@ -213,7 +213,7 @@ Et d'après l'équation~\ref{eq:Interferogramme3} combinée avec l'équation~\re
     &= \sum_{i \in \{n,n'\}} A_{i}^{2} E_{i}^{2} + 2 A_n E_n A_{n'} E_{n'} cos \left(\frac{2 \pi}{\lambda}x + \varphi_{nn'} + \psi_{nn'} + \Delta\Phi_{nn'} \right)
 \end{align}
 
-Avec $A_i$ le flux et $E_i$ l'enveloppe de la cohérence temporelle, de la sous-pupille $i$. On considère les termes $A_i$ $E_i$ indépendant de $x$. Les termes $A_i^2 E_i^2$ caractérisent notamment la transmission de la puce. En effet, chaque sortie imagée sur le détecteur est la combinaison interférométrique de faisceaux qui traversent des guides d'onde différent dans la puce.
+Avec $A_i$ le flux et $E_i$ l'enveloppe de la cohérence temporelle, de la sous-pupille $i$. On considère les termes $A_i$ et $E_i$ indépendants de $x$. Les termes $A_i^2 E_i^2$ caractérisent notamment la transmission de la puce. En effet, chaque sortie imagée sur le détecteur est la combinaison interférométrique de faisceaux qui traversent des guides d'onde différents dans la puce.
 
 En reformulant cette équation et en utilisant la relation~\ref{eq:mu}, on trouve une relation linéaire entre l'interférogramme $I_{nn'}(x)$ et le terme de cohérence complexe $\mu_{nn'}$, s'écrivant :
 
@@ -293,7 +293,7 @@ avec V2PM =
     \draw[<->] ([yshift=1.5ex,xshift=3ex]varrowtop) -- ([xshift=3ex]varrowbottom) node[midway,right] {\scriptsize \rotatebox{90}{$n_B \times n_p$}};
 }
 
-La \acrfull{V2PM}, relie le vecteur $\textbf{P}$ des termes de cohérence complexe aux interférogrammes $\textbf{I}$. Elle contient les termes qui caractérisent les erreurs (e.g. \textit{cross-talk}, désalignement, mauvais pixels du détecteur, ...) et les caractéristiques instrumentales (e.g. utilisation d'une puce photonique, les transmissions différentes dans les fibres, ...). Cette matrice constitue un modèle de l'instrument et est calculée pour chaque canal spectral. Elle permet alors d'étalonner la réponse de l'instrument à un signal d'entrée modulé selon la séquence de modulation.
+La \acrfull{V2PM}, relie le vecteur $\textbf{P}$ des termes de cohérence complexe aux interférogrammes $\textbf{I}$. Elle contient les termes qui caractérisent les erreurs (e.g. diaphotie, désalignement, mauvais pixels du détecteur, ...) et les caractéristiques instrumentales (e.g. utilisation d'une puce photonique, les transmissions différentes dans les fibres, ...). Cette matrice constitue un modèle de l'instrument et est calculée pour chaque canal spectral. Elle permet alors d'étalonner la réponse de l'instrument à un signal d'entrée modulé selon la séquence de modulation.
 
 Enfin, à partir de l'équation~\ref{eq:IV2PMP} nous cherchons à déduire le vecteur $\textbf{P}$, or la \ac{V2PM} est une matrice rectangulaire de dimensions $(n_B \times n_p) \times (n_I + 2 n_B)$ et ne peut donc être simplement inversée. Nous calculons donc la matrice pseudo-inverse (de Moore-Penrose) de la \ac{V2PM} afin d'estimer les paramètres :
 
@@ -308,24 +308,24 @@ avec $P2VM = V2PM^\dag$ (\textit{Pixel To Visibility Matrix}) la matrice pseudo-
 \subsection{Étalonnage de la V2PM}
 \label{sec:V2PMEtalonnage}
 
-Dans cette partie sont présentées les procédures de mesure de la \ac{V2PM}. Une nouvelle \ac{V2PM} est mesurée sur une source interne avant chaque nouvelle session de mesures : si les conditions instrumentales ont changé (e.g. changement de la séquence de modulation) ou avant chaque nuit d'observation. La figure~\ref{fig:V2PMP2VMmesure}, à gauche, est une représentation graphique de \ac{V2PM} mesurées sur \ac{FIRSTv2} pour le canal spectral $\sim 706 \,$nm et à droite la \ac{P2VM} associée, pour la puce $Y$ (ligne du haut) et la puce $X$ (ligne du bas). Pour $5$ sous-pupilles, la \ac{V2PM} de \ac{FIRSTv2} a donc $25$ colonnes : les cinq premières contiennent les termes $E_{n}^2$, les dix suivantes contiennent les termes $C_{b_i}(x)$ et les dix dernières contiennent les termes $S_{b_i}(x)$. Enfin, il y a $n_B$ paquets de $n_p$ (nombre de pixels sur l'axe des \ac{OPD}s) lignes, ce qui correspond ici à $10 \times 12 = 120$ lignes et $10 \times 20 = 200$ lignes pour la puce $X$, respectivement. Cette différence du nombre de ligne pour l'une et l'autre puce est due au fait que les données sur la puce $X$ ont été prises antérieurement aux données prises sur la puce $Y$, à une période où la séquence de modulation n'avait pas encore été optimisée (de $20$ à $12$ pas) de la façon expliquée dans la section~\ref{sec:Modulation}. De plus, on note que les paires de sorties par base des données de la puce $X$ ont été traitées indépendamment durant ma thèse et seront traitées ensemble lors de futurs développement. Enfin, chaque colonne contient en majorité des zéros et la matrice agit comme un masque sur les pixels des bases lors de la multiplication matricielle de la \ac{V2PM} par les données.
+Dans cette partie sont présentées les procédures de mesure de la \ac{V2PM}. Une nouvelle \ac{V2PM} est mesurée sur une source interne avant chaque nouvelle session de mesures : si les conditions instrumentales ont changé (e.g. changement de la séquence de modulation) ou avant chaque nuit d'observation. La figure~\ref{fig:V2PMP2VMmesure}, à gauche, est une représentation graphique de \ac{V2PM} mesurées sur \ac{FIRSTv2} pour le canal spectral $\sim 706 \,$nm et à droite la \ac{P2VM} associée, pour la puce $Y$ (ligne du haut) et la puce $X$ (ligne du bas). Pour $5$ sous-pupilles, la \ac{V2PM} de \ac{FIRSTv2} a donc $25$ colonnes : les cinq premières contiennent les termes $E_{n}^2$, les dix suivantes contiennent les termes $C_{b_i}(x)$ et les dix dernières contiennent les termes $S_{b_i}(x)$. Enfin, il y a $n_B$ paquets de $n_p$ (nombre de pixels sur l'axe des \ac{OPD}s) lignes, ce qui correspond ici à $10 \times 12 = 120$ lignes et $10 \times 20 = 200$ lignes pour la puce $X$, respectivement. Cette différence du nombre de lignes pour l'une et l'autre puce est due au fait que les données sur la puce $X$ ont été prises antérieurement aux données prises sur la puce $Y$, à une période où la séquence de modulation n'avait pas encore été optimisée (de $20$ à $12$ pas) de la façon expliquée dans la section~\ref{sec:Modulation}. De plus, on note que les paires de sorties par base des données de la puce $X$ ont été traitées indépendamment durant ma thèse et seront traitées ensemble lors de futurs développement. Enfin, chaque colonne contient en majorité des zéros et la matrice agit comme un masque sur les pixels des bases lors de la multiplication matricielle de la \ac{V2PM} par les données.
 
 \begin{figure}[ht!]
     \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{Figure_Chap3/20221010_V2PM_Pola1_706nm.png}
+        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20221010_V2PM_Pola1_706nm.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{Figure_Chap3/20221010_P2VM_Pola1_706nm.png}
+        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20221010_P2VM_Pola1_706nm.png}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{Figure_Chap3/20220811_V2PM_Pola1_706nm.png}
+        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20220811_V2PM_Pola1_706nm.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{Figure_Chap3/20220811_P2VM_Pola1_706nm.png}
+        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20220811_P2VM_Pola1_706nm.png}
     \end{subfigure}
     \caption[Représentation graphique de la V2PM et de sa P2VM mesurée sur FIRSTv2, pour les deux puces.]{Représentation graphique de la V2PM (colonne de gauche) et de la P2VM associée (colonne de droite) mesurée sur la puce $Y$ (ligne du haut) et la puce $X$ (ligne du bas). Ce sont les V2PM (P2VM) du canal spectral $\sim 706 \,$nm, mesurées sur FIRSTv2 avec une source \sk. L'axe vertical (respectivement l'axe horizontal) de la V2PM (respectivement de la P2VM) est le nombre de points de la séquence de modulation (OPD) multiplié par le nombre de bases ($12 \times 10 = 120$ pour la $Y$ et $20 \times 10 = 200$ pour la $X$) et l'axe horizontal (respectivement l'axe vertical) contient $5$ termes de transmission en plus de $2 \times 10$ termes interférométriques.}
     \label{fig:V2PMP2VMmesure}
@@ -371,13 +371,15 @@ Pour chaque entrée illuminée, le flux de chaque sortie est normalisé par la s
 %%%%%%%%
 \subparagraph{Mesure des termes interférométriques \\}
 
-Dans cette partie, on souhaite mesurer expérimentalement la séquence de modulation des franges. Pour cela, les interférogrammes sont modulés en phase les uns après les autres et la phase des franges est estimée pour chaque pas de la séquence et remplis les dernières colonnes de la \ac{V2PM}, selon la procédure décrite ci-après.
+Dans cette partie, on souhaite mesurer expérimentalement la séquence de modulation des franges. Pour cela, les interférogrammes sont modulés en phase les uns après les autres et la phase des franges est estimée pour chaque pas de la séquence et remplit les dernières colonnes de la \ac{V2PM}, selon la procédure décrite ci-après.
 
 En effet, on souhaite estimer les termes $C_{b_i}(x)$ et $S_{b_i}(x)$ qui remplissent les vingt dernières colonnes de la \ac{V2PM}. La procédure de l'instrument \ac{AMBER} préconise de mesurer les franges d'interférences indépendamment sur chaque base. Pour cela, seules les entrées $n$ et $n'$ de la puce formant la base $b_i$ sont illuminées et une série d'images est acquise en appliquant la séquence de modulation des franges. Cette acquisition est répétée cinq fois en translatant de manière aléatoire de quelques micromètres les cinq lignes à retard (\acrfull{ODL}) afin de mesurer les interférogrammes sur une plus grande diversité de phase. Il résulte ainsi $5$ séries d'images avec les franges modulées pour chacune des $10$ bases. 
 
-Par la suite, une image est formée à partir des $5$ séries, pour chaque base successivement, en considérant une partie du spectre seulement. Dans l'idéal on ne souhaiterait utiliser qu'un seul canal spectral afin d'estimer la phase de la séquence évaluée à une longueur d'onde donnée. Mais en pratique on choisit de l'ordre de la dizaine de canaux sur la partie du spectre avec le plus de flux (ce qui correspond à une largeur spectrale de $\sim 6\,$nm), afin d'améliorer le \ac{SNR} de l'estimation des phases dans la suite. Cette image est formée en disposant les interférogrammes mesurés ($12$ points) par colonne, donnant une taille d'image de $12$ lignes par $5 \times n_{sm} \times \Delta\lambda_{px}$, $5$ étant le nombre de série d'images acquises, $n_{sm}$ le nombre de séquence de modulation effectuées lors de cette série et $\Delta\lambda_{px} = 50$ le nombre de canaux spectraux utilisés. Pour une série de $400$ images ($20$ acquisitions répétées $5$ fois), la taille de l'image finale est donc de $12$ lignes par $5 \times 33 \times 50 = 8\,250$ colonnes. Une décomposition en valeurs singulières, ou \ac{SVD}, est alors opérée sur cette image afin d'en déduire les vecteurs propres sur lesquels l'image se projette. Comme elle est composée des interférogrammes mesurés, on s'attend à ce que seulement deux vecteurs propres aient des valeurs singulières qui dominent la décomposition. Ces deux vecteurs propres sont orthonormales et peuvent donc êtres assimilés aux fonctions cosinus et sinus de l'équation~\ref{eq:InterferogrammeLineaire}. La phase de l'interférogramme est ainsi déduite de l'angle formé par ceux-ci.
+Par la suite, une image est formée à partir des $5$ séries, pour chaque base successivement, en considérant une partie du spectre seulement. Dans l'idéal on ne souhaiterait utiliser qu'un seul canal spectral afin d'estimer la phase de la séquence évaluée à une longueur d'onde donnée. Mais en pratique on choisit de l'ordre de la dizaine de canaux sur la partie du spectre avec le plus de flux (ce qui correspond à une largeur spectrale de $\sim 6\,$nm), afin d'améliorer le \ac{SNR} de l'estimation des phases dans la suite. Cette image est formée en disposant les interférogrammes mesurés ($12$ points) par colonne, donnant une taille d'image de $12$ lignes par $5 \times n_{sm} \times \Delta\lambda_{px}$, $5$ étant le nombre de série d'images acquises, $n_{sm}$ le nombre de séquence de modulation effectuées lors de cette série et $\Delta\lambda_{px} = 50$ le nombre de canaux spectraux utilisés. Pour une série de $400$ images ($20$ acquisitions répétées $5$ fois), la taille de l'image finale est donc de $12$ lignes par $5 \times 33 \times 50 = 8\,250$ colonnes. Une décomposition en valeurs singulières, ou \ac{SVD}, est alors opérée sur cette image afin d'en déduire les vecteurs propres sur lesquels l'image se projette. Comme elle est composée des interférogrammes mesurés, on s'attend à ce que seulement deux vecteurs propres aient des valeurs singulières qui dominent la décomposition. Ces deux vecteurs propres sont orthonormaux et peuvent donc être assimilés aux fonctions cosinus et sinus de l'équation~\ref{eq:InterferogrammeLineaire}. La phase de l'interférogramme est ainsi déduite de l'angle formé par ceux-ci.
 
-La figure~\ref{fig:SVD} illustre le résultat de la \ac{SVD} appliquée aux données qui ont permis d'estimer la \ac{V2PM} de la figure~\ref{fig:V2PMP2VMmesure}. A gauche sont représentées les valeurs singulières pour chaque base (selon les couleurs de la légende), normalisées par rapport à la première et on voit effectivement que les deux premières dominent les autres. Sur la figure de droite sont tracés dans le plan complexe, pour chaque base, les deux vecteurs propres associés aux deux premières valeurs singulières. Dans cette représentation, une frange idéalement échantillonnée formerait un cercle, constitué de points régulièrement espacés. La séquence de modulation a pour but d'échantillonner au mieux ces cercles, avec au minimum $4$ points déphasés de $\uppi / 2 \,$rad (il s'agit de la méthode ABCD, voir la figure~\ref{fig:FringeSamplingABCD}). Ces graphes nous ont servi de point de vérification que la \ac{SVD} a bien fonctionné, nous permettant de faire des corrections ou des améliorations du code lui-même ou nous indiquant que le traitement peut poursuivre. Dans le cas où cela ne fonctionne pas et que les deux premières valeurs singulières ne dominent pas les autres ou que les vecteurs propres ne forment pas des cercles (cela peut apparaître comme des ellipses ou des formes non régulières ou non équitablement échantillonnés), cela peut vouloir dire qu'il y a un problème dans la prise de données (e.g. il est arrivé que les segments du \ac{MEMS} soient restés immobiles), dans la séquence de modulation choisie (plusieurs séquences ont été testées) ou dans le processus de réduction de données en amont.
+La figure~\ref{fig:SVD} illustre le résultat de la \ac{SVD} appliquée aux données qui ont permis d'estimer la \ac{V2PM} de la figure~\ref{fig:V2PMP2VMmesure}. À gauche sont représentées les valeurs singulières pour chaque base (selon les couleurs de la légende), normalisées par rapport à la première et on voit effectivement que les deux premières dominent les autres. Sur la figure de droite sont tracés les deux vecteurs propres associés aux deux premières valeurs singulières, dans le plan complexe et pour chaque base. Dans cette représentation, une frange idéalement échantillonnée formerait un cercle, constitué de points régulièrement espacés. La séquence de modulation a pour but d'échantillonner au mieux ces cercles, avec au minimum $4$ points déphasés de $\uppi / 2 \,$rad (il s'agit de la méthode ABCD, voir la figure~\ref{fig:FringeSamplingABCD}). Or, la séquence de modulation des franges utilisée ne mesure pas seulement ces quatres points, mais elle en mesure quatre autres pour quatre valeurs d'\ac{OPD} différentes (voir la section~\ref{sec:Modulation}). Cela se remarque en comptant le nombre de points tracés sur les graphiques (au nombre de 8 ou de 9 suivant si le point à zéro \ac{OPD} est mesuré ou non). Aussi, les bases 2 et 6 ne présentent que cinq points de mesure, ce qui se comprend en regardant les valeurs d'\ac{OPD} appliquées par la séquence de modulation présentée sur le bas de la figure~\ref{fig:ModSeq12}.
+
+Ces graphes nous ont servi de point de vérification que la \ac{SVD} a bien fonctionné, nous permettant de faire des corrections ou des améliorations du code lui-même ou nous indiquant que le traitement peut poursuivre. Dans le cas où cela ne fonctionne pas et que les deux premières valeurs singulières ne dominent pas les autres ou que les vecteurs propres ne forment pas des cercles (cela peut apparaître comme des ellipses ou des formes non régulières ou non équitablement échantillonnés), cela peut vouloir dire qu'il y a un problème dans la prise de données (e.g. il est arrivé que les segments du \ac{MEMS} soient restés immobiles), dans la séquence de modulation choisie (plusieurs séquences ont été testées) ou dans le processus de réduction de données en amont.
 
 \begin{figure}[ht!]
     \begin{subfigure}{0.5\textwidth}
@@ -388,7 +390,7 @@ La figure~\ref{fig:SVD} illustre le résultat de la \ac{SVD} appliquée aux donn
         \centering
         \includegraphics[width=\textwidth]{Figure_Chap3/20221010_ComplexVisibility_Pola1_Base_LaTex.png}
     \end{subfigure}
-    \caption[Résultats de la SVD appliquée aux données de FIRSTv2 mesurées avec la puce $Y$.]{Résultats de la SVD appliquée aux données de FIRSTv2 mesurées avec la puce $Y$. A gauche sont tracées les valeurs singulières trouvées pour chaque base (selon les couleurs de la légende), normalisées par rapport à la première. A droite sont représentées dans le plan complexe les vecteurs propres.}
+    \caption[Produits finaux de la SVD appliquée aux données de FIRSTv2 mesurées avec la puce $Y$.]{Produits finaux de la SVD appliquée aux données de FIRSTv2 mesurées avec la puce $Y$. A gauche sont tracées les valeurs singulières trouvées pour chaque base (selon les couleurs de la légende), normalisées par rapport à la première et pour chaque étape de la séquence de modulation en abscisse. A droite sont représentées les vecteurs propres dans le plan complexe.}
     \label{fig:SVD}
 \end{figure}
 
@@ -413,18 +415,18 @@ Ensuite, sont déduites les phases pour chaque point de la séquence de modulati
 \section{Ajustement des franges}
 \label{sec:FullOnFit}
 
-Maintenant que la \ac{V2PM} est estimée, il s'agit de faire l'acquisition d'images contenant toutes les bases modulées en phase simultanément. La figure~\ref{fig:FullOnData} présente les interférogrammes mesurés pour la puce $Y$ et la puce $X$ sur les lignes d'images $1$ et $3$, respectivement (pour le canal spectral $\sim 706 \,$nm). Chaque colonne d'images est associé à une base et chaque image est une matrice de dimension $n_p \times n_S$ avec $n_p$ le nombre de points échantillonnés par base en fonction de l'\ac{OPD} (correspondant à une séquence de modulation) et $n_S$ le nombre de fois que la séquence de modulation a été acquise (les interférogrammes sont en fait empilés verticalement). On dispose ainsi de ces matrices pour chaque canal spectral et elles sont ensuite chacune multipliées par la \ac{P2VM} du canal spectral correspondant selon l'équation~\ref{eq:VisibiliteMes}. Le résultat sont les matrices des visibilités $\text{\textbf{P}}$, de dimensions $25 \times n_S$ pour cinq sous-pupilles considérées (et dix bases). On a alors pour chaque base (et chaque canal spectral) le terme de visibilité complexe selon l'équation~\ref{eq:mu}, dans lequel est inclus le terme de piston différentiel intrinsèque à l'instrument, $\psi_{nn'}$. Nous verrons dans la section~\ref{sec:PhaseSpecDiff} comment extraire le terme de phase associée à l'objet observé $\varphi_{nn'}$.
+Maintenant que la \ac{V2PM} est estimée, il s'agit de faire l'acquisition d'images contenant toutes les bases modulées en phase simultanément. La figure~\ref{fig:FullOnData} présente les interférogrammes mesurés pour la puce $Y$ et la puce $X$ sur les lignes d'images $1$ et $3$, respectivement (pour le canal spectral $\sim 706 \,$nm). Chaque colonne d'images est associée à une base et chaque image est une matrice de dimension $n_p \times n_S$ avec $n_p$ le nombre de points échantillonnés par base en fonction de l'\ac{OPD} (correspondant à une séquence de modulation) et $n_S$ le nombre de fois que la séquence de modulation a été acquise (les interférogrammes sont en fait empilés verticalement). On dispose ainsi de ces matrices pour chaque canal spectral et elles sont ensuite chacune multipliées par la \ac{P2VM} du canal spectral correspondant selon l'équation~\ref{eq:VisibiliteMes}. Le résultat sont les matrices des visibilités $\text{\textbf{P}}$, de dimensions $25 \times n_S$ pour cinq sous-pupilles considérées (et dix bases). On a alors pour chaque base (et chaque canal spectral) le terme de visibilité complexe selon l'équation~\ref{eq:mu}, dans lequel est inclus le terme de piston différentiel intrinsèque à l'instrument, $\psi_{nn'}$. Nous verrons dans la section~\ref{sec:PhaseSpecDiff} comment extraire le terme de phase associée à l'objet observé $\varphi_{nn'}$.
 
 \begin{figure}[ht!]
     \begin{subfigure}{\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{Figure_Chap3/20221010_FringeFitting_TemporalModulation_Pola1_Base_LaTex.png}
+        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20221010_FringeFitting_TemporalModulation_Pola1_Base_LaTex.png}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{Figure_Chap3/20220811_FringeFitting_TemporalModulation_Pola1_Base_LaTex.png}
+        \includegraphics[width=0.9\textwidth]{Figure_Chap3/20220811_FringeFitting_TemporalModulation_Pola1_Base_LaTex.png}
     \end{subfigure}
-    \caption[Interférogrammes mesurés et ajustés par la P2VM des puces $Y$ et $X$ mesurés sur FIRSTv2.]{Images des interférogrammes mesurés (lignes du haut) et ajustés (lignes du bas) sur les $10$ bases (en colonne), pour la puce $Y$ (les deux premières lignes) et la puce $X$ (les deux dernières lignes). L'axe horizontal est composé des $12$ et $20$ pas des séquences de modulation pour la puce $Y$ et la puce $X$, respectivement. Les axes verticaux sont le nombre de fois que la séquence de modulation a été acquise. Ces images sont pour le canal spectral $\sim 706 \,$nm.}
+    \caption[Interférogrammes mesurés et ajustés par la P2VM des puces $Y$ et $X$ mesurés sur FIRSTv2.]{Images des interférogrammes mesurés (lignes du haut) et ajustés (lignes du bas) sur les $10$ bases (en colonne), pour la puce $Y$ (les deux premières lignes) et la puce $X$ (les deux dernières lignes). L'axe horizontal est composé des $12$ et $20$ pas des séquences de modulation pour la puce $Y$ et la puce $X$, respectivement. Les axes verticaux sont le nombre de fois que la séquence de modulation a été acquise. Ces images sont normalisées et sont pour le canal spectral $\sim 706 \,$nm.}
     \label{fig:FullOnData}
 \end{figure}
 
@@ -434,7 +436,7 @@ En multipliant la matrice des visibilités $\text{\textbf{P}}$ par la \ac{V2PM} 
     I_r = V2PM \cdot \text{\textbf{P}} \label{eq:FullOnFit}
 \end{equation}
 
-On note que sur tous ces interférogrammes on peut reconnaître la séquence de modulation en s'attardant sur les variations d'intensité selon l'axe horizontal des interférogrammes mesurés de la figure~\ref{fig:FullOnData}, en comparant chaque image de celle-ci à chaque ligne des séquence appliquées des figure~\ref{fig:ModSeq12} et figure~\ref{fig:ModSeq20}.
+On note que sur tous ces interférogrammes on peut reconnaître la séquence de modulation en s'attardant sur les variations d'intensité selon l'axe horizontal des interférogrammes mesurés de la figure~\ref{fig:FullOnData}, en comparant chaque image de celle-ci à chaque ligne des séquences appliquées des figure~\ref{fig:ModSeq12} et figure~\ref{fig:ModSeq20}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -447,13 +449,13 @@ On note que sur tous ces interférogrammes on peut reconnaître la séquence de 
 
 La phase différentielle spectrale est une observable auto-étalonnée des erreurs et biais de phase instrumentaux qui s'ajoutent à la phase inhérente à la source astrophysique lors de la mesure. Pour l'obtenir, on utilise le fait que la phase est mesurée en fonction de la longueur d'onde. Le concept de base \citep{buscher2015} est de soustraire la moyenne de la phase sur deux canaux spectraux $\lambda_0 - \Delta\lambda$ et $\lambda_0 + \Delta\lambda$ à la phase du canal spectral central $\lambda_0$. Trois mesures sont donc requises a minima. Dans notre cas, nous disposons de bien plus de canaux spectraux, ce qui permet de modéliser plus finement le continuum.
 
-En pratique, on explicite l'expression de la phase mesurée en fonction du nombre d'onde $\sigma = 1 / \lambda$ pour mettre en évidence les erreurs de phase instrumentales, comme cela a été fait pour le traitement des données d'\ac{AMBER} \citep{millour2008} mais aussi de l'instrument \ac{GRAVITY} \citep{lapeyrere2014}. Premièrement, la phase de l'objet astrophysique peut être décomposée selon :
+En pratique, on explicite l'expression de la phase mesurée en fonction du nombre d'onde $\sigma = 1 / \lambda$ pour mettre en évidence les erreurs de phase instrumentales, comme cela a été fait pour le traitement des données d'\ac{AMBER} \citep{millour2008} mais aussi de l'instrument \ac{GRAVITY} \citep{lapeyrere2014}. Premièrement, la phase de l'objet astrophysique peut être développée selon :
 
 \begin{equation}
     \varphi^{ob}_{nn'}(\sigma) = a^{ob}_0 + a^{ob}_1 \sigma + \delta\varphi^{ob}_{nn'}(\sigma) \label{eq:PhaseSource}
 \end{equation}
 
-\noindent où $\delta\varphi^{ob}_{nn'}(\sigma)$ est la signature de la cible qu'on cherche à mesurer : la raie d'émission d'une protoplanète ou une composante en rotation comme cela a été mesuré par l'instrument \ac{GRAVITY} sur le quasar 3C 273 \citep{sturm2018} et sur le trou noir central de la galaxie active IRAS 09149-6206 \citep{amorim2020}.
+\noindent où $\delta\varphi^{ob}_{nn'}(\sigma)$ est la phase de l'objet qui ne peut pas être exprimée par une pente de phase et qu'on cherche à mesurer : la raie d'émission d'une protoplanète ou une composante en rotation comme cela a été mesuré par l'instrument \ac{GRAVITY} sur le quasar 3C 273 \citep{sturm2018} et sur le trou noir central de la galaxie active IRAS 09149-6206 \citep{amorim2020}.
 
 De plus, l'atmosphère ajoute un terme de phase $\varphi^{atmos}_{nn'}(t, \sigma)$ via une différence de marche achromatique (appelée piston) $p_{nn'}(t)$ s'exprimant :
 
@@ -482,11 +484,11 @@ La phase différentielle $\delta\varphi^{m}_{nn'}(\sigma)$ s'obtient par la sous
 \subsection{En pratique sur FIRSTv2}
 \label{sec:PhaseDiffFIRSTv2}
 
-Les canaux spectraux de référence sont définis par toute la bande spectrale en excluant les canaux spectraux de travail. Pour un signal mesuré sur une protoplanète en accrétion qui présente une forte raie d'émission \ha~(voir la section~\ref{sec:Protoplanetes}), les canaux spectraux de travail sont ceux englobant la longueur d'onde \ha. Le signal de phase sur les canaux spectraux de référence correspond au signal du continuum non résolus par l'instrument (l'étoile centrale) et il est nul. Par conséquent, le signal qu'on mesure effectivement sur les canaux spectraux de référence est égal à la phase provenant des pistons atmosphériques et instrumentaux et son ajustement permet de le corriger par interpolation sur les canaux de travail.
+Les canaux spectraux de référence sont définis par toute la bande spectrale en excluant les canaux spectraux de travail. Pour un signal mesuré sur une protoplanète en accrétion qui présente une forte raie d'émission \ha~(voir la section~\ref{sec:Protoplanetes}), les canaux spectraux de travail sont ceux englobant la longueur d'onde \ha. Le signal de phase sur les canaux spectraux de référence correspond au signal du continuum non résolu par l'instrument (l'étoile centrale) et il est nul. Par conséquent, le signal qu'on mesure effectivement sur les canaux spectraux de référence est égal à la phase provenant des pistons atmosphériques et instrumentaux et son ajustement permet de le corriger par interpolation sur les canaux de travail.
 
 On ajuste donc une fonction polynomiale du second degré aux mesures de phases sur les canaux spectraux de référence, image par image (selon la variable $t$), afin de déterminer la fonction de l'équation~\ref{eq:phasefit}. La soustraction de cette fonction ajustée aux phases mesurées sur toute la bande spectrale permet de mettre en évidence le signal provenant uniquement de la protoplanète résolue, correspondant au terme de hauts ordres $\delta\varphi^{*}_{nn'}(\sigma)$ dans l'équation~\ref{eq:PhaseSource} de la phase de la source.
 
-La figure~\ref{fig:FitPhaseVis} présente une telle procédure sur des données prises sur une source binaire (comme expliqué dans la section~\ref{sec:SystBinaire}). Pour chaque base (identifiée dans les sous-titres par \textit{B\#}), un graphique présente les phases des visibilités mesurées en vert et son ajustement en trait discontinu rouge en fonction du nombre d'onde $\sigma = 1/ \lambda$. Le signal du compagnon est entre $0.0015$ et $0.0016 \, \text{nm}^{-1}$ sur les courbes vertes, mais est faible et difficile à voir. La fonction polynomiale trouvée par ajustement est écrite dans le sous-titre de chaque graphique. On note que les phases sont quadratiquement très dépendant du nombre d'onde.
+La figure~\ref{fig:FitPhaseVis} présente une telle procédure sur des données prises sur une source binaire (comme expliqué dans la section~\ref{sec:SystBinaire}). Pour chaque base (identifiée dans les sous-titres par \textit{B\#}), un graphique présente les phases des visibilités mesurées en vert et son ajustement en trait discontinu rouge en fonction du nombre d'onde $\sigma = 1/ \lambda$. Le signal du compagnon est entre $0.0015$ et $0.0016 \, \text{nm}^{-1}$ sur les courbes vertes, mais est faible et difficile à voir. La fonction polynomiale trouvée par ajustement est écrite dans le sous-titre de chaque graphique. On note que les phases sont quadratiquement très dépendantes du nombre d'onde.
 
 \begin{figure}[ht!]
     \centering
@@ -521,7 +523,7 @@ Enfin, la phase différentielle est une observable au premier ordre et à la dif
 
 Pour caractériser la stabilité des mesures de phases sur le banc de test de \ac{FIRSTv2}, j'acquiers des données sur la source interne non résolue. Ainsi, on s'attend à ce que le module des visibilités complexes estimées sur une telle source soit égale à $|V_{nn'}| = 1$ et sa phase à $\varphi_{nn'} = 0$. Par conséquent, l'équation~\ref{eq:mu} du terme de cohérence complexe de la base formée par les sous-pupilles $n$ et $n'$ devient $\mu_{nn'} = A_n A_{n'} e^{i(\Delta\Phi_{nn'})}$. La mesure de la phase de la cohérence complexe sur la source interne revient donc à mesurer le piston différentiel des perturbations sur le banc $\Delta\Phi_{nn'} = 2 \pi \sigma \delta_{nn'} [2 \pi]$. Pour ce faire, une fonction polynomiale d'ordre $2$ est ajustée à chaque mesure de phase déroulée selon la méthode présentée dans la section~\ref{sec:PhaseDiffFIRSTv2}, ce qui permet d'extraire le terme d'\ac{OPD} $\delta_{nn'}$, qui est le coefficient du terme polynomial d'ordre $1$.
 
-Ainsi, la figure~\ref{fig:OPDfitVStime} est un graphique qui trace en fonction du temps, l'\ac{OPD} des bases $37-7$, $37-15$ et $7-15$ (en haut) et la clôture de phase \citep{weigelt1977, lohmann1983} associée est tracée en rouge (en bas). Les courbes sont tracées pour $1\,980$ images de temps d'exposition égal à $100 \,$ms. La moyenne de chaque courbe est tracée en trait discontinu noir et celle de la clôture de phase vaut $\upmu = 90 \,$nm avec comme écart-type $\sigma = 50 \,$nm. L'écart-type des \ac{OPD}s sont estimées à $90 \,$nm, $130 \,$nm et $80 \,$nm, respectivement. Cela montre que le calcul de la clôture de phase diminue les perturbations présentes sur le banc.
+Ainsi, la figure~\ref{fig:OPDfitVStime} est un graphique qui trace en fonction du temps, l'\ac{OPD} des bases $37-7$, $37-15$ et $7-15$ (en haut) et la clôture de phase \citep{weigelt1977, lohmann1983} associée est tracée en rouge (en bas). Les courbes sont tracées pour $1\,980$ images de temps d'exposition égal à $100 \,$ms. La moyenne de chaque courbe est tracée en trait discontinu noir et celle de la clôture de phase vaut $\upmu = 90 \,$nm avec comme écart-type $\sigma = 50 \,$nm. L'écart-type des \ac{OPD}s sont estimées à $90 \,$nm, $130 \,$nm et $80 \,$nm, respectivement. Cela montre que le calcul de la clôture de phase corrige les perturbations présentes sur le banc.
 
 \begin{figure}[ht!]
     \centering
@@ -534,7 +536,7 @@ Sous l'hypothèse que les variations temporelles des perturbations instrumentale
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=\figwidth]{Figure_Chap2/20221010_FullOnData_FiberPiston_Pola1_LaTex.png}
+    \includegraphics[width=\figwidth]{Figure_Chap3/20221010_FullOnData_FiberPiston_Pola1_LaTex.png}
     \caption[Longueurs relatives des $5$ bras de l'interféromètre de FIRSTv2, mesurées avec la puce $Y$.]{Longueurs relatives des $5$ bras de l'interféromètre de FIRSTv2, mesurées avec la puce $Y$. Chaque faisceau est identifié par le numéro du segment du MEMS qu'il illumine (axe des abscisses).}
     \label{fig:FiberPiston}
 \end{figure}
@@ -545,6 +547,6 @@ Sous l'hypothèse que les variations temporelles des perturbations instrumentale
 
 Dans ce chapitre j'ai présenté le processus du traitement des données de \ac{FIRSTv2} que j'ai développé pendant ma thèse. Celui-ci se base sur la méthode de calcul de la \ac{P2VM} qui est implémentée pour \ac{FIRSTv1} et précédemment pour \ac{AMBER}.
 
-On a vu les différents étalonnages de l'instrument qui sont primordiaux dans le processus du traitement de données. Notamment l'étalonnage spectral sur toutes les sorties imagées sur le détecteur permettant l'identification des canal spectraux sur les pixels de la caméra. Mais encore, j'ai présenté tout le processus d'étalonnage de la \ac{P2VM} consistant a estimer la phase des interférogrammes pour chaque pas d'une séquence de modulation des franges connue et appliquée sur les segments du \ac{MEMS}.
+On a vu les différents étalonnages de l'instrument qui sont primordiaux dans le processus du traitement de données. Notamment l'étalonnage spectral sur toutes les sorties imagées sur le détecteur permettant l'identification des canal spectraux sur les pixels de la caméra. Mais encore, j'ai présenté tout le processus d'étalonnage de la \ac{P2VM} consistant à estimer la phase des interférogrammes pour chaque pas d'une séquence de modulation des franges connue et appliquée sur les segments du \ac{MEMS}.
 
 Enfin, j'ai présenté la phase différentielle qui est une observable permettant de s'affranchir des perturbations instrumentales de bas ordres et que j'ai implémenté dans le programme de traitement de données pendant ma thèse. La phase différentielle est adaptée à la mesure interférométrique sur des sources lumineuses telles que les systèmes protoplanétaires dont le compagnon présente un faible contraste dans une raie d'émission. Elle sera exploitée dans le chapitre suivant pour l'analyse des données acquises sur un système protoplanétaire simulé sur le banc de test.
