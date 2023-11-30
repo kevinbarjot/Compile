@@ -66,9 +66,9 @@
 \newpage\thispagestyle{empty}
 \null
 
-% \input{Openings/Acknowledgements}
-% \input{Openings/Dedicace}
-% \input{Openings/Quotation}
+\input{Openings/Acknowledgements}
+\input{Openings/Dedicace}
+\input{Openings/Quotation}
 \input{Openings/Abstract}
 
 
@@ -146,13 +146,21 @@
 \newpage\thispagestyle{empty}
 
 \bibliographystyle{plainnat}
-\bibliography{biblio}
+\bibliography{main}
 % \addcontentsline{toc}{chapter}{Bibliographie}
 % When compiling with LaTex on a local machine (without Overleaf), execute these commands:
 % (pdf)latex main.tex
 % BibTex main.aux
 % (pdf)latex main.tex
 % (pdf)latex main.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\include{Openings/Abstract_Short}
 
 
 \end{document}
